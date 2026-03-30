@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep: #050a0f;
+  --bg-panel: #0d1e2e;
+  --border-subtle: rgba(94, 184, 232, 0.12);
+  --text-muted: #8ba8bc;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-sea-950 text-slate-100 antialiased;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(62, 184, 232, 0.08), transparent),
+    linear-gradient(180deg, #050a0f 0%, #0a1624 40%, #050a0f 100%);
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-spin {
+  animation: radar-spin 2.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-radar-spin {
+    animation: none;
+  }
+}
+
+/* Strzałka „skacze” w pionie: w górę i w dół */
+@keyframes hero-scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-hero-scroll-bounce {
+  animation: hero-scroll-bounce 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-scroll-bounce {
+    animation: none;
+  }
+}
