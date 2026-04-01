@@ -1,18 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 import { useLocale } from "@/components/locale-provider";
 
 export function Footer() {
   const { t, m } = useLocale();
 
   return (
-    <footer className="mt-24 max-w-full overflow-x-hidden border-t border-bridge-dim/15 bg-sea-900/40">
+    <footer className="mt-12 max-w-full overflow-x-hidden border-t border-bridge-dim/15 bg-sea-900/40">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="font-semibold text-white">{m.brand.name}</p>
-            <p className="mt-1 text-sm text-sea-300">{m.brand.tagline}</p>
+            <BrandLogo
+              alt=""
+              className="mb-4 h-10 w-[min(13rem,85vw)] max-h-10 opacity-90 sm:h-11 sm:max-h-11 sm:w-[14.5rem]"
+            />
+            <p className="text-sm text-sea-300">{m.brand.tagline}</p>
             <p className="mt-4 max-w-sm text-sm text-sea-400">
               {m.home.contact.company}
             </p>

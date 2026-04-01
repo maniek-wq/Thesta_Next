@@ -37,7 +37,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <main className="min-w-0 overflow-x-hidden pb-28 max-md:pb-32 md:pb-28">
+          <main className="min-w-0 overflow-x-hidden pb-20 max-md:pb-24 md:pb-20">
             {children}
           </main>
           <Footer />

@@ -4,6 +4,7 @@ import { useLocale } from "@/components/locale-provider";
 import { HomeContactBlock } from "@/components/home/home-contact-block";
 import { HomeFaq } from "@/components/home/home-faq";
 import { HomeHero } from "@/components/home/home-hero";
+import { HomeIntroPanels } from "@/components/home/home-intro-panels";
 import { HomeNews } from "@/components/home/home-news";
 import { HomeProcess } from "@/components/home/home-process";
 import { HomeServices } from "@/components/home/home-services";
@@ -16,6 +17,7 @@ export function HomePage() {
 
   return (
     <div className="flex flex-col">
+      <HomeIntroPanels intro={h.introPanels} />
       <HomeHero hero={h.hero} />
       <HomeServices services={h.services} section={h.servicesSection} />
       <HomeStats stats={h.stats} />

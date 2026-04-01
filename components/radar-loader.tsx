@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { BrandLogo } from "@/components/brand-logo";
 import { useLocale } from "@/components/locale-provider";
 
 const MIN_MS = 1600;
@@ -124,7 +125,12 @@ export function RadarLoader() {
 
         <div className="absolute left-1/2 top-1/2 z-[3] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sonar shadow-[0_0_12px_rgba(61,217,160,0.9)]" />
       </div>
-      <p className="mt-8 font-mono text-sm text-bridge/90 motion-reduce:hidden">
+      <BrandLogo
+        alt={m.brand.name}
+        className="mt-10 h-12 w-[min(14rem,78vw)] opacity-95 sm:h-14 sm:w-[16rem]"
+        priority
+      />
+      <p className="mt-6 font-mono text-sm text-bridge/90 motion-reduce:hidden">
         {m.radar.status}
       </p>
     </div>

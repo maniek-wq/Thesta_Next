@@ -39,6 +39,31 @@ export const messages = {
         ctaOffer: "Zobacz ofertę",
         scrollHint: "Przewiń w dół",
       },
+      introPanels: {
+        scrollHint: "Przewiń w dół",
+        skip: "Pomiń intro",
+        regionLabel: "Wprowadzenie",
+        panels: [
+          {
+            title: "Nawigacja",
+            body: "INS, GNSS, radary i ECDIS — precyzyjna pozycja i świadomość sytuacji na morzu, od podejścia do portu po operacje taktyczne.",
+            image:
+              "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2400&q=80",
+          },
+          {
+            title: "Łączność",
+            body: "VSAT, łączność pokładowa oraz pasma HF/VHF/UHF — niezawodne łącze, gdy misja nie może pozwolić sobie na ciszę w eterze.",
+            image:
+              "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=2400&q=80",
+          },
+          {
+            title: "Hydrografia",
+            body: "Sonary, echosondy wielowiązkowe i platformy USV/AUV — mapowanie dna, środowisko i dane pod decyzje nawigacyjne oraz planowanie.",
+            image:
+              "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=2400&q=80",
+          },
+        ],
+      },
       servicesSection: {
         title: "Zakres usług",
         kicker: "Projekt · dostawa · integracja · serwis",
@@ -340,6 +365,31 @@ export const messages = {
         ctaContact: "Contact us",
         ctaOffer: "View our offer",
         scrollHint: "Scroll down",
+      },
+      introPanels: {
+        scrollHint: "Scroll down",
+        skip: "Skip intro",
+        regionLabel: "Introduction",
+        panels: [
+          {
+            title: "Navigation",
+            body: "INS, GNSS, radar, and ECDIS — precise position and situational awareness at sea, from pilotage to tactical operations.",
+            image:
+              "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2400&q=80",
+          },
+          {
+            title: "Communications",
+            body: "VSAT, onboard links, and HF/VHF/UHF — dependable connectivity when the mission cannot afford radio silence.",
+            image:
+              "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=2400&q=80",
+          },
+          {
+            title: "Hydrography",
+            body: "Sonars, multibeam echo sounders, and USV/AUV platforms — seabed mapping, environmental insight, and data for navigation and planning.",
+            image:
+              "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=2400&q=80",
+          },
+        ],
       },
       servicesSection: {
         title: "What we deliver",

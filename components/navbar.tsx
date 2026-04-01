@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { BrandLogo } from "@/components/brand-logo";
 import { useLocale } from "@/components/locale-provider";
 
 const links: { href: string; key: string }[] = [
@@ -67,13 +68,16 @@ export function Navbar() {
         <div className="flex items-center justify-between gap-3">
           <Link
             href="/"
-            className="group flex min-w-0 flex-col leading-tight transition-colors hover:text-bridge"
+            className="group flex min-w-0 items-center gap-3 leading-tight transition-colors hover:text-bridge"
+            aria-label={`${m.brand.name} — ${m.brand.tagline}`}
             onClick={() => setMobileOpen(false)}
           >
-            <span className="font-semibold tracking-tight text-white">
-              {m.brand.name}
-            </span>
-            <span className="truncate text-xs text-sea-300 group-hover:text-bridge/90">
+            <BrandLogo
+              alt=""
+              className="h-9 w-[min(11rem,52vw)] max-h-9 shrink-0 opacity-95 group-hover:opacity-100 sm:h-10 sm:max-h-10 sm:w-[12.5rem]"
+              priority
+            />
+            <span className="hidden min-w-0 truncate text-xs text-sea-300 group-hover:text-bridge/90 sm:inline">
               {m.brand.tagline}
             </span>
           </Link>
