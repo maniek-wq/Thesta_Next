@@ -9,25 +9,43 @@ const TEL_HREF = "tel:+48725105207";
 const SHOW_AFTER_PX = 140;
 /** Ukryty z powrotem dopiero blisko góry (px) — mniej migania */
 const HIDE_BELOW_PX = 72;
+/** Wysokość strefy u dołu ekranu zajmowana przez dock + margines — ukryj, gdy footer ją przecina */
+const DOCK_ZONE_PX = 104;
+
+function footerIntersectsDockZone(): boolean {
+  const el = document.getElementById("site-footer");
+  if (!el) return false;
+  const rect = el.getBoundingClientRect();
+  const h = window.innerHeight;
+  return rect.top < h && rect.bottom > h - DOCK_ZONE_PX;
+}
 
 export function ScrollDock() {
   const { t } = useLocale();
-  const [visible, setVisible] = useState(false);
+  const [scrollShown, setScrollShown] = useState(false);
+  const [footerHidesDock, setFooterHidesDock] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      setVisible((prev) => {
+      setScrollShown((prev) => {
         if (y > SHOW_AFTER_PX) return true;
         if (y < HIDE_BELOW_PX) return false;
         return prev;
       });
+      setFooterHidesDock(footerIntersectsDockZone());
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
+  const visible = scrollShown && !footerHidesDock;
 
   const scrollTop = useCallback(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

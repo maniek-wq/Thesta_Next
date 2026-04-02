@@ -20,12 +20,12 @@ export function HomePage() {
       <HomeIntroPanels intro={h.introPanels} />
       <HomeHero hero={h.hero} />
       <HomeServices services={h.services} section={h.servicesSection} />
-      <HomeStats stats={h.stats} />
       <HomeNews news={h.news} />
-      <HomeFaq faq={h.faq} />
-      <HomeContactBlock contact={h.contact} />
+      <HomeStats stats={h.stats} />
       <HomeProcess process={h.process} />
+      <HomeFaq faq={h.faq} />
       <HomeTestimonials testimonials={h.testimonials} />
+      <HomeContactBlock contact={h.contact} />
     </div>
   );
 }

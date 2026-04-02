@@ -30,12 +30,16 @@ export function CookieBanner() {
 
   return (
     <div
-      className="fixed bottom-[5.75rem] left-0 right-0 z-[90] max-w-full overflow-x-hidden border-t border-bridge-dim/20 bg-sea-900/95 p-4 shadow-[0_-8px_32px_rgba(0,0,0,0.4)] backdrop-blur-md sm:p-5"
+      className="fixed z-[100] max-h-[min(50vh,28rem)] w-[min(28rem,calc(100vw-2rem))] overflow-y-auto overflow-x-hidden rounded-2xl border border-bridge-dim/35 bg-sea-900/97 p-4 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-md sm:p-5"
+      style={{
+        left: "max(1rem, env(safe-area-inset-left, 0px))",
+        bottom: "max(1rem, env(safe-area-inset-bottom, 0px))",
+      }}
       role="dialog"
       aria-label="Cookies"
     >
-      <div className="mx-auto flex min-w-0 max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="min-w-0 text-sm text-sea-200">
+      <div className="flex min-w-0 flex-col gap-4">
+        <p className="min-w-0 text-sm leading-relaxed text-sea-200">
           {t("cookies.text")}{" "}
           <Link href="/cookies" className="text-bridge underline-offset-2 hover:underline">
             {t("footer.cookies")}

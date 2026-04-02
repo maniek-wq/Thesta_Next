@@ -8,7 +8,10 @@ export function Footer() {
   const { t, m } = useLocale();
 
   return (
-    <footer className="mt-12 max-w-full overflow-x-hidden border-t border-bridge-dim/15 bg-sea-900/40">
+    <footer
+      id="site-footer"
+      className="mt-12 max-w-full overflow-x-hidden border-t border-bridge-dim/15 bg-sea-900/40"
+    >
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>

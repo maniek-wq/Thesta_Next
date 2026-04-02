@@ -234,12 +234,21 @@ export const messages = {
       title: "Kontakt",
       intro:
         "Napisz do nas lub zadzwoń – odpowiemy w sprawie nawigacji, łączności i hydrografii pokładowej.",
+      addressHeading: "Adres",
+      addressLine1: "Janiny Smoleńskiej ps. „Jachna” 17",
+      addressLine2: "71-005 Szczecin",
+      mapHeading: "Mapa",
+      mapIframeTitle: "Mapa Google — lokalizacja biura Thesta",
+      openInMaps: "Otwórz w Google Maps",
+      formHeading: "Wyślij wiadomość",
       form: {
         name: "Imię i nazwisko",
         email: "E-mail",
         message: "Wiadomość",
         submit: "Wyślij",
-        hint: "Formularz demonstracyjny — podłącz backend według potrzeb.",
+        consent:
+          "Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu udzielenia odpowiedzi na zapytanie. Zapoznałem(-am) się z informacjami w",
+        consentPolicyLink: "Polityce prywatności",
       },
     },
     offerPage: {
@@ -1025,12 +1034,21 @@ export const messages = {
       title: "Contact",
       intro:
         "Write or call — we respond on bridge navigation, communications, and hydrography.",
+      addressHeading: "Address",
+      addressLine1: "Janiny Smoleńskiej ps. „Jachna” 17",
+      addressLine2: "71-005 Szczecin, Poland",
+      mapHeading: "Map",
+      mapIframeTitle: "Google Map — Thesta office location",
+      openInMaps: "Open in Google Maps",
+      formHeading: "Send a message",
       form: {
         name: "Full name",
         email: "E-mail",
         message: "Message",
         submit: "Send",
-        hint: "Demo form — connect your backend as needed.",
+        consent:
+          "I consent to the processing of the personal data I provide in this form for the purpose of responding to my enquiry. I have read the information in the",
+        consentPolicyLink: "Privacy policy",
       },
     },
     offerPage: {
