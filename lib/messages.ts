@@ -251,35 +251,285 @@ export const messages = {
       productCategories: [
         {
           title: "Nawigacja",
-          items: [
-            "Systemy nawigacyjne",
-            "Oświetlenie nawigacyjne",
-            "INS",
-            "Odbiorniki GNSS",
+          itemSlugs: [
+            "systemy-nawigacyjne",
+            "oswietlenie-nawigacyjne",
+            "ins",
+            "odbiorniki-gnss",
           ],
         },
         {
           title: "Łączność",
-          items: [
-            "VSAT",
-            "Łączność wewnątrzokrętowa",
-            "Łączność radiowa",
+          itemSlugs: [
+            "vsat",
+            "lacznosc-wewnetrzna-okretowa",
+            "lacznosc-radiowa",
           ],
         },
         {
           title: "Hydrografia",
-          items: [
-            "Nawodne pojazdy bezzałogowe (USV)",
-            "Echosondy wielowiązkowe",
-            "Pojazdy podwodne (ROV/AUV)",
+          itemSlugs: [
+            "nawodne-pojazdy-bezalogowe-usv",
+            "echosondy-wielowiazowe",
+            "pojazdy-podwodne-rov-auv",
           ],
         },
         {
           title: "Ochrona środowiska",
-          items: ["T-BWSS"],
+          itemSlugs: ["t-bwss"],
         },
       ],
-      serviceItems: ["Projektowanie", "Uruchomienia", "Szkolenia"],
+      serviceSlugs: ["projektowanie", "uruchomienia", "szkolenia"],
+    },
+    productPages: {
+      backToOffer: "Wróć do oferty",
+      placeholderCaption: "Miejsce na zdjęcie (placeholder)",
+      bySlug: {
+        "systemy-nawigacyjne": {
+          title: "Systemy nawigacyjne",
+          intro:
+            "Zintegrowane systemy nawigacyjne łączą pozycjonowanie satelitarne, czujniki pokładowe i warstwę wizualizacji, aby załoga miała spójny obraz pozycji, kursu i otoczenia — od podejścia do portu po długotrwałe patrolowanie.",
+          blocks: [
+            {
+              caption: "Integracja mostka",
+              body: "Dobór i spięcie ECDIS/WECDIS, radarów oraz interfejsów NMEA zapewnia jednolite źródło danych dla oficerów wachtowych. Thesta wspiera dobór sprzętu, okablowanie logiczne oraz testy akceptacyjne na jednostce.",
+            },
+            {
+              caption: "Bezpieczeństwo operacyjne",
+              body: "Walidacja konfiguracji alarmów, redundancji wyświetlaczy i polityk aktualizacji map redukuje ryzyko błędów ludzkich. Przy modernizacjach planujemy etapy przejściowe, by nie wyłączać krytycznych funkcji mostka dłużej niż to konieczne.",
+            },
+          ],
+        },
+        "oswietlenie-nawigacyjne": {
+          title: "Oświetlenie nawigacyjne",
+          intro:
+            "Prawidłowe światła pozycyjne, masztowe i specjalne są warunkiem bezpiecznej nawigacji nocnej i zgodności z przepisami COLREG. Dobór mocy, kolorów i kątów świecenia musi uwzględniać geometrię jednostki oraz zakłócenia od nadbudówek.",
+          blocks: [
+            {
+              caption: "Dobór opraw",
+              body: "Projektujemy rozmieszczenie latarni z uwzględnieniem zasięgu widzialnego, zużycia energii i dostępu serwisowego. Współpracujemy z producentami certyfikowanych lamp LED oraz klasycznych rozwiązań halogenowych tam, gdzie wymagają tego przepisy lub klient.",
+            },
+            {
+              caption: "Pomiary i odbiory",
+              body: "Po montażu weryfikujemy zgodność z dokumentacją klasyfikacyjną i przeprowadzamy próby zgodnie z harmonogramem stoczni lub jednostki w służbie. Dokumentujemy parametry, by ułatwić przyszłe audyty i przedłużenie certyfikatów.",
+            },
+          ],
+        },
+        ins: {
+          title: "INS",
+          intro:
+            "Nawigacja inercyjna uzupełnia GNSS tam, gdzie sygnał satelitarny jest zakłócany lub zasłonięty — pod mostkami, w kanale czy w rejonach o podwyższonym ryzyku jammingu. Spójny łańcuch INS+GNSS jest standardem na jednostkach o podwyższonych wymaganiach.",
+          blocks: [
+            {
+              caption: "Kalibracja i biegi próbne",
+              body: "Prawidłowa inicjalizacja żyroskopów i kontrola dryftu wymagają procedur na spokojnej wodzie oraz odczytów referencyjnych. Thesta prowadzi uruchomienia, szkolenia operatorów i checklisty zgodne z dokumentacją producenta.",
+            },
+            {
+              caption: "Integracja z GNSS i ECDIS",
+              body: "Sygnały pozycji i kursu muszą być priorytetyzowane i monitorowane pod kątem spójności. Konfigurujemy przełączanie źródeł, alarmy rozbieżności oraz logowanie zdarzeń dla późniejszej analizy.",
+            },
+          ],
+        },
+        "odbiorniki-gnss": {
+          title: "Odbiorniki GNSS",
+          intro:
+            "Odbiorniki wielosystemowe zapewniają redundancję pasm i konstelacji, a w wariantach wojskowych — dodatkowe warstwy autoryzacji i odporności. Dobór anten, filtrów i okablowania ma bezpośredni wpływ na dostępność pozycji na pokładzie.",
+          blocks: [
+            {
+              caption: "Anteny i osłona EM",
+              body: "Umiejscowienie anten poza strefą cienia nadbudówek oraz ekranowanie przewodów ogranicza szum i odbicia. Dobieramy zestawy pod kątem jednostek patrolowych, hydrograficznych i pomocniczych o różnej tonarzu.",
+            },
+            {
+              caption: "Konfiguracja i aktualizacje",
+              body: "Zarządzanie kluczami, firmware’em i polityką aktualizacji jest kluczowe dla utrzymania zgodności. Dokumentujemy wersje oprogramowania i procedury rollbacku na wypadek problemów w locie.",
+            },
+          ],
+        },
+        vsat: {
+          title: "VSAT",
+          intro:
+            "Łączność satelitarna VSAT umożliwia przesył danych i głosu poza zasięgiem brzegowych sieci — niezbędna w długich patrolach, operacjach logistycznych i współpracy z dowodzeniem. Dobór terminala, kopuły i planu tarifowego zależy od profilu misji.",
+          blocks: [
+            {
+              caption: "Terminal i instalacja pokładowa",
+              body: "Analizujemy przestrzeń na maszcie lub nadbudówce pod kątem pola widzenia, obciążeń wiatrem oraz serwisu. Montaż kopuły i prowadzenie przewodów RF/wewnętrznych wykonujemy zgodnie z wytycznymi producenta i klasyfikacji.",
+            },
+            {
+              caption: "Sieć i bezpieczeństwo",
+              body: "Segmentacja ruchu operacyjnego i biurowego, VPN oraz monitoring dostępności łącza zmniejszają ryzyko przestojów. Pomagamy w konfiguracji routerów pokładowych i integracji z istniejącą infrastrukturą IT jednostki.",
+            },
+          ],
+        },
+        "lacznosc-wewnetrzna-okretowa": {
+          title: "Łączność wewnątrzokrętowa",
+          intro:
+            "Systemy wewnątrzokrętowe — od prostych rozgłośni po zintegrowane PAGA i dystrybucję alarmów — zapewniają komunikację między działami i stanowiskami bojowymi. Niezawodność przewyższa estetykę: proste interfejsy skracają czas reakcji załogi.",
+          blocks: [
+            {
+              caption: "Projekt akustyczny i strefy",
+              body: "Dzielimy jednostkę na strefy nagłaśniania i alarmowe z uwzględnieniem hałasu maszynowni oraz wymogów SŁUCH. Dobór głośników i mikrofonów antyszumowych poprawia zrozumiałość komunikatów.",
+            },
+            {
+              caption: "Integracja z alarmami",
+              body: "Powiadomienia pożarowe, uszczelnieniowe i maszynowe muszą trafiać na właściwe stanowiska z priorytetyzacją. Współpracujemy z automatiką okrętową, by uniknąć konfliktów sygnałów i podwójnych komunikatów.",
+            },
+          ],
+        },
+        "lacznosc-radiowa": {
+          title: "Łączność radiowa",
+          intro:
+            "Pasma HF, VHF i UHF oraz systemy GMDSS tworzą podstawę łączności krótkiego i dalekiego zasięgu. Prawidłowe anteny, uziemienia i protokoły wachtowe decydują o skuteczności w sytuacjach awaryjnych.",
+          blocks: [
+            {
+              caption: "GMDSS i bezpieczeństwo",
+              body: "Konfigurujemy radiotelefony wachtowe, EPIRB/AIS-SART zgodnie z wymaganiami dla klasy jednostki i strefy żeglugi. Szkolimy załogę z procedur testów okresowych i komunikacji z RCC.",
+            },
+            {
+              caption: "Łączność taktyczna",
+              body: "Dla jednostek o specjalnych profilach dobiera się kanały, szyfrowanie i sprzęt przystosowany do hałasu bojowego. Thesta wspiera integrację z pozostałymi systemami łączności i dokumentację dla odbiorów.",
+            },
+          ],
+        },
+        "nawodne-pojazdy-bezalogowe-usv": {
+          title: "Nawodne pojazdy bezzałogowe (USV)",
+          intro:
+            "Platformy USV umożliwiają pomiary hydrograficzne, monitoring i transport ładunków testowych bez narażania załogi. Autonomia, łączność nadzorująca i redundancja napędu są kluczowe przy pracy w estuarium i na otwartym morzu.",
+          blocks: [
+            {
+              caption: "Łącze i nawigacja USV",
+              body: "Integracja odbiorników GNSS, INS oraz łączy radiowych lub satelitarnych zapewnia telemetrię i możliwość przejęcia kontroli. Projektujemy stacje bazowe i procedury awaryjnego powrotu jednostki.",
+            },
+            {
+              caption: "Payload pomiarowy",
+              body: "Montaż sonaru lub lidaru wymaga stabilizacji platformy i synchronizacji czasu. Wspieramy dobór żurawi, adapterów i zasilania pod konkretne sensory i producentów.",
+            },
+          ],
+        },
+        "echosondy-wielowiazowe": {
+          title: "Echosondy wielowiązkowe",
+          intro:
+            "Wielowiązkowe echosondy skracają czas pokrycia dna przy zachowaniu wysokiej rozdzielczości — standard w nowoczesnej hydrografii państwowej i komercyjnej. Jakość danych zależy od kalibracji, motion sensorów i kompensacji prędkości dźwięku.",
+          blocks: [
+            {
+              caption: "Kalibracja i patch test",
+              body: "Przeprowadzamy testy offsetów, opóźnień i barcheck zgodnie z procedurami IHO tam, gdzie mają zastosowanie. Dokumentacja pomiarów ułatwia akceptację przez zamawiającego.",
+            },
+            {
+              caption: "Przetwarzanie i archiwizacja",
+              body: "Konfiguracja formatów eksportu, metadanych i polityki kopii zapasowych chroni przed utratą transectów. Integrujemy systemy z oprogramowaniem przetwarzania batimetrii u klienta.",
+            },
+          ],
+        },
+        "pojazdy-podwodne-rov-auv": {
+          title: "Pojazdy podwodne (ROV/AUV)",
+          intro:
+            "ROV i AUV służą inspekcji podwodnej infrastruktury, sonarowi oraz zadaniom EOD i badawczym. Niezawodny napęd, oświetlenie, tether lub autonomia energetyczna wymagają ścisłej współpracy z systemem nawigacji nadrzędnej.",
+          blocks: [
+            {
+              caption: "Nawigacja względna i bezwzględna",
+              body: "Łączenie USBL/LBL z INS pojazdu oraz filtracja pozycji poprawia stabilność toru. Dobieramy sensory pod głębokość, prędkość prądu i przeźroczystość wody.",
+            },
+            {
+              caption: "Integracja sonaru",
+              body: "Synkronizacja czasu i triggerów między platformą a głowicą sonarową jest krytyczna dla jakości mozaik. Wspieramy montaż, okablowanie hydrograficzne i testy w basenie lub na miejscu operacji.",
+            },
+          ],
+        },
+        "t-bwss": {
+          title: "T-BWSS",
+          intro:
+            "Systemy typu T-BWSS wspierają monitoring środowiska wodnego — parametry fizykochemiczne, czasem zdarzenia alarmowe dla portów i instalacji offshore. Stabilność czujników, kalibracja i transmisja danych do brzegu decydują o wartości pomiaru.",
+          blocks: [
+            {
+              caption: "Stacja pomiarowa",
+              body: "Dobór sond, koszy ochronnych i systemów antykolizyjnych zależy od lokalizacji (falochron, tor wodny, terminal). Zapewniamy zasilanie, ochronę przed biofoulingiem i dostęp serwisowy z pokładu lub z brzegu.",
+            },
+            {
+              caption: "Telemetria i integracja",
+              body: "Przesył danych przez radiolinie lub IoT satelitarne oraz prezentacja na SCADA u klienta ułatwiają reakcję służb. Projektujemy proste dashboardy i progi alarmowe zgodne z wymaganiami środowiskowymi umowy.",
+            },
+          ],
+        },
+      },
+    },
+    servicePages: {
+      backToOffer: "Wróć do oferty",
+      placeholderCaption: "Miejsce na zdjęcie (placeholder)",
+      bySlug: {
+        projektowanie: {
+          title: "Projektowanie",
+          intro:
+            "Oferujemy wykonywanie instalacji oraz integracji systemów nawigacyjnych oraz hydrograficznych w oparciu o projekty zgodne z normami oraz wymaganiami naszych klientów. Świadczymy usługi opracowywania oraz wykonywania projektów technicznych, na podstawie których nasza wykwalifikowana kadra dostarcza niestandardowe rozwiązania. W celu uzyskania najwyższej jakości wykonywanych usług, prowadzimy stały nadzór jakości wykonywanych instalacji oraz integracji w oparciu o uprzednio przygotowane projekty.",
+          blocks: [
+            {
+              caption: "Standardy, normy i narzędzia projektowe",
+              body:
+                "Nasze projekty wykonujemy zgodnie z najwyższymi standardami oraz na podstawie norm, w tym norm obronnych (decyzja nr 207/MON Ministra Obrony Narodowej z dnia 31 grudnia 2021 r. zmieniająca decyzję w sprawie wprowadzenia „Instrukcji w sprawie zarządzania dokumentacją techniczną uzbrojenia i sprzętu wojskowego” oraz „Instrukcji w sprawie określenia wymagań na dokumentację techniczną uzbrojenia i sprzętu wojskowego”). Do wykonywania projektów wykorzystujemy zaawansowane narzędzia projektowe CAD oraz narzędzia do modelowania 3D dla jeszcze lepszego odwzorowania projektowanych elementów.",
+            },
+            {
+              caption: "Projekty systemów nawigacyjnych",
+              body: "",
+              bullets: [
+                "Radar",
+                "ECDIS/W-ECDIS",
+                "Pozycjonowanie GNSS/GPS",
+                "Tablica świateł nawigacyjnych",
+                "Autopilot",
+                "Navtex",
+                "Echosonda",
+                "Speed log",
+                "Echosonda wielowiązkowa",
+                "Nawigacja bezwładnościowa (INS)",
+              ],
+            },
+            {
+              caption: "Projekty systemów łączności",
+              body: "",
+              bullets: [
+                "Łączność satelitarna VSAT",
+                "Łączność radiowa",
+                "Rozgłośnia okrętowa",
+                "Telefony bezbateryjne",
+                "System RTV",
+              ],
+            },
+          ],
+        },
+        uruchomienia: {
+          title: "Uruchomienia",
+          intro:
+            "Każdy nowo zainstalowany system wymaga integracji oraz uruchomienia. W tym celu zespół inżynierów precyzyjnie opracowuje plan uruchomienia danego systemu bądź podsystemu. Wielokrotnie wiąże się to ze zgraniem wielu zespołów takich jak firmy podwykonawcze, dostawców sprzętu, przedstawicieli zamawiającego oraz przedstawicieli użytkownika.",
+          blocks: [
+            {
+              caption: "Przygotowanie i integracja w siedzibie Thesta",
+              body:
+                "Zespół inżynierów przygotowuje urządzenia niezbędne do instalacji i integracji w siedzibie Thesta. Na tym etapie klient może mieć wgląd w etapy wykonywanych prac oraz prowadzić nadzór nad tymi pracami.",
+            },
+            {
+              caption: "Uruchomienie na jednostce lub u klienta",
+              body:
+                "Prace uruchomieniowe zwykle realizowane są na jednostkach lub na terenie klienta bądź użytkownika, zgodnie z ustalonym harmonogramem i procedurami odbiorczymi.",
+            },
+          ],
+        },
+        szkolenia: {
+          title: "Szkolenia",
+          intro:
+            "Dopełnieniem naszych usług związanych z doradztwem, projektowaniem oraz uruchomieniami są szkolenia przeprowadzane na ostatnim etapie wdrażania projektów.",
+          blocks: [
+            {
+              caption: "Formy i lokalizacja szkoleń",
+              body:
+                "Szkolenia organizujemy w zależności od dostarczanych systemów w siedzibie firmy, w miejscu wyznaczonym przez klienta lub bezpośrednio na jednostkach, na których wykonana została instalacja bądź integracja.",
+            },
+            {
+              caption: "Kadra Thesta i producenci",
+              body:
+                "Prowadzimy szkolenia zarówno w oparciu o wiedzę i doświadczenie naszego zespołu, jak i zapraszamy przedstawicieli producentów na dedykowane szkolenia produktowe.",
+            },
+          ],
+        },
+      },
     },
     newsPage: {
       title: "Aktualności",
@@ -792,35 +1042,285 @@ export const messages = {
       productCategories: [
         {
           title: "Navigation",
-          items: [
-            "Navigation systems",
-            "Navigation lighting",
-            "INS",
-            "GNSS receivers",
+          itemSlugs: [
+            "systemy-nawigacyjne",
+            "oswietlenie-nawigacyjne",
+            "ins",
+            "odbiorniki-gnss",
           ],
         },
         {
           title: "Communications",
-          items: [
-            "VSAT",
-            "Internal ship communications",
-            "Radio communications",
+          itemSlugs: [
+            "vsat",
+            "lacznosc-wewnetrzna-okretowa",
+            "lacznosc-radiowa",
           ],
         },
         {
           title: "Hydrography",
-          items: [
-            "Uncrewed surface vehicles (USV)",
-            "Multibeam echo sounders",
-            "Underwater vehicles (ROV/AUV)",
+          itemSlugs: [
+            "nawodne-pojazdy-bezalogowe-usv",
+            "echosondy-wielowiazowe",
+            "pojazdy-podwodne-rov-auv",
           ],
         },
         {
           title: "Environmental protection",
-          items: ["T-BWSS"],
+          itemSlugs: ["t-bwss"],
         },
       ],
-      serviceItems: ["Engineering", "Commissioning", "Training"],
+      serviceSlugs: ["projektowanie", "uruchomienia", "szkolenia"],
+    },
+    productPages: {
+      backToOffer: "Back to offer",
+      placeholderCaption: "Image placeholder",
+      bySlug: {
+        "systemy-nawigacyjne": {
+          title: "Navigation systems",
+          intro:
+            "Integrated bridge navigation ties together satellite positioning, onboard sensors, and visualisation so the crew shares one coherent picture of position, heading, and surroundings — from harbour approach to long patrols.",
+          blocks: [
+            {
+              caption: "Bridge integration",
+              body: "Selecting and wiring ECDIS/WECDIS, radars, and NMEA interfaces yields a single operational picture for watchkeepers. Thesta supports equipment choice, logical cabling, and onboard acceptance tests.",
+            },
+            {
+              caption: "Operational safety",
+              body: "Alarm policies, display redundancy, and chart update routines reduce human-error risk. During refits we phase cutovers so critical bridge functions are not offline longer than necessary.",
+            },
+          ],
+        },
+        "oswietlenie-nawigacyjne": {
+          title: "Navigation lighting",
+          intro:
+            "Correct navigation, masthead, and special lights are essential for night safety and COLREG compliance. Lamp power, colour, and sectors must match hull geometry and superstructure masking.",
+          blocks: [
+            {
+              caption: "Fixture selection",
+              body: "We lay out lanterns with visible range, power draw, and service access in mind. We work with makers of certified LED units and halogen solutions where rules or the customer require them.",
+            },
+            {
+              caption: "Trials and handover",
+              body: "After installation we verify against class documentation and yard or in-service trial plans. We record parameters to simplify future audits and certificate renewals.",
+            },
+          ],
+        },
+        ins: {
+          title: "INS",
+          intro:
+            "Inertial navigation backs up GNSS where satellite signals are degraded or denied — under bridges, in channels, or in contested environments. A coherent INS+GNSS chain is standard where missions demand resilience.",
+          blocks: [
+            {
+              caption: "Calibration and sea trials",
+              body: "Proper gyro initialisation and drift monitoring need quiet-water procedures and reference observations. Thesta runs commissioning, operator training, and checklists aligned with manufacturer documentation.",
+            },
+            {
+              caption: "Integration with GNSS and ECDIS",
+              body: "Position and heading sources must be prioritised and checked for consistency. We configure source switching, disagreement alarms, and event logging for later analysis.",
+            },
+          ],
+        },
+        "odbiorniki-gnss": {
+          title: "GNSS receivers",
+          intro:
+            "Multi-system receivers add frequency and constellation redundancy; military variants add authentication and resilience layers. Antenna choice, filtering, and cabling directly affect fix availability on board.",
+          blocks: [
+            {
+              caption: "Antennas and EMI hygiene",
+              body: "Keeping antennas clear of superstructure shadow and shielding cable runs limits noise and multipath. We specify kits for patrol, hydrographic, and auxiliary vessels across tonnages.",
+            },
+            {
+              caption: "Configuration and updates",
+              body: "Key management, firmware, and update policy maintain compliance over years. We document software versions and rollback steps for field issues.",
+            },
+          ],
+        },
+        vsat: {
+          title: "VSAT",
+          intro:
+            "VSAT satellite links carry data and voice beyond coastal networks — vital for long patrols, logistics, and command collaboration. Terminal, radome, and tariff choices follow the mission profile.",
+          blocks: [
+            {
+              caption: "Terminal and shipboard install",
+              body: "We review mast or deckhouse space for sky view, wind loads, and maintenance access. Radome mounting and RF/internal cable runs follow maker and class guidance.",
+            },
+            {
+              caption: "Networking and security",
+              body: "Segmenting operational and office traffic, VPNs, and link monitoring reduce outage risk. We help configure onboard routers and integrate with existing IT infrastructure.",
+            },
+          ],
+        },
+        "lacznosc-wewnetrzna-okretowa": {
+          title: "Internal ship communications",
+          intro:
+            "Shipboard systems — from simple PA to integrated PAGA and alarm distribution — connect departments and action stations. Reliability beats aesthetics: clear interfaces shorten crew response time.",
+          blocks: [
+            {
+              caption: "Acoustic zoning",
+              body: "We divide the ship into PA and alarm zones with machinery noise and hearing-protection rules in mind. Anti-noise microphones and speaker choice improve intelligibility.",
+            },
+            {
+              caption: "Alarm integration",
+              body: "Fire, flooding, and machinery alerts must reach the right consoles with priority. We coordinate with ship automation to avoid conflicting signals and duplicate announcements.",
+            },
+          ],
+        },
+        "lacznosc-radiowa": {
+          title: "Radio communications",
+          intro:
+            "HF, VHF, and UHF bands plus GMDSS equipment underpin short- and long-range safety communications. Antennas, grounding, and watch protocols matter most in emergencies.",
+          blocks: [
+            {
+              caption: "GMDSS and safety",
+              body: "We configure watch radios, EPIRB/AIS-SART to class and sea-area requirements. We train crews on periodic tests and RCC communications.",
+            },
+            {
+              caption: "Tactical communications",
+              body: "Specialised profiles may need channel plans, encryption, and ruggedised gear. Thesta supports integration with other comms systems and acceptance documentation.",
+            },
+          ],
+        },
+        "nawodne-pojazdy-bezalogowe-usv": {
+          title: "Uncrewed surface vehicles (USV)",
+          intro:
+            "USVs support hydrographic surveys, monitoring, and payload trials without exposing a crew. Supervisory link reliability and propulsion redundancy matter in estuaries and open sea.",
+          blocks: [
+            {
+              caption: "USV link and navigation",
+              body: "GNSS, INS, and radio or satellite supervisory links enable telemetry and takeover. We design shore control layouts and lost-link recovery procedures.",
+            },
+            {
+              caption: "Survey payloads",
+              body: "Sonar or lidar mounting needs platform stability and time synchronisation. We advise on cranes, adapters, and power for specific sensors and vendors.",
+            },
+          ],
+        },
+        "echosondy-wielowiazowe": {
+          title: "Multibeam echo sounders",
+          intro:
+            "Multibeam systems shorten bottom coverage time while retaining high resolution — the norm in modern national and commercial hydrography. Data quality depends on calibration, motion sensing, and sound-speed correction.",
+          blocks: [
+            {
+              caption: "Calibration and patch test",
+              body: "We run offset, latency, and bar-check procedures aligned with applicable IHO guidance. Measurement records simplify client acceptance.",
+            },
+            {
+              caption: "Processing and archiving",
+              body: "Export formats, metadata, and backup policy protect transect data. We integrate with the client’s bathymetry processing toolchain.",
+            },
+          ],
+        },
+        "pojazdy-podwodne-rov-auv": {
+          title: "Underwater vehicles (ROV/AUV)",
+          intro:
+            "ROVs and AUVs serve subsea infrastructure inspection, sonar missions, and research. Reliable propulsion, lighting, tethering, or energy autonomy must align with supervisory navigation.",
+          blocks: [
+            {
+              caption: "Relative and absolute navigation",
+              body: "USBL/LBL blended with vehicle INS and position filtering stabilises track following. Sensors are chosen for depth, current, and water clarity.",
+            },
+            {
+              caption: "Sonar integration",
+              body: "Time and trigger sync between platform and sonar heads is critical for mosaic quality. We support pool or on-site wet tests after installation.",
+            },
+          ],
+        },
+        "t-bwss": {
+          title: "T-BWSS",
+          intro:
+            "T-BWSS-style systems support in-water environmental monitoring — physicochemical parameters and sometimes alarm events for ports and offshore sites. Sensor stability, calibration, and shore telemetry determine data value.",
+          blocks: [
+            {
+              caption: "Monitoring station",
+              body: "Probe choice, cages, and anti-collision features depend on location — breakwaters, fairways, terminals. We plan power, biofouling protection, and service access from ship or shore.",
+            },
+            {
+              caption: "Telemetry and integration",
+              body: "Radio or satellite IoT backhaul plus SCADA dashboards help authorities react quickly. We design thresholds and alarms to match contractual environmental clauses.",
+            },
+          ],
+        },
+      },
+    },
+    servicePages: {
+      backToOffer: "Back to offer",
+      placeholderCaption: "Image placeholder",
+      bySlug: {
+        projektowanie: {
+          title: "Engineering",
+          intro:
+            "We carry out installation and integration of navigation and hydrographic systems based on designs aligned with standards and customer requirements. We develop and execute technical designs that let our qualified team deliver tailored solutions. To ensure the highest quality, we maintain continuous quality supervision of installations and integrations against the approved design package.",
+          blocks: [
+            {
+              caption: "Standards, defence norms, and CAD",
+              body:
+                "Our designs follow the highest standards and applicable regulations, including defence documentation rules (Polish MoD Decision No. 207 of 31 December 2021 amending the introduction of instructions on technical documentation management for military equipment and on technical documentation requirements). We use advanced CAD and 3D modelling tools for accurate representation of installed equipment and cable routes.",
+            },
+            {
+              caption: "Navigation system designs",
+              body: "",
+              bullets: [
+                "Radar",
+                "ECDIS / W-ECDIS",
+                "GNSS / GPS positioning",
+                "Navigation light panels",
+                "Autopilot",
+                "NAVTEX",
+                "Echo sounder",
+                "Speed log",
+                "Multibeam echo sounder",
+                "Inertial navigation (INS)",
+              ],
+            },
+            {
+              caption: "Communications system designs",
+              body: "",
+              bullets: [
+                "VSAT satellite communications",
+                "Radio communications",
+                "Shipboard PA / general alarm",
+                "Sound-powered telephones",
+                "TV / entertainment distribution",
+              ],
+            },
+          ],
+        },
+        uruchomienia: {
+          title: "Commissioning",
+          intro:
+            "Every newly installed system requires integration and commissioning. Our engineers prepare a detailed plan for each system or subsystem. This often means coordinating subcontractors, equipment vendors, the customer’s representatives, and end users.",
+          blocks: [
+            {
+              caption: "Preparation at Thesta",
+              body:
+                "The team prepares equipment required for installation and integration at Thesta’s facility. At this stage the customer can observe progress and supervise the work.",
+            },
+            {
+              caption: "Onboard or on-site commissioning",
+              body:
+                "Commissioning activities are usually performed on board the vessel or at the customer’s / user’s site, following the agreed schedule and acceptance procedures.",
+            },
+          ],
+        },
+        szkolenia: {
+          title: "Training",
+          intro:
+            "Training complements our consulting, engineering, and commissioning services and is typically the final step of project rollout.",
+          blocks: [
+            {
+              caption: "Format and location",
+              body:
+                "Depending on the systems delivered, we run training at our office, at a customer-designated location, or directly on board the vessel where installation or integration was performed.",
+            },
+            {
+              caption: "Thesta instructors and OEM trainers",
+              body:
+                "We deliver courses based on our team’s experience and also invite manufacturer representatives for dedicated product training sessions.",
+            },
+          ],
+        },
+      },
     },
     newsPage: {
       title: "News",

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useId, useState } from "react";
@@ -80,12 +80,21 @@ export function OfferPageView() {
                 className="rounded-2xl border border-bridge-dim/15 bg-sea-850/40 p-6 sm:p-8"
               >
                 <h2 className="text-lg font-semibold text-white">{cat.title}</h2>
-                <ul className="mt-4 list-disc space-y-2 pl-5 text-sea-300 marker:text-bridge/60">
-                  {cat.items.map((line, j) => (
-                    <li key={j} className="leading-relaxed">
-                      {line}
-                    </li>
-                  ))}
+                <ul className="mt-4 list-none space-y-1">
+                  {cat.itemSlugs.map((productSlug) => {
+                    const page = m.productPages.bySlug[productSlug];
+                    return (
+                      <li key={productSlug}>
+                        <Link
+                          href={`/${productSlug}`}
+                          className="block rounded-lg py-2 pl-3 text-sea-200 transition-colors hover:bg-sea-900/50 hover:text-bridge"
+                        >
+                          <span className="text-bridge/70">→ </span>
+                          {page.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </li>
             ))}
@@ -99,12 +108,21 @@ export function OfferPageView() {
           className="mt-8"
         >
           <div className="rounded-2xl border border-bridge-dim/15 bg-sea-850/40 p-6 sm:p-8">
-            <ul className="list-disc space-y-2 pl-5 text-sea-300 marker:text-bridge/60">
-              {p.serviceItems.map((line, j) => (
-                <li key={j} className="text-lg leading-relaxed">
-                  {line}
-                </li>
-              ))}
+            <ul className="list-none space-y-1">
+              {p.serviceSlugs.map((serviceSlug) => {
+                const page = m.servicePages.bySlug[serviceSlug];
+                return (
+                  <li key={serviceSlug}>
+                    <Link
+                      href={`/${serviceSlug}`}
+                      className="block rounded-lg py-2 pl-3 text-sea-200 transition-colors hover:bg-sea-900/50 hover:text-bridge"
+                    >
+                      <span className="text-bridge/70">→ </span>
+                      {page.title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
