@@ -7,6 +7,8 @@
   --bg-panel: #0d1e2e;
   --border-subtle: rgba(94, 184, 232, 0.12);
   --text-muted: #8ba8bc;
+  /* Wysokość górnego paska (ustawiana przez Navbar — ResizeObserver) */
+  --nav-height: 4rem;
 }
 
 html {
@@ -53,29 +55,63 @@ body {
   }
 }
 
-/* Strzałka „skacze” w pionie: w górę i w dół */
-@keyframes hero-scroll-bounce {
+/* „Przewiń w dół” + ikona (kotwica): ten sam lekki ruch i subtelna opacity */
+@keyframes hero-scroll-hint-label {
   0%,
   100% {
+    opacity: 0.82;
     transform: translateY(0);
-  }
-  25% {
-    transform: translateY(-8px);
   }
   50% {
-    transform: translateY(0);
-  }
-  75% {
-    transform: translateY(10px);
+    opacity: 1;
+    transform: translateY(-4px);
   }
 }
 
-.animate-hero-scroll-bounce {
-  animation: hero-scroll-bounce 1.1s ease-in-out infinite;
+.animate-hero-scroll-hint-label {
+  animation: hero-scroll-hint-label 1.65s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-hero-scroll-bounce {
+  .animate-hero-scroll-hint-label {
     animation: none;
+  }
+}
+
+/* Modal aktualności — wejście: fade tła + wysunięcie panelu z dołu */
+@keyframes news-modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes news-modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-news-modal-backdrop {
+  animation: news-modal-backdrop-in 0.28s ease-out both;
+}
+
+.animate-news-modal-panel {
+  animation: news-modal-panel-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-news-modal-backdrop,
+  .animate-news-modal-panel {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

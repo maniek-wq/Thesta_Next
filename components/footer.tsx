@@ -44,6 +44,9 @@ export function Footer() {
             <Link href="/news" className="text-sea-200 hover:text-sonar-glow">
               {t("footer.news")}
             </Link>
+            <Link href="/about" className="text-sea-200 hover:text-sonar-glow">
+              {t("footer.about")}
+            </Link>
             <Link
               href="/contact"
               className="text-sea-200 hover:text-sonar-glow"

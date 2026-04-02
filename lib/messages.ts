@@ -9,11 +9,19 @@ export const messages = {
       offer: "Oferta",
       news: "Aktualności",
       contact: "Kontakt",
+      about: "O nas",
+      aboutOverview: "Wprowadzenie",
+      aboutCertificates: "Certyfikaty",
+      aboutProjects: "Realizacje",
+      aboutPartners: "Partnerzy",
       privacy: "Polityka prywatności",
       cookies: "Polityka plików cookies",
       menu: "Menu",
       menuOpen: "Otwórz menu nawigacji",
       menuClose: "Zamknij menu nawigacji",
+      linkedin: "LinkedIn",
+      linkedinAria:
+        "Thesta — profil firmy na LinkedIn (otwiera się w nowej karcie)",
     },
     dock: {
       call: "Zadzwoń",
@@ -38,6 +46,12 @@ export const messages = {
         ctaContact: "Skontaktuj się z nami",
         ctaOffer: "Zobacz ofertę",
         scrollHint: "Przewiń w dół",
+        backgroundSlides: [
+          "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2400&q=80",
+          "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=2400&q=80",
+          "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=2400&q=80",
+          "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=2400&q=80",
+        ],
       },
       introPanels: {
         scrollHint: "Przewiń w dół",
@@ -95,24 +109,33 @@ export const messages = {
         title: "Aktualności",
         all: "Wszystkie aktualności",
         readMore: "Czytaj dalej",
+        seeMore: "Zobacz więcej…",
+        modalClose: "Zamknij",
+        modalImageCaption: "Miejsce na zdjęcie (placeholder)",
         items: [
           {
             date: "Marzec 2026",
             title: "Thesta autoryzowanym dystrybutorem systemu KATFISH",
             excerpt:
               "Podczas Oceanology International 2026 podpisano porozumienie z Kraken Robotics.",
+            modalBody:
+              "Thesta została autoryzowanym dystrybutorem systemu KATFISH firmy Kraken Robotics. Porozumienie podpisano podczas targów Oceanology International 2026. Wkrótce udostępnimy więcej materiałów i zdjęć z wydarzenia — niniejszy tekst i obraz powyżej mają charakter informacyjny (placeholder).",
           },
           {
             date: "Marzec 2026",
             title: "Wsparcie dla bezzałogowych systemów MW RP",
             excerpt:
               "Umowa z Komendą Portu Wojennego Gdynia na dostawy materiałów dla sonarów holowanych.",
+            modalBody:
+              "Zawarliśmy umowę z Komendą Portu Wojennego Gdynia na dostawy środków materiałowych związanych z sonarami holowanymi w programach bezzałogowych Marynarki Wojennej RP. Szczegóły techniczne i dokumentacja zostaną uzupełnione — obecnie treść pełna jest w przygotowaniu (placeholder).",
           },
           {
             date: "Luty 2026",
             title: "Współpraca z Exail i NORBIT na Oceanology International",
             excerpt:
               "Spotkania z partnerami biznesowymi podczas targów w Londynie.",
+            modalBody:
+              "Podczas Oceanology International w Londynie odbyły się spotkania z partnerami Exail i NORBIT. Relacja szczegółowa i galeria pojawią się wkrótce — poniższy blok graficzny to placeholder do późniejszej podmiany na zdjęcia z targów.",
           },
         ],
       },
@@ -197,6 +220,7 @@ export const messages = {
       rights: "Wszystkie prawa zastrzeżone.",
       offer: "Oferta",
       news: "Aktualności",
+      about: "O nas",
       contact: "Kontakt",
       privacy: "Polityka prywatności",
       cookies: "Polityka cookies",
@@ -221,26 +245,218 @@ export const messages = {
     offerPage: {
       title: "Oferta",
       intro:
-        "Kompleksowe wsparcie w zakresie systemów nawigacyjnych, łączności i hydrografii dla jednostek wojskowych i cywilnych.",
-      sections: [
+        "Kompleksowe wsparcie w zakresie systemów nawigacyjnych, łączności i hydrografii dla jednostek wojskowych i cywilnych — produkty oraz usługi projektowe i szkoleniowe.",
+      productsTitle: "Produkty",
+      servicesTitle: "Usługi",
+      productCategories: [
         {
           title: "Nawigacja",
-          body: "INS/GNSS, radary, ECDIS/WECDIS — dobór, integracja, szkolenia i serwis.",
+          items: [
+            "Systemy nawigacyjne",
+            "Oświetlenie nawigacyjne",
+            "INS",
+            "Odbiorniki GNSS",
+          ],
         },
         {
           title: "Łączność",
-          body: "VSAT, systemy wewnątrzokrętowe, radiolinie HF/VHF/UHF — niezawodna komunikacja w misji.",
+          items: [
+            "VSAT",
+            "Łączność wewnątrzokrętowa",
+            "Łączność radiowa",
+          ],
         },
         {
-          title: "Hydrografia i środowisko",
-          body: "Sonary, echosondy, platformy USV/AUV oraz rozwiązania do monitoringu środowiska morskiego.",
+          title: "Hydrografia",
+          items: [
+            "Nawodne pojazdy bezzałogowe (USV)",
+            "Echosondy wielowiązkowe",
+            "Pojazdy podwodne (ROV/AUV)",
+          ],
+        },
+        {
+          title: "Ochrona środowiska",
+          items: ["T-BWSS"],
         },
       ],
+      serviceItems: ["Projektowanie", "Uruchomienia", "Szkolenia"],
     },
     newsPage: {
       title: "Aktualności",
       intro: "Relacje z projektów, targów i współpracy z partnerami.",
       back: "Wróć do strony głównej",
+    },
+    aboutPages: {
+      common: {
+        back: "Wróć do strony głównej",
+      },
+      hub: {
+        title: "O nas",
+        intro:
+          "Poznaj nasze uprawnienia, wybrane realizacje oraz partnerów technologicznych.",
+        certificatesDesc:
+          "Koncesje MSWiA, certyfikacja WSK, wewnętrzny system kontroli i polityka jakości.",
+        projectsDesc:
+          "Instalacje, modernizacje i dostawy systemów nawigacji, łączności i hydrografii.",
+        partnersDesc:
+          "Wiodący producenci elektroniki okrętowej i technologii GNSS.",
+        cta: "Otwórz",
+      },
+      certificates: {
+        title: "Certyfikaty",
+        sections: [
+          {
+            title: "Koncesja MSWiA",
+            body:
+              "W roku 2019 firma otrzymała koncesję MSWiA nr B-12/2019 na wykonywanie działalności gospodarczej w zakresie obrotu wyrobami o przeznaczeniu wojskowym lub policyjnym określonymi w pozycjach WT II – WT XII oraz WT XIV. W roku 2020 rozszerzono zakres działalności koncesjonowanej o wytwarzanie wyrobów o przeznaczeniu wojskowym lub policyjnym określonych w pozycjach WT II – WT XII oraz WT XIV pkt 1–4, pkt 9 oraz pkt 11–12 (decyzja 2 do koncesji).",
+            download: {
+              label: "Pobierz dokument koncesji",
+              href: "#",
+            },
+          },
+          {
+            title: "Decyzje do koncesji MSWiA",
+            body:
+              "Aktualne brzmienie decyzji i załączników do koncesji przekazujemy kontrahentom na żądanie.",
+          },
+          {
+            title: "Wewnętrzny System Kontroli",
+            body:
+              "We wrześniu 2022 r. firma Thesta wprowadziła Wewnętrzny System Kontroli w zakresie obrotu towarami o znaczeniu strategicznym, zgodnie z ustawą z dnia 29 listopada 2000 r. System został certyfikowany przez Centrum Certyfikacji Jakości WAT.",
+          },
+          {
+            title: "Polityka jakości",
+            body:
+              "Polityka jakości Thesta określa standardy i procedury zapewniające wysoką jakość realizowanych usług i dostaw. Szczegóły udostępniamy partnerom na żądanie.",
+          },
+        ],
+      },
+      projects: {
+        title: "Nasze realizacje",
+        intro:
+          "Wybrane projekty na rzecz Marynarki Wojennej RP oraz jednostek pokrewnych.",
+        colUnit: "Jednostka",
+        colScope: "Zakres prac",
+        rows: [
+          {
+            unit: "B-7",
+            lines: ["Instalacja rozgłośni ogólnookrętowej."],
+          },
+          {
+            unit: "Holowniki serii B860",
+            lines: [
+              "Dostawa i uruchomienie wojskowych odbiorników GNSS/SAASM.",
+            ],
+          },
+          {
+            unit: "ORP Wodnik",
+            lines: [
+              "Kompleksowa modernizacja systemu nawigacji i łączności wewnątrz okrętowej.",
+            ],
+          },
+          {
+            unit: "ORP Kontradmirał Xawery Czernicki",
+            lines: [
+              "Naprawa systemu terminali satelitarnych VSAT Orbit Al7103.",
+            ],
+          },
+          {
+            unit: "MH-1/2/3/4",
+            lines: [
+              "Modernizacja pakietu hydrograficznego i integracja nowego systemu INS.",
+            ],
+          },
+          {
+            unit: "ORP Hydrograf",
+            lines: [
+              "Naprawa systemu terminali satelitarnych VSAT Orbit Al7103.",
+            ],
+          },
+          {
+            unit: "ORP Nawigator",
+            lines: [
+              "Naprawa systemu terminali satelitarnych VSAT Orbit Al7103.",
+            ],
+          },
+          {
+            unit: "Niszczyciele min klasy KORMORAN II",
+            lines: [
+              "Dostawa i uruchomienie następujących systemów:",
+              "System Nawigacji Inercyjnej (INS)",
+              "Wojskowy system pozycjonowania GNSS (SAASM)",
+              "Terminale satelitarne VSAT",
+            ],
+          },
+          {
+            unit: "USV DriX",
+            lines: [
+              "Dostawa bezzałogowego pojazdu nawodnego dla Marynarki Wojennej RP.",
+            ],
+          },
+          {
+            unit: "USV Otter",
+            lines: [
+              "Dostawa bezzałogowego pojazdu nawodnego dla Akademii Marynarki Wojennej.",
+            ],
+          },
+          {
+            unit: "M/F Wolin",
+            lines: ["Dostawa i instalacja systemu T-BWSS."],
+          },
+          {
+            unit: "M/F Gryf",
+            lines: ["Dostawa i instalacja systemu T-BWSS."],
+          },
+          {
+            unit: "M/F Jan Śniadecki",
+            lines: ["Dostawa i instalacja systemu T-BWSS."],
+          },
+          {
+            unit: "Biuro Hydrograficzne MW",
+            lines: [
+              "Modernizacja serwerowni i infrastruktury sieciowej w budynku Biura Hydrograficznego Marynarki Wojennej.",
+            ],
+          },
+        ],
+      },
+      partners: {
+        title: "Partnerzy",
+        intro:
+          "Nasi partnerzy to uznani na świecie czołowi producenci elektroniki okrętowej. Dzięki bliskiej współpracy możemy zapewnić naszym klientom wsparcie techniczne oraz dostęp do zasobów naszych partnerów. Wymiana doświadczeń z naszymi partnerami pozwala nam nieustannie podnosić nasze kompetencje i konsekwentnie budować branżowy know-how.",
+        logoPlaceholder: "Logo partnera",
+        items: [
+          {
+            name: "Exail",
+            body:
+              "Exail to wiodąca grupa przemysłowa zajmująca się zaawansowanymi technologiami, specjalizująca się w najnowocześniejszej robotyce, technologiach morskich, nawigacyjnych, lotniczych i fotonicznych. Dzięki kulturze przedsiębiorczości Exail zapewnia niezrównaną wydajność, niezawodność i bezpieczeństwo swoim klientom cywilnym i wojskowym działającym w trudnych warunkach. Od głębin morskich po kosmos, Exail rozszerza swoje możliwości dzięki pełnej gamie solidnych komponentów, produktów i systemów wytwarzanych we własnym zakresie. Zatrudniając 1500 pracowników na całym świecie, firma korzysta z globalnego zasięgu i prowadzi swoją działalność w ponad 80 krajach. Exail została utworzona przez Grupę ECA i iXblue, które połączyły siły w 2022 roku.",
+            logoId: "exail",
+          },
+          {
+            name: "SkyDec",
+            body:
+              "Holenderski producent wojskowych systemów nawigacji i komunikacji, które muszą zapewnić najwyższy poziom wydajności i niezawodności. Technologia SkyDec maksymalizuje dokładność w rozwiązaniu kompatybilnym z każdą platformą przy dowolnej konfiguracji.",
+            logoId: "skydec",
+          },
+          {
+            name: "Orbit Communications Systems",
+            body:
+              "Wiodący globalny dostawca łączności lotniczej, morskich i lądowych terminali satelitarnych oraz nowych rozwiązań kosmicznych — dla sektora prywatnego i rządowego. Dzięki udokumentowanemu doświadczeniu w ciągłym wprowadzaniu innowacji — w misjach powietrznych, morskich i złożonych operacjach kontroli naziemnej — Orbit realizuje najbardziej wymagające wyzwania.",
+            logoId: "orbit",
+          },
+          {
+            name: "Septentrio",
+            body:
+              "Septentrio projektuje i produkuje wieloczęstotliwościową, wielokonstelacyjną technologię pozycjonowania GPS/GNSS do wymagających zastosowań. Sercem odbiorników Septentrio jest najnowsza technologia GNSS, która zapewnia niezawodne pozycjonowanie z dokładnością do centymetra. Odbiorniki są znane ze swojej wyjątkowej wydajności, wysokiego poziomu bezpieczeństwa i odporności w trudnych warunkach. Dlatego produkty Septentrio służą w aplikacjach o kluczowym znaczeniu dla bezpieczeństwa i są częścią infrastruktury krytycznej na całym świecie.",
+            logoId: "septentrio",
+          },
+          {
+            name: "Norbit Subsea",
+            body:
+              "Norbit projektuje i rozwija echosondy wielowiązkowe do zastosowań hydrograficznych, zastosowań przyszłościowych, a także zaawansowanego wykrywania wycieków podmorskich. Rozwiązania opierają się na najnowocześniejszych rozwiązaniach w zakresie analogowego i cyfrowego przetwarzania sygnałów, a produkty Norbit zapewniają szeroki zasięg monitoringu w połączeniu z wysoką czułością i dokładnością. Norbit Subsea jest częścią segmentu Oceans w koncernie NORBIT ASA.",
+            logoId: "norbit",
+          },
+        ],
+      },
     },
     privacyPage: {
       title: "Polityka prywatności",
@@ -336,11 +552,18 @@ export const messages = {
       offer: "Offer",
       news: "News",
       contact: "Contact",
+      about: "About us",
+      aboutOverview: "Overview",
+      aboutCertificates: "Certificates",
+      aboutProjects: "Projects",
+      aboutPartners: "Partners",
       privacy: "Privacy policy",
       cookies: "Cookie policy",
       menu: "Menu",
       menuOpen: "Open navigation menu",
       menuClose: "Close navigation menu",
+      linkedin: "LinkedIn",
+      linkedinAria: "Thesta on LinkedIn (opens in a new tab)",
     },
     dock: {
       call: "Call",
@@ -365,6 +588,12 @@ export const messages = {
         ctaContact: "Contact us",
         ctaOffer: "View our offer",
         scrollHint: "Scroll down",
+        backgroundSlides: [
+          "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2400&q=80",
+          "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=2400&q=80",
+          "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=2400&q=80",
+          "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=2400&q=80",
+        ],
       },
       introPanels: {
         scrollHint: "Scroll down",
@@ -422,23 +651,32 @@ export const messages = {
         title: "News",
         all: "All news",
         readMore: "Read more",
+        seeMore: "See more…",
+        modalClose: "Close",
+        modalImageCaption: "Image placeholder",
         items: [
           {
             date: "March 2026",
             title: "Thesta authorized distributor of KATFISH",
             excerpt:
               "An agreement with Kraken Robotics was signed at Oceanology International 2026.",
+            modalBody:
+              "Thesta is now an authorized distributor of Kraken Robotics’ KATFISH solution; the agreement was signed at Oceanology International 2026. We will publish more photos and details soon — this text and the image area above are placeholders.",
           },
           {
             date: "March 2026",
             title: "Support for Polish Navy UUV programmes",
             excerpt:
               "Agreement with Naval Port Command Gdynia for supplies related to towed sonars.",
+            modalBody:
+              "We signed an agreement with Naval Port Command Gdynia for material supplies related to towed sonars in Polish Navy uncrewed programmes. Full technical details will follow — this is placeholder copy.",
           },
           {
             date: "February 2026",
             title: "Cooperation with Exail and NORBIT at Oceanology International",
             excerpt: "Partner meetings during the London trade show.",
+            modalBody:
+              "We met with partners Exail and NORBIT at Oceanology International in London. A full story and gallery will be added later — the image block is a placeholder.",
           },
         ],
       },
@@ -523,6 +761,7 @@ export const messages = {
       rights: "All rights reserved.",
       offer: "Offer",
       news: "News",
+      about: "About us",
       contact: "Contact",
       privacy: "Privacy policy",
       cookies: "Cookie policy",
@@ -547,26 +786,218 @@ export const messages = {
     offerPage: {
       title: "Offer",
       intro:
-        "End-to-end support for navigation, communications, and hydrography on naval and civil vessels.",
-      sections: [
+        "End-to-end support for navigation, communications, and hydrography on naval and civil vessels — products plus engineering and training services.",
+      productsTitle: "Products",
+      servicesTitle: "Services",
+      productCategories: [
         {
           title: "Navigation",
-          body: "INS/GNSS, radar, ECDIS/WECDIS — selection, integration, training, and service.",
+          items: [
+            "Navigation systems",
+            "Navigation lighting",
+            "INS",
+            "GNSS receivers",
+          ],
         },
         {
           title: "Communications",
-          body: "VSAT, onboard networks, HF/VHF/UHF — dependable communications for the mission.",
+          items: [
+            "VSAT",
+            "Internal ship communications",
+            "Radio communications",
+          ],
         },
         {
-          title: "Hydrography & environment",
-          body: "Sonars, echo sounders, USV/AUV platforms, and marine environmental monitoring.",
+          title: "Hydrography",
+          items: [
+            "Uncrewed surface vehicles (USV)",
+            "Multibeam echo sounders",
+            "Underwater vehicles (ROV/AUV)",
+          ],
+        },
+        {
+          title: "Environmental protection",
+          items: ["T-BWSS"],
         },
       ],
+      serviceItems: ["Engineering", "Commissioning", "Training"],
     },
     newsPage: {
       title: "News",
       intro: "Updates from projects, trade shows, and partners.",
       back: "Back to home",
+    },
+    aboutPages: {
+      common: {
+        back: "Back to home",
+      },
+      hub: {
+        title: "About us",
+        intro:
+          "Learn about our authorisations, selected projects, and technology partners.",
+        certificatesDesc:
+          "MSWiA licences, WSK certification, internal control system, and quality policy.",
+        projectsDesc:
+          "Installations, upgrades, and deliveries of navigation, communications, and hydrography systems.",
+        partnersDesc:
+          "Leading marine electronics and GNSS technology suppliers.",
+        cta: "Open",
+      },
+      certificates: {
+        title: "Certificates",
+        sections: [
+          {
+            title: "MSWiA licence",
+            body:
+              "In 2019 the company was granted MSWiA licence no. B-12/2019 to conduct business trading in military or police goods listed in WT II – WT XII and WT XIV. In 2020 the licensed scope was extended to manufacturing military or police goods listed in WT II – WT XIV items 1–4, 9, and 11–12 (Decision 2 to the licence).",
+            download: {
+              label: "Download licence document",
+              href: "#",
+            },
+          },
+          {
+            title: "Decisions to the MSWiA licence",
+            body:
+              "Current decisions and annexes to the licence are provided to customers on request.",
+          },
+          {
+            title: "Internal Control System",
+            body:
+              "In September 2022 Thesta implemented an Internal Control System for trade in goods of strategic importance under the Act of 29 November 2000. The system was certified by the WAT Quality Certification Centre.",
+          },
+          {
+            title: "Quality policy",
+            body:
+              "Thesta’s quality policy defines standards and procedures that ensure high quality of services and supplies. Details are shared with partners on request.",
+          },
+        ],
+      },
+      projects: {
+        title: "Our projects",
+        intro:
+          "Selected work for the Polish Navy and related organisations.",
+        colUnit: "Customer / platform",
+        colScope: "Scope of work",
+        rows: [
+          {
+            unit: "B-7",
+            lines: ["Installation of a ship-wide broadcast system."],
+          },
+          {
+            unit: "B860 series tugs",
+            lines: [
+              "Delivery and commissioning of military GNSS/SAASM receivers.",
+            ],
+          },
+          {
+            unit: "ORP Wodnik",
+            lines: [
+              "Comprehensive upgrade of onboard navigation and internal communications.",
+            ],
+          },
+          {
+            unit: "ORP Kontradmirał Xawery Czernicki",
+            lines: [
+              "Repair of Orbit Al7103 VSAT satellite terminal systems.",
+            ],
+          },
+          {
+            unit: "MH-1/2/3/4",
+            lines: [
+              "Hydrographic suite upgrade and integration of a new INS.",
+            ],
+          },
+          {
+            unit: "ORP Hydrograf",
+            lines: [
+              "Repair of Orbit Al7103 VSAT satellite terminal systems.",
+            ],
+          },
+          {
+            unit: "ORP Nawigator",
+            lines: [
+              "Repair of Orbit Al7103 VSAT satellite terminal systems.",
+            ],
+          },
+          {
+            unit: "KORMORAN II-class mine destroyers",
+            lines: [
+              "Delivery and commissioning of the following systems:",
+              "Inertial Navigation System (INS)",
+              "Military GNSS positioning system (SAASM)",
+              "VSAT satellite terminals",
+            ],
+          },
+          {
+            unit: "USV DriX",
+            lines: [
+              "Delivery of an uncrewed surface vehicle for the Polish Navy.",
+            ],
+          },
+          {
+            unit: "USV Otter",
+            lines: [
+              "Delivery of an uncrewed surface vehicle for the Naval Academy.",
+            ],
+          },
+          {
+            unit: "M/F Wolin",
+            lines: ["Delivery and installation of the T-BWSS system."],
+          },
+          {
+            unit: "M/F Gryf",
+            lines: ["Delivery and installation of the T-BWSS system."],
+          },
+          {
+            unit: "M/F Jan Śniadecki",
+            lines: ["Delivery and installation of the T-BWSS system."],
+          },
+          {
+            unit: "Polish Navy Hydrographic Office",
+            lines: [
+              "Server room and network infrastructure upgrade at the Hydrographic Office building.",
+            ],
+          },
+        ],
+      },
+      partners: {
+        title: "Partners",
+        intro:
+          "Our partners are world-class marine electronics manufacturers. Close cooperation lets us offer technical support and access to partner resources. Sharing experience continuously improves our skills and industry know-how.",
+        logoPlaceholder: "Partner logo",
+        items: [
+          {
+            name: "Exail",
+            body:
+              "Exail is a leading industrial group in advanced technologies, specialising in cutting-edge robotics, marine, navigation, aerospace, and photonics. Through entrepreneurship, Exail delivers performance, reliability, and safety for civil and military customers in demanding environments. From the deep ocean to space, Exail offers a full range of in-house components, products, and systems. With around 1,500 employees worldwide, the company operates in over 80 countries. Exail was formed when ECA Group and iXblue joined forces in 2022.",
+            logoId: "exail",
+          },
+          {
+            name: "SkyDec",
+            body:
+              "Dutch manufacturer of military navigation and communication systems engineered for maximum performance and reliability. SkyDec technology maximises accuracy in a solution compatible with any platform configuration.",
+            logoId: "skydec",
+          },
+          {
+            name: "Orbit Communications Systems",
+            body:
+              "A leading global supplier of airborne, maritime, and land satellite terminals and new space solutions for commercial and government sectors. With a track record of continuous innovation in air, sea, and complex ground-control missions, Orbit meets the toughest operational challenges.",
+            logoId: "orbit",
+          },
+          {
+            name: "Septentrio",
+            body:
+              "Septentrio designs and builds multi-frequency, multi-constellation GPS/GNSS positioning technology for demanding applications. Septentrio receivers use state-of-the-art GNSS for reliable centimetre-level positioning. They are known for performance, security, and resilience in harsh conditions, serving safety-critical applications and critical infrastructure worldwide.",
+            logoId: "septentrio",
+          },
+          {
+            name: "Norbit Subsea",
+            body:
+              "Norbit develops multibeam echo sounders for hydrographic and forward-looking applications, as well as advanced subsea leak detection. Solutions rely on leading-edge analogue and digital signal processing; Norbit products combine wide coverage with high sensitivity and accuracy. Norbit Subsea is part of the Oceans segment of NORBIT ASA.",
+            logoId: "norbit",
+          },
+        ],
+      },
     },
     privacyPage: {
       title: "Privacy policy",
