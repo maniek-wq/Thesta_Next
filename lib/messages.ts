@@ -60,18 +60,24 @@ export const messages = {
         panels: [
           {
             title: "Nawigacja",
+            tagline:
+              "Ponad 15 lat doświadczenia — integracje dla MW RP, przemysłu obronnego i żeglugi",
             body: "INS, GNSS, radary i ECDIS — precyzyjna pozycja i świadomość sytuacji na morzu, od podejścia do portu po operacje taktyczne.",
             image:
               "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2400&q=80",
           },
           {
             title: "Łączność",
+            tagline:
+              "Projekt, dostawa, integracja i serwis — jeden zespół przy stole z klientem",
             body: "VSAT, łączność pokładowa oraz pasma HF/VHF/UHF — niezawodne łącze, gdy misja nie może pozwolić sobie na ciszę w eterze.",
             image:
               "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=2400&q=80",
           },
           {
             title: "Hydrografia",
+            tagline:
+              "Sonary i batymetria — m.in. partner Kraken Robotics, realizacje na potrzeby MW RP",
             body: "Sonary, echosondy wielowiązkowe i platformy USV/AUV — mapowanie dna, środowisko i dane pod decyzje nawigacyjne oraz planowanie.",
             image:
               "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=2400&q=80",
@@ -991,18 +997,24 @@ export const messages = {
         panels: [
           {
             title: "Navigation",
+            tagline:
+              "15+ years’ experience — integrations for the Polish Navy, defence industry, and commercial shipping",
             body: "INS, GNSS, radar, and ECDIS — precise position and situational awareness at sea, from pilotage to tactical operations.",
             image:
               "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2400&q=80",
           },
           {
             title: "Communications",
+            tagline:
+              "Design, supply, integration, and support — one team with you at the table",
             body: "VSAT, onboard links, and HF/VHF/UHF — dependable connectivity when the mission cannot afford radio silence.",
             image:
               "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=2400&q=80",
           },
           {
             title: "Hydrography",
+            tagline:
+              "Sonar and bathymetry — including Kraken Robotics partnership and Polish Navy programmes",
             body: "Sonars, multibeam echo sounders, and USV/AUV platforms — seabed mapping, environmental insight, and data for navigation and planning.",
             image:
               "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=2400&q=80",

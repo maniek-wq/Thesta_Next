@@ -353,6 +353,9 @@ export function HomeIntroPanels({
                   <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
                     {panel.title}
                   </h2>
+                  <p className="mt-4 max-w-prose text-pretty text-sm font-medium leading-snug text-bridge/95 sm:text-base">
+                    {panel.tagline}
+                  </p>
                   <p className="mt-5 max-w-prose text-pretty text-base leading-relaxed text-sea-200 sm:text-lg">
                     {panel.body}
                   </p>
@@ -369,7 +372,7 @@ export function HomeIntroPanels({
               </p>
               <div className="sr-only" aria-live="polite" aria-atomic="true">
                 {textVisible
-                  ? `${slideIndex + 1} / ${slideCount} — ${panel.title}`
+                  ? `${slideIndex + 1} / ${slideCount} — ${panel.title}. ${panel.tagline}`
                   : `${slideIndex + 1} / ${slideCount}`}
               </div>
             </div>
