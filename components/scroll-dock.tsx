@@ -54,7 +54,7 @@ export function ScrollDock() {
 
   return (
     <div
-      className="pointer-events-none fixed bottom-0 left-0 right-0 z-[95] box-border overflow-x-hidden px-3"
+      className="pointer-events-none fixed bottom-0 left-0 right-0 z-[95] box-border overflow-hidden px-3"
       style={{
         paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))",
         width: "100%",

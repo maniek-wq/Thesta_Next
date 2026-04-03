@@ -110,6 +110,7 @@ export const messages = {
         all: "Wszystkie aktualności",
         readMore: "Czytaj dalej",
         seeMore: "Zobacz więcej…",
+        carouselDotsAria: "Wskaźnik stron aktualności",
         modalClose: "Zamknij",
         modalImageCaption: "Miejsce na zdjęcie (placeholder)",
         items: [
@@ -911,6 +912,7 @@ export const messages = {
         all: "All news",
         readMore: "Read more",
         seeMore: "See more…",
+        carouselDotsAria: "News carousel page indicator",
         modalClose: "Close",
         modalImageCaption: "Image placeholder",
         items: [

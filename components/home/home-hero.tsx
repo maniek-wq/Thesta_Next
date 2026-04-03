@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SectionShell } from "@/components/section-shell";
 import type { Messages } from "@/lib/messages";
 
@@ -11,10 +10,17 @@ type Hero = Messages["home"]["hero"];
 
 const SLIDE_MS = 2800;
 
-export function HomeHero({ hero }: { hero: Hero }) {
+export function HomeHero({
+  hero,
+  introComplete = true,
+}: {
+  hero: Hero;
+  introComplete?: boolean;
+}) {
   const slides = hero.backgroundSlides;
   const [active, setActive] = useState(0);
   const [motionOk, setMotionOk] = useState(true);
+  const [contentVisible, setContentVisible] = useState(introComplete);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -24,13 +30,39 @@ export function HomeHero({ hero }: { hero: Hero }) {
     return () => mq.removeEventListener("change", update);
   }, []);
 
+  /** Po intro zawsze pierwszy slajd — unikamy „tego samego co ostatni kadr intro” + skok z pętli pod overlayem. */
   useEffect(() => {
-    if (!motionOk || slides.length <= 1) return;
+    if (!introComplete) return;
+    setActive(0);
+  }, [introComplete]);
+
+  useEffect(() => {
+    if (!introComplete || !motionOk || slides.length <= 1) return;
     const id = window.setInterval(() => {
       setActive((i) => (i + 1) % slides.length);
     }, SLIDE_MS);
     return () => window.clearInterval(id);
-  }, [motionOk, slides.length]);
+  }, [introComplete, motionOk, slides.length]);
+
+  useEffect(() => {
+    if (!introComplete) {
+      setContentVisible(false);
+      return;
+    }
+    if (!motionOk) {
+      setContentVisible(true);
+      return;
+    }
+    let raf1 = 0;
+    let raf2 = 0;
+    raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => setContentVisible(true));
+    });
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+    };
+  }, [introComplete, motionOk]);
 
   return (
     <SectionShell
@@ -67,7 +99,13 @@ export function HomeHero({ hero }: { hero: Hero }) {
 
       <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col px-4 sm:px-6">
         <div className="flex min-h-0 flex-1 flex-col justify-center py-12 sm:py-16">
-          <RevealOnScroll rootMargin="0px 0px 0px 0px">
+          <div
+            className={`transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${
+              contentVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100"
+            }`}
+          >
             <div className="relative mx-auto max-w-4xl text-center">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-bridge/90 sm:text-sm">
                 {hero.areas}
@@ -93,8 +131,8 @@ export function HomeHero({ hero }: { hero: Hero }) {
                 </Link>
               </div>
             </div>
-          </RevealOnScroll>
-          <HeroScrollHint label={hero.scrollHint} />
+            <HeroScrollHint label={hero.scrollHint} />
+          </div>
         </div>
       </div>
     </SectionShell>

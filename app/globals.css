@@ -13,8 +13,19 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* hidden wymusza overflow-y: auto → drugi scrollbar; clip obcina poziomo bez scrollportu */
+  overflow-x: clip;
   max-width: 100%;
+}
+
+/* Tylko strona główna (klasa ustawiana w HomePage) — scroll działa, pasek ukryty */
+html.home-hide-scrollbar {
+  scrollbar-width: none;
+}
+
+html.home-hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -26,7 +37,7 @@ html {
 body {
   @apply bg-sea-950 text-slate-100 antialiased;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-image:
     radial-gradient(ellipse 120% 80% at 50% -20%, rgba(62, 184, 232, 0.08), transparent),
     linear-gradient(180deg, #050a0f 0%, #0a1624 40%, #050a0f 100%);

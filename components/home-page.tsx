@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { HomeContactBlock } from "@/components/home/home-contact-block";
 import { HomeFaq } from "@/components/home/home-faq";
@@ -14,11 +15,21 @@ import { HomeTestimonials } from "@/components/home/home-testimonials";
 export function HomePage() {
   const { m } = useLocale();
   const h = m.home;
+  const [heroIntroDone, setHeroIntroDone] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.add("home-hide-scrollbar");
+    return () => root.classList.remove("home-hide-scrollbar");
+  }, []);
 
   return (
     <div className="flex flex-col">
-      <HomeIntroPanels intro={h.introPanels} />
-      <HomeHero hero={h.hero} />
+      <HomeIntroPanels
+        intro={h.introPanels}
+        onIntroEnd={() => setHeroIntroDone(true)}
+      />
+      <HomeHero hero={h.hero} introComplete={heroIntroDone} />
       <HomeServices services={h.services} section={h.servicesSection} />
       <HomeNews news={h.news} />
       <HomeStats stats={h.stats} />
