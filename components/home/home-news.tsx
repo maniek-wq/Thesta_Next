@@ -52,11 +52,14 @@ function NewsCard({
   item,
   itemIndex,
   seeMoreLabel,
+  carouselSlide,
   onSeeMore,
 }: {
   item: NewsItem;
   itemIndex: number;
   seeMoreLabel: string;
+  /** Karuzela (np. mobile): stała wysokość slajdu + skrót tekstu. */
+  carouselSlide?: boolean;
   onSeeMore: (index: number) => void;
 }) {
   const img = getNewsItemImage(item.imageKey);
@@ -67,10 +70,18 @@ function NewsCard({
       <NewsCardMedia image={img} alt={alt} />
       <div className="flex min-h-0 flex-1 flex-col p-5 sm:p-6">
         <time className="font-mono text-xs text-sonar-dim">{item.date}</time>
-        <h3 className="mt-3 text-lg font-semibold leading-snug text-white">
+        <h3
+          className={`mt-3 text-lg font-semibold leading-snug text-white ${
+            carouselSlide ? "line-clamp-3" : ""
+          }`}
+        >
           {item.title}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-sea-300">
+        <p
+          className={`mt-2 flex-1 text-sm leading-relaxed text-sea-300 ${
+            carouselSlide ? "line-clamp-5 sm:line-clamp-6" : ""
+          }`}
+        >
           {item.excerpt}
         </p>
         <button
@@ -216,12 +227,12 @@ export function HomeNews({ news }: { news: News }) {
                   ref={(node) => {
                     pageRefs.current[pageIdx] = node;
                   }}
-                  className="w-full min-w-0 shrink-0 grow-0 snap-center snap-always basis-full lg:flex lg:min-h-[min(32rem,72vh)] lg:flex-col"
+                  className="w-full min-w-0 shrink-0 grow-0 snap-center snap-always basis-full max-lg:flex max-lg:min-h-[min(72dvh,34rem)] max-lg:flex-col lg:flex lg:min-h-[min(32rem,72vh)] lg:flex-col"
                 >
                   <div
                     className={
                       slidesPerView === 1
-                        ? "grid grid-cols-1 gap-6"
+                        ? "w-full max-lg:flex max-lg:min-h-0 max-lg:flex-1 max-lg:flex-col"
                         : "grid grid-cols-1 gap-6 lg:h-full lg:min-h-0 lg:flex-1 lg:grid-cols-3 lg:content-stretch"
                     }
                   >
@@ -232,14 +243,15 @@ export function HomeNews({ news }: { news: News }) {
                           key={globalIndex}
                           className={
                             slidesPerView === 1
-                              ? "min-w-0"
-                              : "flex min-h-0 h-full min-w-0 flex-col"
+                              ? "flex min-w-0 max-lg:min-h-0 max-lg:flex-1 max-lg:flex-col max-lg:items-stretch"
+                              : "flex h-full min-h-0 min-w-0 flex-col"
                           }
                         >
                           <NewsCard
                             item={it}
                             itemIndex={globalIndex}
                             seeMoreLabel={news.seeMore}
+                            carouselSlide={slidesPerView === 1}
                             onSeeMore={setOpenIndex}
                           />
                         </div>
