@@ -17,6 +17,7 @@ export function ServiceDetailPage({ slug }: { slug: ServicePageSlug }) {
       intro={page.intro}
       placeholderCaption={sp.placeholderCaption}
       blocks={page.blocks}
+      cta={sp.cta}
     />
   );
 }

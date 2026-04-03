@@ -111,24 +111,43 @@ export const messages = {
         readMore: "Czytaj dalej",
         seeMore: "Zobacz więcej…",
         carouselDotsAria: "Wskaźnik stron aktualności",
+        carouselPrevAria: "Poprzednia strona aktualności",
+        carouselNextAria: "Następna strona aktualności",
         modalClose: "Zamknij",
         modalImageCaption: "Miejsce na zdjęcie (placeholder)",
         items: [
           {
             date: "Marzec 2026",
-            title: "Thesta autoryzowanym dystrybutorem systemu KATFISH",
+            title: "Thesta 🤝 Kraken Robotics — zamówienie na potrzeby MW RP",
             excerpt:
-              "Podczas Oceanology International 2026 podpisano porozumienie z Kraken Robotics.",
+              "Kraken Robotics: kontrakty ~24 mln USD. Jedno ze zleceń złożyła Thesta; sprzęt trafi do Marynarki Wojennej RP.",
+            imageKey: "tom9331News1",
+            imageAlt:
+              "Współpraca Thesta i Kraken Robotics — sprzęt dla Marynarki Wojennej RP",
             modalBody:
-              "Thesta została autoryzowanym dystrybutorem systemu KATFISH firmy Kraken Robotics. Porozumienie podpisano podczas targów Oceanology International 2026. Wkrótce udostępnimy więcej materiałów i zdjęć z wydarzenia — niniejszy tekst i obraz powyżej mają charakter informacyjny (placeholder).",
+              "17 marca kanadyjska spółka Kraken Robotics poinformowała o zawarciu umów dostaw swojego sprzętu za około 24 mln USD.\n\nJednym z zamówień złożonych w Kanadzie jest zamówienie złożone przez szczecińską spółkę Thesta, a zamówiony sprzęt docelowo trafi na potrzeby Marynarki Wojennej RP.\n\nPrzedstawicielem Kraken Robotics w naszym kraju jest firma Thesta, która została wyznaczona na autoryzowanego dystrybutora podczas ubiegłotygodniowych targów Oceanology International w Londynie.\n\nThesta 🤝 Kraken Robotics\n#TeamThesta\n\nWięcej:\nhttps://zbiam.pl/kraken-sprzedal-kolejne-sonary-i-wyposazenie-do-nich/\nhttps://lnkd.in/dQT6WK6i",
           },
           {
             date: "Marzec 2026",
-            title: "Wsparcie dla bezzałogowych systemów MW RP",
+            title: "Thesta zatrudnia — #TeamThesta is hiring!",
             excerpt:
-              "Umowa z Komendą Portu Wojennego Gdynia na dostawy materiałów dla sonarów holowanych.",
+              "Poszerzamy zespół. Sprawdź aktualne oferty pracy Thesta na LinkedIn.",
             modalBody:
-              "Zawarliśmy umowę z Komendą Portu Wojennego Gdynia na dostawy środków materiałowych związanych z sonarami holowanymi w programach bezzałogowych Marynarki Wojennej RP. Szczegóły techniczne i dokumentacja zostaną uzupełnione — obecnie treść pełna jest w przygotowaniu (placeholder).",
+              "Thesta poszukuje nowych osób do zespołu — pracujemy przy projektach dla Marynarki Wojennej i przemysłu morskiego, w obszarze elektroniki okrętowej, nawigacji i hydrografii.\n\n#TeamThesta is hiring!\n\nOferty i szczegóły:\nhttps://lnkd.in/gpb97RHR",
+            imageKey: undefined,
+            imageAlt: undefined,
+          },
+          {
+            date: "Marzec 2026",
+            title:
+              "Umowa z KPWG — wyposażenie dla BBSP MW RP i sonaru holowanego KATFISH",
+            excerpt:
+              "9 marca Thesta podpisała umowę z Komendą Portu Wojennego Gdynia na dostawy m.in. dla sonaru holowanego Kraken Robotics w systemie KATFISH.",
+            imageKey: "thumb790x400Katfish",
+            imageAlt:
+              "System sonaru holowanego KATFISH Kraken Robotics — kontekst umowy z KPWG",
+            modalBody:
+              "Mająca siedzibę w Szczecinie spółka Thesta podpisała 9 marca umowę z Komendą Portu Wojennego Gdynia w sprawie dostaw technicznych środków materiałowych dla bezzałogowców używanych przez siły polskiej Marynarki Wojennej. Mowa tu o wyposażeniu dla sonaru holowanego Kraken Robotics, który jest częścią systemu hydrolokacyjnego KATFISH.\n\n#TeamThesta\nhttps://lnkd.in/dG9dtk5h",
           },
           {
             date: "Luty 2026",
@@ -137,6 +156,8 @@ export const messages = {
               "Spotkania z partnerami biznesowymi podczas targów w Londynie.",
             modalBody:
               "Podczas Oceanology International w Londynie odbyły się spotkania z partnerami Exail i NORBIT. Relacja szczegółowa i galeria pojawią się wkrótce — poniższy blok graficzny to placeholder do późniejszej podmiany na zdjęcia z targów.",
+            imageKey: undefined,
+            imageAlt: undefined,
           },
         ],
       },
@@ -465,19 +486,37 @@ export const messages = {
     servicePages: {
       backToOffer: "Wróć do oferty",
       placeholderCaption: "Miejsce na zdjęcie (placeholder)",
+      cta: {
+        label: "Porozmawiajmy o zakresie",
+        href: "/contact",
+      },
       bySlug: {
         projektowanie: {
           title: "Projektowanie",
           intro:
-            "Oferujemy wykonywanie instalacji oraz integracji systemów nawigacyjnych oraz hydrograficznych w oparciu o projekty zgodne z normami oraz wymaganiami naszych klientów. Świadczymy usługi opracowywania oraz wykonywania projektów technicznych, na podstawie których nasza wykwalifikowana kadra dostarcza niestandardowe rozwiązania. W celu uzyskania najwyższej jakości wykonywanych usług, prowadzimy stały nadzór jakości wykonywanych instalacji oraz integracji w oparciu o uprzednio przygotowane projekty.",
+            "Wykonujemy projekty instalacji i integracji systemów nawigacyjnych oraz hydrograficznych — od koncepcji do dokumentacji pod instalację i odbiór. Działamy zgodnie z normami i wymaganiami klienta; na bazie projektu zespół realizuje niestandardowe rozwiązania i nadzoruje jakość prac na jednostce.",
           blocks: [
             {
               caption: "Standardy, normy i narzędzia projektowe",
+              media: "none",
               body:
-                "Nasze projekty wykonujemy zgodnie z najwyższymi standardami oraz na podstawie norm, w tym norm obronnych (decyzja nr 207/MON Ministra Obrony Narodowej z dnia 31 grudnia 2021 r. zmieniająca decyzję w sprawie wprowadzenia „Instrukcji w sprawie zarządzania dokumentacją techniczną uzbrojenia i sprzętu wojskowego” oraz „Instrukcji w sprawie określenia wymagań na dokumentację techniczną uzbrojenia i sprzętu wojskowego”). Do wykonywania projektów wykorzystujemy zaawansowane narzędzia projektowe CAD oraz narzędzia do modelowania 3D dla jeszcze lepszego odwzorowania projektowanych elementów.",
+                "Projekty wykonujemy zgodnie z obowiązującymi standardami i normami, w tym normami obronnymi (m.in. decyzja nr 207/MON z 31 grudnia 2021 r. w sprawie instrukcji dotyczących dokumentacji technicznej uzbrojenia i sprzętu wojskowego). Wykorzystujemy narzędzia CAD oraz modelowanie 3D, aby precyzyjnie odwzorować rozmieszczenie sprzętu i trasy kablowe.",
+            },
+            {
+              caption: "Typowe elementy dokumentacji projektowej",
+              media: "none",
+              body: "",
+              bullets: [
+                "Rozmieszczenie urządzeń i opraw mechanicznych",
+                "Trasy i listy kablowe oraz zasilanie",
+                "Schematy integracji sygnałów i interfejsów",
+                "Specyfikacje techniczne i zestawienia materiałowe",
+                "Uwzględnienie procedur i wymagań odbiorczych klienta",
+              ],
             },
             {
               caption: "Projekty systemów nawigacyjnych",
+              media: "none",
               body: "",
               bullets: [
                 "Radar",
@@ -494,6 +533,7 @@ export const messages = {
             },
             {
               caption: "Projekty systemów łączności",
+              media: "none",
               body: "",
               bullets: [
                 "Łączność satelitarna VSAT",
@@ -508,43 +548,131 @@ export const messages = {
         uruchomienia: {
           title: "Uruchomienia",
           intro:
-            "Każdy nowo zainstalowany system wymaga integracji oraz uruchomienia. W tym celu zespół inżynierów precyzyjnie opracowuje plan uruchomienia danego systemu bądź podsystemu. Wielokrotnie wiąże się to ze zgraniem wielu zespołów takich jak firmy podwykonawcze, dostawców sprzętu, przedstawicieli zamawiającego oraz przedstawicieli użytkownika.",
+            "Nowy system wymaga integracji, konfiguracji i odbioru — zaplanowanych tak, by połączyć dostawców, podwykonawców, zamawiającego i użytkownika końcowego bez chaosu w harmonogramie.",
           blocks: [
             {
-              caption: "Przygotowanie i integracja w siedzibie Thesta",
+              caption: "Od przygotowania do przekazania do eksploatacji",
+              media: "none",
               body:
-                "Zespół inżynierów przygotowuje urządzenia niezbędne do instalacji i integracji w siedzibie Thesta. Na tym etapie klient może mieć wgląd w etapy wykonywanych prac oraz prowadzić nadzór nad tymi pracami.",
+                "Dla każdego systemu lub podsystemu przygotowujemy plan uruchomienia z jasnym podziałem ról. Poniżej typowy przebieg — szczegóły ustalamy pod konkretny kontrakt i platformę.",
+              steps: [
+                {
+                  title: "Przygotowanie w siedzibie Thesta",
+                  body:
+                    "Integracja urządzeń „na biurku”, wstępna konfiguracja i testy ograniczają ryzyko na jednostce. Klient może nadzorować prace na tym etapie.",
+                },
+                {
+                  title: "Mobilizacja i instalacja na miejscu",
+                  body:
+                    "Dostawa na jednostkę lub lokal u klienta, montaż zgodnie z projektem oraz podłączenie do infrastruktury pokładowej lub lądowej.",
+                },
+                {
+                  title: "Integracja z istniejącymi systemami",
+                  body:
+                    "Współdziałanie z już eksploatowanymi systemami (NMEA, interfejsy producentów, redundantne źródła danych) — zgodnie z dokumentacją i ustalonymi punktami odbioru.",
+                },
+                {
+                  title: "Testy funkcjonalne i scenariusze odbiorcze",
+                  body:
+                    "Weryfikacja zakresu umowy: sygnały, alarmy, rejestracja, scenariusze typowe dla danej klasy jednostki lub instalacji.",
+                },
+                {
+                  title: "Protokół i przekazanie dokumentacji",
+                  body:
+                    "Potwierdzenie wykonania prac, przekazanie raportów i materiałów potrzebnych do eksploatacji i serwisu.",
+                },
+                {
+                  title: "Szkolenie wstępne operatorów",
+                  body:
+                    "Krótki wstęp do obsługi po uruchomieniu — pełniejszy program szkoleniowy realizujemy odrębnie, jeśli jest w zakresie.",
+                },
+              ],
             },
             {
-              caption: "Uruchomienie na jednostce lub u klienta",
-              body:
-                "Prace uruchomieniowe zwykle realizowane są na jednostkach lub na terenie klienta bądź użytkownika, zgodnie z ustalonym harmonogramem i procedurami odbiorczymi.",
+              caption: "Co zwykle przekazujemy po zakończeniu prac",
+              media: "none",
+              body: "",
+              bullets: [
+                "Raport z testów i założeń konfiguracyjnych",
+                "Lista znanych ograniczeń i zaleceń serwisowych",
+                "Materiały pod dalsze szkolenia i przekazanie wachtom",
+                "Uzgodniony z klientem harmonogram i lista uczestników stron przy odbiorze",
+              ],
             },
           ],
         },
         szkolenia: {
           title: "Szkolenia",
           intro:
-            "Dopełnieniem naszych usług związanych z doradztwem, projektowaniem oraz uruchomieniami są szkolenia przeprowadzane na ostatnim etapie wdrażania projektów.",
+            "Szkolenia domykają wdrożenie: przekazujemy wiedzę operatorom i technikom tak, aby sprzęt był używany bezpiecznie i zgodnie z procedurami.",
           blocks: [
             {
-              caption: "Formy i lokalizacja szkoleń",
-              body:
-                "Szkolenia organizujemy w zależności od dostarczanych systemów w siedzibie firmy, w miejscu wyznaczonym przez klienta lub bezpośrednio na jednostkach, na których wykonana została instalacja bądź integracja.",
+              caption: "Typowy przebieg",
+              media: "none",
+              body: "",
+              steps: [
+                {
+                  title: "Ustalenie programu i odbiorców",
+                  body:
+                    "Dopasowujemy zakres do poziomu załogi (operator / technik / oficer), języka i czasu dostępnego na jednostce lub u klienta.",
+                },
+                {
+                  title: "Część teoretyczna",
+                  body:
+                    "Zasady działania systemu, interfejs użytkownika, procedury awaryjne i najczęstsze scenariusze operacyjne.",
+                },
+                {
+                  title: "Ćwiczenia przy sprzęcie",
+                  body:
+                    "Obsługa paneli, interpretacja alarmów, typowe czynności serwisowe pierwszego poziomu — według możliwości na żywo na zainstalowanym systemie.",
+                },
+                {
+                  title: "Podsumowanie i materiały",
+                  body:
+                    "Checklisty, odsyłacze do dokumentacji producenta (jeśli dotyczy) oraz ustalenie kanału wsparcia po szkoleniu.",
+                },
+              ],
             },
             {
-              caption: "Kadra Thesta i producenci",
+              caption: "Dla kogo i w jakiej formie",
+              media: "none",
+              body: "",
+              bullets: [
+                "Operatorzy mostku — codzienna obsługa ECDIS, radaru, INS itp.",
+                "Technicy — diagnostyka podstawowa, wymiana modułów, kontakt z serwisem",
+                "Sesje dla małych grup lub indywidualne — zależnie od specyfiki systemu",
+              ],
+            },
+            {
+              caption: "Gdzie prowadzimy szkolenia",
+              media: "none",
+              body: "",
+              bullets: [
+                "W siedzibie Thesta",
+                "W miejscu wyznaczonym przez klienta",
+                "Na jednostce po zakończonej instalacji lub integracji",
+              ],
+            },
+            {
+              caption: "Trenerzy Thesta i producenci",
+              media: "none",
               body:
-                "Prowadzimy szkolenia zarówno w oparciu o wiedzę i doświadczenie naszego zespołu, jak i zapraszamy przedstawicieli producentów na dedykowane szkolenia produktowe.",
+                "Prowadzimy szkolenia w oparciu o doświadczenie zespołu; na życzenie angażujemy trenerów producentów sprzętu dla głębszych, produktowych sesji.",
             },
           ],
         },
       },
     },
     newsPage: {
+      kicker: "THESTA · AKTUALNOŚCI",
       title: "Aktualności",
       intro: "Relacje z projektów, targów i współpracy z partnerami.",
       back: "Wróć do strony głównej",
+      loadOlder: "Wczytaj starsze — widok siatki",
+      collapseToCarousel: "Powrót do przewijania",
+      gridHeading: "Archiwum wpisów",
+      carouselPrevAria: "Poprzednia strona aktualności",
+      carouselNextAria: "Następna strona aktualności",
     },
     aboutPages: {
       common: {
@@ -681,6 +809,7 @@ export const messages = {
       },
       partners: {
         title: "Partnerzy",
+        eyebrow: "Współpraca strategiczna",
         intro:
           "Nasi partnerzy to uznani na świecie czołowi producenci elektroniki okrętowej. Dzięki bliskiej współpracy możemy zapewnić naszym klientom wsparcie techniczne oraz dostęp do zasobów naszych partnerów. Wymiana doświadczeń z naszymi partnerami pozwala nam nieustannie podnosić nasze kompetencje i konsekwentnie budować branżowy know-how.",
         logoPlaceholder: "Logo partnera",
@@ -913,24 +1042,43 @@ export const messages = {
         readMore: "Read more",
         seeMore: "See more…",
         carouselDotsAria: "News carousel page indicator",
+        carouselPrevAria: "Previous news page",
+        carouselNextAria: "Next news page",
         modalClose: "Close",
         modalImageCaption: "Image placeholder",
         items: [
           {
             date: "March 2026",
-            title: "Thesta authorized distributor of KATFISH",
+            title: "Thesta 🤝 Kraken Robotics — order for the Polish Navy",
             excerpt:
-              "An agreement with Kraken Robotics was signed at Oceanology International 2026.",
+              "Kraken Robotics announced ~USD 24m in supply contracts; one order comes from Thesta, with equipment destined for the Polish Navy.",
+            imageKey: "tom9331News1",
+            imageAlt:
+              "Thesta and Kraken Robotics partnership — equipment for the Polish Navy",
             modalBody:
-              "Thesta is now an authorized distributor of Kraken Robotics’ KATFISH solution; the agreement was signed at Oceanology International 2026. We will publish more photos and details soon — this text and the image area above are placeholders.",
+              "On 17 March, the Canadian company Kraken Robotics announced that it had signed supply contracts for its equipment worth approximately USD 24 million.\n\nOne of the orders placed in Canada comes from the Szczecin-based company Thesta, and the equipment ordered will ultimately be delivered for the needs of the Polish Navy.\n\nKraken Robotics is represented in Poland by Thesta, which was appointed as an authorized distributor during last week’s Oceanology International trade fair in London.\n\nThesta 🤝 Kraken Robotics\n#TeamThesta\n\nMore:\nhttps://zbiam.pl/kraken-sprzedal-kolejne-sonary-i-wyposazenie-do-nich/\nhttps://lnkd.in/dQT6WK6i",
           },
           {
             date: "March 2026",
-            title: "Support for Polish Navy UUV programmes",
+            title: "Thesta is hiring — #TeamThesta",
             excerpt:
-              "Agreement with Naval Port Command Gdynia for supplies related to towed sonars.",
+              "We are growing the team. See current openings on LinkedIn.",
             modalBody:
-              "We signed an agreement with Naval Port Command Gdynia for material supplies related to towed sonars in Polish Navy uncrewed programmes. Full technical details will follow — this is placeholder copy.",
+              "Thesta is looking for new colleagues — we work on projects for the Polish Navy and the maritime industry, in shipboard electronics, navigation, and hydrography.\n\n#TeamThesta is hiring!\n\nRoles and details:\nhttps://lnkd.in/gpb97RHR",
+            imageKey: undefined,
+            imageAlt: undefined,
+          },
+          {
+            date: "March 2026",
+            title:
+              "Agreement with Naval Port Command Gdynia — UUV supplies and KATFISH towed sonar",
+            excerpt:
+              "On 9 March, Thesta signed with Naval Port Command Gdynia to supply technical materials for Polish Navy uncrewed maritime programmes, including Kraken Robotics towed sonar (KATFISH).",
+            imageKey: "thumb790x400Katfish",
+            imageAlt:
+              "Kraken Robotics KATFISH towed sonar system — context of the Gdynia agreement",
+            modalBody:
+              "On March 9, Thesta, a company based in Szczecin, signed an agreement with the Gdynia Naval Port Command for the supply of technical materials for uncrewed maritime systems used by the Polish Navy. This includes equipment for the Kraken Robotics towed sonar, which is part of the Katfish sonar system.\n\n#TeamThesta\nhttps://lnkd.in/dG9dtk5h",
           },
           {
             date: "February 2026",
@@ -938,6 +1086,8 @@ export const messages = {
             excerpt: "Partner meetings during the London trade show.",
             modalBody:
               "We met with partners Exail and NORBIT at Oceanology International in London. A full story and gallery will be added later — the image block is a placeholder.",
+            imageKey: undefined,
+            imageAlt: undefined,
           },
         ],
       },
@@ -1266,19 +1416,37 @@ export const messages = {
     servicePages: {
       backToOffer: "Back to offer",
       placeholderCaption: "Image placeholder",
+      cta: {
+        label: "Discuss your requirements",
+        href: "/contact",
+      },
       bySlug: {
         projektowanie: {
           title: "Engineering",
           intro:
-            "We carry out installation and integration of navigation and hydrographic systems based on designs aligned with standards and customer requirements. We develop and execute technical designs that let our qualified team deliver tailored solutions. To ensure the highest quality, we maintain continuous quality supervision of installations and integrations against the approved design package.",
+            "We deliver design packages for installation and integration of navigation and hydrographic systems — from concept through documentation ready for build and acceptance. Work follows applicable standards and customer requirements; our team then implements tailored solutions and supervises quality on board.",
           blocks: [
             {
               caption: "Standards, defence norms, and CAD",
+              media: "none",
               body:
-                "Our designs follow the highest standards and applicable regulations, including defence documentation rules (Polish MoD Decision No. 207 of 31 December 2021 amending the introduction of instructions on technical documentation management for military equipment and on technical documentation requirements). We use advanced CAD and 3D modelling tools for accurate representation of installed equipment and cable routes.",
+                "Designs follow applicable standards and regulations, including defence documentation rules (e.g. Polish MoD Decision No. 207 of 31 December 2021 on technical documentation for military equipment). We use CAD and 3D modelling to accurately represent equipment layout and cable routing.",
+            },
+            {
+              caption: "Typical design deliverables",
+              media: "none",
+              body: "",
+              bullets: [
+                "Equipment placement and mechanical arrangements",
+                "Cable routes, schedules, and power distribution",
+                "Signal and interface integration diagrams",
+                "Technical specifications and material take-offs",
+                "Customer acceptance procedures and requirements reflected in the package",
+              ],
             },
             {
               caption: "Navigation system designs",
+              media: "none",
               body: "",
               bullets: [
                 "Radar",
@@ -1295,6 +1463,7 @@ export const messages = {
             },
             {
               caption: "Communications system designs",
+              media: "none",
               body: "",
               bullets: [
                 "VSAT satellite communications",
@@ -1309,43 +1478,131 @@ export const messages = {
         uruchomienia: {
           title: "Commissioning",
           intro:
-            "Every newly installed system requires integration and commissioning. Our engineers prepare a detailed plan for each system or subsystem. This often means coordinating subcontractors, equipment vendors, the customer’s representatives, and end users.",
+            "A new system needs integration, configuration, and acceptance — planned so vendors, subcontractors, the customer, and end users stay aligned on schedule and scope.",
           blocks: [
             {
-              caption: "Preparation at Thesta",
+              caption: "From preparation to operational handover",
+              media: "none",
               body:
-                "The team prepares equipment required for installation and integration at Thesta’s facility. At this stage the customer can observe progress and supervise the work.",
+                "For each system or subsystem we prepare a commissioning plan with clear responsibilities. Below is a typical flow — details are agreed per contract and platform.",
+              steps: [
+                {
+                  title: "Preparation at Thesta",
+                  body:
+                    "Bench integration, baseline configuration, and early testing reduce risk on board. The customer can supervise this phase.",
+                },
+                {
+                  title: "Mobilisation and on-site installation",
+                  body:
+                    "Delivery to the vessel or customer site, installation per design, and connection to shipboard or shore infrastructure.",
+                },
+                {
+                  title: "Integration with existing systems",
+                  body:
+                    "Coexistence with equipment already in service (NMEA, vendor-specific interfaces, redundant data paths) per documentation and agreed acceptance checkpoints.",
+                },
+                {
+                  title: "Functional tests and acceptance scenarios",
+                  body:
+                    "Verification against the contract: signals, alarms, logging, and scenarios typical for the vessel class or facility.",
+                },
+                {
+                  title: "Minutes and documentation handover",
+                  body:
+                    "Formal confirmation of work performed, reports, and materials needed for operations and maintenance.",
+                },
+                {
+                  title: "Introductory operator training",
+                  body:
+                    "A short familiarisation after commissioning — fuller training programmes are delivered separately when in scope.",
+                },
+              ],
             },
             {
-              caption: "Onboard or on-site commissioning",
-              body:
-                "Commissioning activities are usually performed on board the vessel or at the customer’s / user’s site, following the agreed schedule and acceptance procedures.",
+              caption: "What we typically hand over",
+              media: "none",
+              body: "",
+              bullets: [
+                "Test reports and configuration assumptions",
+                "Known limitations and maintenance recommendations",
+                "Material for follow-on training and watch handover",
+                "Agreed schedule and list of stakeholders present at acceptance",
+              ],
             },
           ],
         },
         szkolenia: {
           title: "Training",
           intro:
-            "Training complements our consulting, engineering, and commissioning services and is typically the final step of project rollout.",
+            "Training closes the rollout: we transfer knowledge to operators and technicians so equipment is used safely and in line with procedures.",
           blocks: [
             {
-              caption: "Format and location",
-              body:
-                "Depending on the systems delivered, we run training at our office, at a customer-designated location, or directly on board the vessel where installation or integration was performed.",
+              caption: "Typical training flow",
+              media: "none",
+              body: "",
+              steps: [
+                {
+                  title: "Scope and audience",
+                  body:
+                    "We tailor content to crew level (operator / technician / officer), language, and time available on board or at the customer site.",
+                },
+                {
+                  title: "Theory",
+                  body:
+                    "System principles, user interface, emergency procedures, and common operational scenarios.",
+                },
+                {
+                  title: "Hands-on with equipment",
+                  body:
+                    "Panel operation, alarm interpretation, first-line maintenance tasks — where possible on the installed system.",
+                },
+                {
+                  title: "Wrap-up and materials",
+                  body:
+                    "Checklists, pointers to OEM documentation where applicable, and agreed support channels after the course.",
+                },
+              ],
             },
             {
-              caption: "Thesta instructors and OEM trainers",
+              caption: "Audience and format",
+              media: "none",
+              body: "",
+              bullets: [
+                "Bridge operators — day-to-day ECDIS, radar, INS, and related systems",
+                "Technicians — basic diagnostics, module replacement, service escalation",
+                "Small groups or one-to-one sessions depending on the system",
+              ],
+            },
+            {
+              caption: "Where we train",
+              media: "none",
+              body: "",
+              bullets: [
+                "At Thesta’s office",
+                "At a customer-designated location",
+                "On board after installation or integration",
+              ],
+            },
+            {
+              caption: "Thesta trainers and manufacturers",
+              media: "none",
               body:
-                "We deliver courses based on our team’s experience and also invite manufacturer representatives for dedicated product training sessions.",
+                "We train from field experience; on request we involve OEM trainers for deeper product-specific sessions.",
             },
           ],
         },
       },
     },
     newsPage: {
+      kicker: "THESTA · NEWS",
       title: "News",
       intro: "Updates from projects, trade shows, and partners.",
       back: "Back to home",
+      loadOlder: "Load older — grid view",
+      collapseToCarousel: "Back to carousel",
+      gridHeading: "All entries",
+      carouselPrevAria: "Previous news page",
+      carouselNextAria: "Next news page",
     },
     aboutPages: {
       common: {
@@ -1482,6 +1739,7 @@ export const messages = {
       },
       partners: {
         title: "Partners",
+        eyebrow: "Strategic collaboration",
         intro:
           "Our partners are world-class marine electronics manufacturers. Close cooperation lets us offer technical support and access to partner resources. Sharing experience continuously improves our skills and industry know-how.",
         logoPlaceholder: "Partner logo",

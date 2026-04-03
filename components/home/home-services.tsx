@@ -17,9 +17,9 @@ function ServiceCard({
   tags: string;
 }) {
   return (
-    <article className="rounded-2xl border border-bridge-dim/15 bg-sea-850/50 p-6 shadow-sm transition-colors hover:border-bridge-dim/40 hover:bg-sea-850/70">
+    <article className="flex h-full min-h-0 flex-col rounded-2xl border border-bridge-dim/15 bg-sea-850/50 p-6 shadow-sm transition-colors hover:border-bridge-dim/40 hover:bg-sea-850/70">
       <h2 className="text-lg font-semibold text-white">{title}</h2>
-      <p className="mt-3 text-sm leading-relaxed text-sea-300">{body}</p>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-sea-300">{body}</p>
       <p className="mt-4 font-mono text-xs text-sonar-dim">{tags}</p>
     </article>
   );
@@ -47,22 +47,22 @@ export function HomeServices({
           </h2>
         </div>
       </RevealOnScroll>
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        <RevealOnScroll>
+      <div className="mt-10 grid gap-6 md:grid-cols-3 md:items-stretch">
+        <RevealOnScroll className="h-full min-h-0">
           <ServiceCard
             title={services.nav.title}
             body={services.nav.body}
             tags={services.nav.tags}
           />
         </RevealOnScroll>
-        <RevealOnScroll delayMs={90}>
+        <RevealOnScroll className="h-full min-h-0" delayMs={90}>
           <ServiceCard
             title={services.comms.title}
             body={services.comms.body}
             tags={services.comms.tags}
           />
         </RevealOnScroll>
-        <RevealOnScroll delayMs={180}>
+        <RevealOnScroll className="h-full min-h-0" delayMs={180}>
           <ServiceCard
             title={services.hydro.title}
             body={services.hydro.body}

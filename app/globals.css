@@ -44,9 +44,68 @@ body {
   min-height: 100vh;
 }
 
+/* Jednolity fokus klawiatury (bridge + „przerwa” na tle sea-950) */
+@layer base {
+  :where(a, button, summary, [role="button"], [role="tab"]):focus:not(
+      :focus-visible
+    ) {
+    outline: none;
+  }
+
+  :where(
+    a,
+    button,
+    input:not([type="hidden"]),
+    textarea,
+    select,
+    summary,
+    [role="button"],
+    [role="tab"]
+  ):focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #050a0f,
+      0 0 0 4px rgba(94, 184, 232, 0.78);
+  }
+}
+
 @layer utilities {
+  .focus-ring-none:focus,
+  .focus-ring-none:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Modal aktualności — cienki pasek przewijania w tonacji motywu */
+  .news-modal-scroll {
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(94, 184, 232, 0.45) rgba(13, 30, 46, 0.85);
+  }
+
+  .news-modal-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .news-modal-scroll::-webkit-scrollbar-track {
+    background: rgba(13, 30, 46, 0.85);
+    border-radius: 9999px;
+  }
+
+  .news-modal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(94, 184, 232, 0.45);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .news-modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(94, 184, 232, 0.62);
+    background-clip: padding-box;
   }
 }
 

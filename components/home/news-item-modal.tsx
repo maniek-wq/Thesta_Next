@@ -1,5 +1,6 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import { useEffect, useId, useRef } from "react";
 
 type NewsItemModalProps = {
@@ -9,6 +10,8 @@ type NewsItemModalProps = {
   imageCaption: string;
   closeLabel: string;
   onClose: () => void;
+  image?: StaticImageData;
+  imageAlt?: string;
 };
 
 export function NewsItemModal({
@@ -18,6 +21,8 @@ export function NewsItemModal({
   imageCaption,
   closeLabel,
   onClose,
+  image,
+  imageAlt,
 }: NewsItemModalProps) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -59,7 +64,7 @@ export function NewsItemModal({
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
-          className="animate-news-modal-panel pointer-events-auto w-full max-w-lg max-h-[min(85dvh,40rem)] overflow-y-auto rounded-2xl border border-bridge-dim/25 bg-sea-900/98 p-6 shadow-2xl"
+          className="news-modal-scroll animate-news-modal-panel pointer-events-auto w-full max-w-lg max-h-[min(85dvh,40rem)] overflow-y-auto rounded-2xl border border-bridge-dim/25 bg-sea-900/98 p-6 shadow-2xl"
         >
           <div className="flex items-start justify-between gap-4">
             <h2 id={titleId} className="text-lg font-semibold text-white">
@@ -74,19 +79,33 @@ export function NewsItemModal({
               {closeLabel}
             </button>
           </div>
-          <div
-            className="mt-4 aspect-video w-full rounded-xl border border-bridge-dim/20 bg-sea-850/80"
-            role="img"
-            aria-label={imageCaption}
-          >
-            <div className="flex h-full w-full flex-col items-center justify-center gap-2 px-4 text-center">
-              <span className="text-3xl text-sea-600" aria-hidden>
-                ▣
-              </span>
-              <span className="text-xs text-sea-500">{imageCaption}</span>
+          {image ? (
+            <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-xl border border-bridge-dim/20 bg-sea-850/80">
+              <Image
+                src={image}
+                alt={imageAlt ?? title}
+                fill
+                className="object-cover"
+                sizes="(min-width: 640px) 32rem, 100vw"
+              />
             </div>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-sea-300">{body}</p>
+          ) : (
+            <div
+              className="mt-4 aspect-video w-full rounded-xl border border-bridge-dim/20 bg-sea-850/80"
+              role="img"
+              aria-label={imageCaption}
+            >
+              <div className="flex h-full w-full flex-col items-center justify-center gap-2 px-4 text-center">
+                <span className="text-3xl text-sea-600" aria-hidden>
+                  ▣
+                </span>
+                <span className="text-xs text-sea-500">{imageCaption}</span>
+              </div>
+            </div>
+          )}
+          <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-sea-300">
+            {body}
+          </p>
         </div>
       </div>
     </div>

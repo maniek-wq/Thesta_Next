@@ -11,10 +11,34 @@ import Link from "next/link";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SectionShell } from "@/components/section-shell";
 import { NewsItemModal } from "@/components/home/news-item-modal";
+import { NewsCardMedia } from "@/components/news/news-card-media";
+import { getNewsItemImage } from "@/lib/news-item-images";
 import type { Messages } from "@/lib/messages";
 
 type News = Messages["home"]["news"];
 type NewsItem = News["items"][number];
+
+function CarouselChevron({ dir }: { dir: "left" | "right" }) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {dir === "left" ? (
+        <path d="M15 18l-6-6 6-6" />
+      ) : (
+        <path d="M9 18l6-6-6-6" />
+      )}
+    </svg>
+  );
+}
 
 function chunk<T>(arr: readonly T[], size: number): T[][] {
   const out: T[][] = [];
@@ -22,30 +46,6 @@ function chunk<T>(arr: readonly T[], size: number): T[][] {
     out.push(arr.slice(i, i + size));
   }
   return out;
-}
-
-function NewsCardImagePlaceholder() {
-  return (
-    <div
-      className="relative aspect-video w-full bg-gradient-to-br from-sea-800/70 via-sea-900/80 to-sea-950"
-      aria-hidden
-    >
-      <svg
-        className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 text-bridge-dim/35"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1}
-        aria-hidden
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008H12V8.25Z"
-        />
-      </svg>
-    </div>
-  );
 }
 
 function NewsCard({
@@ -59,9 +59,12 @@ function NewsCard({
   seeMoreLabel: string;
   onSeeMore: (index: number) => void;
 }) {
+  const img = getNewsItemImage(item.imageKey);
+  const alt = item.imageAlt ?? item.title;
+
   return (
     <article className="flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-bridge-dim/15 bg-sea-850/40 transition-colors hover:border-bridge-dim/30">
-      <NewsCardImagePlaceholder />
+      <NewsCardMedia image={img} alt={alt} />
       <div className="flex min-h-0 flex-1 flex-col p-5 sm:p-6">
         <time className="font-mono text-xs text-sonar-dim">{item.date}</time>
         <h3 className="mt-3 text-lg font-semibold leading-snug text-white">
@@ -133,14 +136,19 @@ export function HomeNews({ news }: { news: News }) {
     };
   }, [updateActiveFromScroll, pages.length]);
 
-  const scrollToPage = (pageIndex: number) => {
-    const target = pageRefs.current[pageIndex];
-    target?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "nearest",
-    });
-  };
+  const scrollToPage = useCallback(
+    (pageIndex: number) => {
+      if (pages.length === 0) return;
+      const clamped = Math.min(Math.max(0, pageIndex), pages.length - 1);
+      const target = pageRefs.current[clamped];
+      target?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
+    },
+    [pages.length],
+  );
 
   return (
     <SectionShell id="aktualnosci" variant="default" aria-labelledby="news-heading">
@@ -152,6 +160,8 @@ export function HomeNews({ news }: { news: News }) {
           imageCaption={news.modalImageCaption}
           closeLabel={news.modalClose}
           onClose={() => setOpenIndex(null)}
+          image={getNewsItemImage(item.imageKey)}
+          imageAlt={item.imageAlt}
         />
       ) : null}
       <RevealOnScroll>
@@ -179,41 +189,83 @@ export function HomeNews({ news }: { news: News }) {
         aria-roledescription="karuzela"
         aria-label={news.title}
       >
-        <ul
-          ref={scrollRef}
-          className="flex w-full max-w-full snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {pages.map((pageItems, pageIdx) => (
-            <li
-              key={pageIdx}
-              ref={(node) => {
-                pageRefs.current[pageIdx] = node;
-              }}
-              className="w-full min-w-0 shrink-0 grow-0 snap-center snap-always basis-full"
-            >
-              <div
-                className={
-                  slidesPerView === 1
-                    ? "grid grid-cols-1 gap-6"
-                    : "grid grid-cols-1 gap-6 lg:grid-cols-3"
-                }
+        <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] lg:items-stretch lg:gap-x-3">
+          <div className="hidden lg:flex lg:items-center lg:justify-end">
+            {pages.length > 1 && activePage > 0 ? (
+              <button
+                type="button"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-bridge-dim/40 bg-sea-900/80 text-bridge shadow-md transition-colors hover:border-bridge/50 hover:bg-sea-850/90 hover:text-bridge-glow"
+                aria-label={news.carouselPrevAria}
+                onClick={() => scrollToPage(activePage - 1)}
               >
-                {pageItems.map((it, j) => {
-                  const globalIndex = pageIdx * slidesPerView + j;
-                  return (
-                    <NewsCard
-                      key={globalIndex}
-                      item={it}
-                      itemIndex={globalIndex}
-                      seeMoreLabel={news.seeMore}
-                      onSeeMore={setOpenIndex}
-                    />
-                  );
-                })}
-              </div>
-            </li>
-          ))}
-        </ul>
+                <CarouselChevron dir="left" />
+              </button>
+            ) : (
+              <span className="inline-block h-10 w-10 shrink-0" aria-hidden />
+            )}
+          </div>
+
+          <div className="min-w-0">
+            <ul
+              ref={scrollRef}
+              className="flex w-full max-w-full snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {pages.map((pageItems, pageIdx) => (
+                <li
+                  key={pageIdx}
+                  ref={(node) => {
+                    pageRefs.current[pageIdx] = node;
+                  }}
+                  className="w-full min-w-0 shrink-0 grow-0 snap-center snap-always basis-full lg:flex lg:min-h-[min(32rem,72vh)] lg:flex-col"
+                >
+                  <div
+                    className={
+                      slidesPerView === 1
+                        ? "grid grid-cols-1 gap-6"
+                        : "grid grid-cols-1 gap-6 lg:h-full lg:min-h-0 lg:flex-1 lg:grid-cols-3 lg:content-stretch"
+                    }
+                  >
+                    {pageItems.map((it, j) => {
+                      const globalIndex = pageIdx * slidesPerView + j;
+                      return (
+                        <div
+                          key={globalIndex}
+                          className={
+                            slidesPerView === 1
+                              ? "min-w-0"
+                              : "flex min-h-0 h-full min-w-0 flex-col"
+                          }
+                        >
+                          <NewsCard
+                            item={it}
+                            itemIndex={globalIndex}
+                            seeMoreLabel={news.seeMore}
+                            onSeeMore={setOpenIndex}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="hidden lg:flex lg:items-center lg:justify-start">
+            {pages.length > 1 && activePage < pages.length - 1 ? (
+              <button
+                type="button"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-bridge-dim/40 bg-sea-900/80 text-bridge shadow-md transition-colors hover:border-bridge/50 hover:bg-sea-850/90 hover:text-bridge-glow"
+                aria-label={news.carouselNextAria}
+                onClick={() => scrollToPage(activePage + 1)}
+              >
+                <CarouselChevron dir="right" />
+              </button>
+            ) : (
+              <span className="inline-block h-10 w-10 shrink-0" aria-hidden />
+            )}
+          </div>
+        </div>
 
         {pages.length > 1 ? (
           <div

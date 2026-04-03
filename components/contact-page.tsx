@@ -52,7 +52,7 @@ export function ContactPageView() {
                   name="name"
                   type="text"
                   autoComplete="name"
-                  className="w-full rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus:border-bridge/55 focus:bg-sea-950/95 focus:outline-none focus:ring-2 focus:ring-bridge/20"
+                  className="w-full rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus-visible:border-bridge/55 focus-visible:bg-sea-950/95"
                 />
               </div>
               <div>
@@ -68,7 +68,7 @@ export function ContactPageView() {
                   type="email"
                   autoComplete="email"
                   inputMode="email"
-                  className="w-full rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus:border-bridge/55 focus:bg-sea-950/95 focus:outline-none focus:ring-2 focus:ring-bridge/20"
+                  className="w-full rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus-visible:border-bridge/55 focus-visible:bg-sea-950/95"
                 />
               </div>
             </div>
@@ -84,18 +84,18 @@ export function ContactPageView() {
                 id="message"
                 name="message"
                 rows={6}
-                className="min-h-[10rem] w-full resize-y rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm leading-relaxed text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus:border-bridge/55 focus:bg-sea-950/95 focus:outline-none focus:ring-2 focus:ring-bridge/20"
+                className="min-h-[10rem] w-full resize-y rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm leading-relaxed text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus-visible:border-bridge/55 focus-visible:bg-sea-950/95"
               />
             </div>
 
             <div className="mt-8 space-y-6 border-t border-bridge-dim/15 pt-8">
-              <label className="flex cursor-pointer gap-3 rounded-xl border border-transparent p-1 has-[:focus-visible]:border-bridge/30 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-bridge/20">
+              <label className="flex cursor-pointer gap-3 rounded-xl border border-transparent p-1 has-[:focus-visible]:border-bridge/30">
                 <input
                   id="contact-privacy-consent"
                   name="privacyConsent"
                   type="checkbox"
                   required
-                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-bridge-dim/50 bg-sea-950 text-sonar-dim focus:ring-2 focus:ring-bridge/40 focus:ring-offset-2 focus:ring-offset-sea-850"
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-bridge-dim/50 bg-sea-950 text-sonar-dim"
                 />
                 <span className="text-sm leading-relaxed text-sea-300">
                   {p.form.consent}{" "}
@@ -110,25 +110,25 @@ export function ContactPageView() {
                 </span>
               </label>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-end">
-              <button
-                type="submit"
-                className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-sonar-dim px-8 py-3.5 text-sm font-semibold text-sea-950 shadow-[0_4px_20px_rgba(42,157,111,0.35)] transition-[background-color,transform,box-shadow] hover:bg-sonar hover:shadow-[0_6px_24px_rgba(42,157,111,0.45)] active:scale-[0.99] sm:w-auto sm:min-w-[11rem]"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden
+                <button
+                  type="submit"
+                  className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-sonar-dim px-8 py-3.5 text-sm font-semibold text-sea-950 shadow-[0_4px_20px_rgba(42,157,111,0.35)] transition-[background-color,transform,box-shadow] hover:bg-sonar hover:shadow-[0_6px_24px_rgba(42,157,111,0.45)] active:scale-[0.99] sm:w-auto sm:min-w-[11rem]"
                 >
-                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                </svg>
-                {p.form.submit}
-              </button>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                  </svg>
+                  {p.form.submit}
+                </button>
               </div>
             </div>
           </form>
