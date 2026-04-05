@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useLocale } from "@/components/locale-provider";
+import { FigmaArrowRight } from "@/components/icons/figma-icons";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import type { Messages } from "@/lib/messages";
 
@@ -11,26 +12,6 @@ const CARD = "#0C1219";
 const TEAL = "#00D4B1";
 
 type ProcessStep = Messages["home"]["process"]["steps"][number];
-
-function ArrowRight({ className }: { className?: string }) {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className={className}
-    >
-      <path d="M5 12h14" />
-      <path d="M12 5l7 7-7 7" />
-    </svg>
-  );
-}
 
 export function AboutHubPage() {
   const { m, t } = useLocale();
@@ -251,7 +232,7 @@ export function AboutHubPage() {
                   <div className="flex flex-1 items-center justify-between gap-4 px-6 py-5">
                     <p className="text-[13px] leading-relaxed text-[#556478]">{c.desc}</p>
                     <span className="shrink-0 text-white/15 transition-colors group-hover:text-[#00D4B1]/60">
-                      <ArrowRight />
+                      <FigmaArrowRight size={14} />
                     </span>
                   </div>
                 </Link>
@@ -295,7 +276,7 @@ export function AboutHubPage() {
               className="offer-font-mono mt-6 inline-flex items-center gap-2 border border-[rgba(22,32,48,0.5)] px-6 py-3 text-[12px] font-medium tracking-[0.08em] text-[#556478] transition-colors hover:border-[#00D4B1]/40 hover:text-[#00D4B1]"
             >
               {h.ctaBandButton}
-              <ArrowRight className="text-current" />
+              <FigmaArrowRight size={14} className="text-current" />
             </Link>
           </div>
         </RevealOnScroll>

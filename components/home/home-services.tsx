@@ -1,31 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SectionShell } from "@/components/section-shell";
 import type { Messages } from "@/lib/messages";
 
 type Services = Messages["home"]["services"];
 type ServicesSection = Messages["home"]["servicesSection"];
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M7 17L17 7" />
-      <path d="M8 7h9v9" />
-    </svg>
-  );
-}
 
 function ServiceCard({
   num,
@@ -41,40 +23,42 @@ function ServiceCard({
   const tagList = tags.split(" · ");
 
   return (
-    <div className="flex flex-col gap-5 bg-[#0c1219] p-6">
+    <Link
+      href="/offer"
+      className="group flex flex-col gap-5 bg-[#0c1219] p-6 outline-none transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#0e151f] hover:shadow-[inset_0_0_0_1px_rgba(0,212,177,0.22),0_0_36px_-10px_rgba(0,212,177,0.09)] focus-visible:ring-2 focus-visible:ring-sonar/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#162030] motion-reduce:transition-none motion-reduce:hover:shadow-none"
+    >
       {/* Header row: number + icon */}
       <div className="flex items-center justify-between">
-        <span className="font-mono text-[11px] font-normal text-sonar">
+        <span className="font-mono text-[11px] font-normal text-sonar transition-colors duration-300 ease-out group-hover:text-sonar-glow motion-reduce:transition-none">
           {num}
         </span>
-        <span className="text-[#556478]">
-          <ArrowIcon />
+        <span className="text-[#556478] transition-all duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sonar motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0">
+          <FigmaArrowDiagonal size={13} />
         </span>
       </div>
 
       {/* Title */}
       <div className="flex-1">
-        <h2 className="text-[18px] font-medium leading-[1.5] text-[#dce3ed]">
+        <h2 className="text-[18px] font-medium leading-[1.5] text-[#dce3ed] transition-colors duration-300 ease-out group-hover:text-white motion-reduce:transition-none">
           {title}
         </h2>
-        {/* Description */}
-        <p className="mt-3 text-[13px] leading-[1.75] text-[#556478]">
+        <p className="mt-3 text-[13px] leading-[1.75] text-[#556478] transition-colors duration-300 ease-out group-hover:text-[#7a8a9c] motion-reduce:transition-none">
           {body}
         </p>
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-x-3 gap-y-1.5 border border-[#162030] px-0 py-0">
+      <div className="flex flex-wrap gap-x-3 gap-y-1.5 border border-[#162030] px-0 py-0 transition-[border-color] duration-300 ease-out group-hover:border-[rgba(0,212,177,0.2)] motion-reduce:transition-none">
         {tagList.map((tag) => (
           <span
             key={tag}
-            className="border border-[#162030] px-2 py-1 font-mono text-[9px] tracking-[0.06em] text-[#556478]"
+            className="border border-[#162030] px-2 py-1 font-mono text-[9px] tracking-[0.06em] text-[#556478] transition-[border-color,color] duration-300 ease-out group-hover:border-[rgba(0,212,177,0.18)] group-hover:text-[#8a9aaa] motion-reduce:transition-none"
           >
             {tag}
           </span>
         ))}
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -111,7 +95,7 @@ export function HomeServices({
           >
             {section.link}
             <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-              <ArrowIcon />
+              <FigmaArrowDiagonal size={13} />
             </span>
           </Link>
         </div>
@@ -150,7 +134,9 @@ export function HomeServices({
           className="group flex items-center gap-1.5 font-mono text-[11px] tracking-[0.04em] text-sonar transition-colors hover:text-sonar-glow"
         >
           {section.link}
-          <ArrowIcon />
+          <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0">
+            <FigmaArrowDiagonal size={13} />
+          </span>
         </Link>
       </div>
     </SectionShell>

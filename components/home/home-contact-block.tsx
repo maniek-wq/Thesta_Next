@@ -11,7 +11,7 @@ export function HomeContactBlock({ contact }: { contact: Contact }) {
   return (
     <SectionShell id="kontakt" variant="band" aria-labelledby="contact-heading">
       <RevealOnScroll>
-        <div className="rounded-3xl border border-bridge-dim/25 bg-gradient-to-br from-sea-850/90 to-sea-900/90 p-8 shadow-inner sm:p-12">
+        <div className="border border-bridge-dim/25 bg-gradient-to-br from-sea-850/90 to-sea-900/90 p-8 shadow-inner sm:p-12">
           <h2
             id="contact-heading"
             className="text-2xl font-semibold text-white sm:text-3xl"
@@ -35,7 +35,7 @@ export function HomeContactBlock({ contact }: { contact: Contact }) {
           </p>
           <Link
             href="/contact"
-            className="mt-8 inline-flex rounded-xl bg-bridge-dim/30 px-6 py-3 text-sm font-medium text-white ring-1 ring-bridge/30 hover:bg-bridge-dim/50"
+            className="mt-8 inline-flex bg-bridge-dim/30 px-6 py-3 text-sm font-medium text-white ring-1 ring-bridge/30 hover:bg-bridge-dim/50"
           >
             {contact.formCta}
           </Link>

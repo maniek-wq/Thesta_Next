@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
 import { SectionShell } from "@/components/section-shell";
 import type { Messages } from "@/lib/messages";
 
@@ -39,7 +40,7 @@ export function HomeHero({ hero }: { hero: Hero }) {
               {chips.map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-sm border border-bridge-dim/20 bg-sea-900/55 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-sonar-glow/80"
+                  className="border border-bridge-dim/20 bg-sea-900/55 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-sonar-glow/80"
                 >
                   {chip}
                 </span>
@@ -60,15 +61,19 @@ export function HomeHero({ hero }: { hero: Hero }) {
             <div className="mt-8 flex flex-wrap items-center gap-3.5 sm:mt-10 sm:gap-4">
               <Link
                 href="/contact"
-                className="rounded-xl bg-sonar-dim px-5 py-3 text-sm font-medium text-sea-950 transition-colors hover:bg-sonar sm:px-6"
+                className="bg-sonar-dim px-5 py-3 text-sm font-medium text-sea-950 transition-colors hover:bg-sonar sm:px-6"
               >
                 {hero.ctaContact}
               </Link>
               <Link
                 href="/offer"
-                className="rounded-xl border border-bridge-dim/50 bg-sea-950/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-bridge hover:bg-sea-800/50 sm:px-6"
+                className="group/offer inline-flex items-center gap-2 border border-bridge-dim/50 bg-sea-950/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-bridge hover:bg-sea-800/50 sm:px-6"
               >
                 {hero.ctaOffer}
+                <FigmaArrowDiagonal
+                  size={13}
+                  className="text-bridge/70 transition-transform duration-200 group-hover/offer:translate-x-0.5 group-hover/offer:-translate-y-0.5 group-hover/offer:text-bridge"
+                />
               </Link>
             </div>
           </div>
@@ -221,7 +226,7 @@ function HeroScrollHint({ label }: { label: string }) {
           {label}
         </span>
         <span
-          className="animate-hero-scroll-hint-label flex h-10 w-10 items-center justify-center rounded-full border border-bridge-dim/50 bg-sea-900/90 shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
+          className="animate-hero-scroll-hint-label flex h-10 w-10 items-center justify-center border border-bridge-dim/50 bg-sea-900/90 shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
           aria-hidden
         >
           <svg

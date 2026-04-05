@@ -9,7 +9,12 @@ type Stats = Messages["home"]["stats"];
 
 export function HomeStats({ stats }: { stats: Stats }) {
   return (
-    <SectionShell id="statystyki" variant="band" aria-labelledby="stats-heading">
+    <SectionShell
+      id="statystyki"
+      variant="default"
+      className="border-y border-[rgba(22,32,48,0.28)] bg-[#060A10]"
+      aria-labelledby="stats-heading"
+    >
       <RevealOnScroll>
         <StatsSection
           title={stats.title}

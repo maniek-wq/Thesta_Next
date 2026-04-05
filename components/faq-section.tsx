@@ -49,7 +49,7 @@ function FaqItem({
   const [open, setOpen] = useState(false);
 
   return (
-    <li className="rounded-xl border border-bridge-dim/15 bg-sea-850/40">
+    <li className="border border-bridge-dim/15 bg-sea-850/40">
       <button
         type="button"
         id={`${id}-btn`}

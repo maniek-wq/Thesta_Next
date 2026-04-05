@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
 
 export type OfferContentStep = {
   readonly title: string;
@@ -55,7 +56,7 @@ export function OfferContentPage({
           return (
             <section key={i} aria-labelledby={`offer-block-${i}-h`}>
               {showMedia ? (
-                <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-bridge-dim/20 bg-sea-850/60">
+                <div className="relative aspect-video w-full overflow-hidden border border-bridge-dim/20 bg-sea-850/60">
                   {image ? (
                     <Image
                       src={image.src}
@@ -127,9 +128,13 @@ export function OfferContentPage({
         <div className="mt-14 flex flex-wrap gap-4 border-t border-bridge-dim/15 pt-10">
           <Link
             href={cta.href}
-            className="inline-flex items-center justify-center rounded-xl bg-sonar-dim px-6 py-3 text-sm font-medium text-sea-950 transition-colors hover:bg-sonar"
+            className="group inline-flex items-center justify-center gap-2 bg-sonar-dim px-6 py-3 text-sm font-medium text-sea-950 transition-colors hover:bg-sonar"
           >
             {cta.label}
+            <FigmaArrowDiagonal
+              size={13}
+              className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </Link>
         </div>
       ) : null}

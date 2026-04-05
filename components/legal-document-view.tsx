@@ -27,7 +27,7 @@ export function LegalDocumentView({
       <h1 className="mt-6 text-3xl font-semibold text-white">{title}</h1>
       <p className="mt-6 text-sm leading-relaxed text-sea-300">{intro}</p>
       {disclaimer ? (
-        <p className="mt-4 rounded-xl border border-bridge-dim/20 bg-sea-900/50 p-4 text-xs leading-relaxed text-sea-400">
+        <p className="mt-4 border border-bridge-dim/20 bg-sea-900/50 p-4 text-xs leading-relaxed text-sea-400">
           {disclaimer}
         </p>
       ) : null}

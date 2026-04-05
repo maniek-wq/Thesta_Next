@@ -1,5 +1,6 @@
 "use client";
 
+import { FigmaChevronDown } from "@/components/icons/figma-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -163,7 +164,7 @@ export function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`rounded-lg px-3 py-2 text-sm transition-colors ${
+                    className={`px-3 py-2 text-sm transition-colors ${
                       active
                         ? "bg-sea-800/80 text-sonar-glow"
                         : "text-sea-200 hover:bg-sea-850/80 hover:text-white"
@@ -178,7 +179,7 @@ export function Navbar() {
                 <div key={item.hubHref} className="relative" ref={aboutWrapRef}>
                   <button
                     type="button"
-                    className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm transition-colors ${
+                    className={`flex items-center gap-1 px-3 py-2 text-sm transition-colors ${
                       aboutActive || aboutOpen
                         ? "bg-sea-800/80 text-sonar-glow"
                         : "text-sea-200 hover:bg-sea-850/80 hover:text-white"
@@ -199,7 +200,7 @@ export function Navbar() {
                       aboutOpen ? "block" : "hidden"
                     }`}
                   >
-                    <div className="min-w-[14rem] rounded-xl border border-bridge-dim/40 bg-sea-950 py-2 shadow-[0_16px_48px_rgba(0,0,0,0.55)]">
+                    <div className="min-w-[14rem] border border-bridge-dim/40 bg-sea-950 py-2 shadow-[0_16px_48px_rgba(0,0,0,0.55)]">
                       {item.children.map((c) => {
                         const active = pathname === c.href;
                         return (
@@ -230,14 +231,14 @@ export function Navbar() {
               href={LINKEDIN_COMPANY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-bridge-dim/25 bg-sea-900/90 text-sea-200 transition-colors hover:border-bridge/40 hover:text-bridge md:flex"
+              className="hidden h-9 w-9 shrink-0 items-center justify-center border border-bridge-dim/25 bg-sea-900/90 text-sea-200 transition-colors hover:border-bridge/40 hover:text-bridge md:flex"
               aria-label={t("nav.linkedinAria")}
             >
               <span className="sr-only">{t("nav.linkedin")}</span>
               <LinkedInGlyph className="h-4 w-4" />
             </a>
             <div
-              className="flex h-9 items-stretch rounded-lg border border-bridge-dim/25 bg-sea-900/90 p-0.5"
+              className="flex h-9 items-stretch border border-bridge-dim/25 bg-sea-900/90 p-0.5"
               role="group"
               aria-label="Language"
             >
@@ -255,7 +256,7 @@ export function Navbar() {
 
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-bridge-dim/25 bg-sea-900/90 text-sea-100 md:hidden"
+              className="flex h-9 w-9 items-center justify-center border border-bridge-dim/25 bg-sea-900/90 text-sea-100 md:hidden"
               onClick={toggleMobile}
               aria-expanded={mobileOpen}
               aria-controls={menuId}
@@ -336,7 +337,7 @@ export function Navbar() {
               className="mt-2 flex items-center gap-3 border-t border-bridge-dim/10 px-2 py-3 text-base text-sea-200 transition-colors hover:bg-sea-850/40 hover:text-white"
               onClick={() => setMobileOpen(false)}
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-bridge-dim/25 bg-sea-900/90 text-bridge">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-bridge-dim/25 bg-sea-900/90 text-bridge">
                 <LinkedInGlyph className="h-4 w-4" />
               </span>
               <span>{t("nav.linkedin")}</span>
@@ -377,22 +378,11 @@ function LinkedInGlyph({ className }: { className?: string }) {
 
 function ChevronIcon({ open }: { open: boolean }) {
   return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
+    <FigmaChevronDown
       className={`shrink-0 transition-transform duration-200 motion-reduce:transition-none ${
         open ? "rotate-180" : ""
       }`}
-    >
-      <path d="M6 9l6 6 6-6" />
-    </svg>
+    />
   );
 }
 
@@ -409,7 +399,7 @@ function LangButton({
     <button
       type="button"
       onClick={onSelect}
-      className={`flex h-full min-h-0 min-w-[2.25rem] items-center justify-center rounded-md px-2 py-0 text-xs font-medium transition-colors ${
+      className={`flex h-full min-h-0 min-w-[2.25rem] items-center justify-center px-2 py-0 text-xs font-medium transition-colors ${
         active
           ? "bg-bridge-dim/40 text-white shadow-inner"
           : "text-sea-300 hover:text-white"

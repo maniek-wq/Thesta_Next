@@ -271,8 +271,10 @@ export const messages = {
     },
     contactPage: {
       title: "Kontakt",
+      sectionKicker: "Kontakt",
+      headline: "Porozmawiajmy o projekcie",
       intro:
-        "Napisz do nas lub zadzwoń – odpowiemy w sprawie nawigacji, łączności i hydrografii pokładowej.",
+        "Opisz zakres — typ jednostki, systemy, harmonogram. Odpowiemy z koncepcją i wstępną wyceną w ciągu 1–2 dni roboczych.",
       addressHeading: "Adres",
       addressLine1: "Janiny Smoleńskiej ps. „Jachna” 17",
       addressLine2: "71-005 Szczecin",
@@ -280,11 +282,39 @@ export const messages = {
       mapIframeTitle: "Mapa Google — lokalizacja biura Thesta",
       openInMaps: "Otwórz w Google Maps",
       formHeading: "Wyślij wiadomość",
+      contactAsideTitle: "Dane kontaktowe",
+      formDisclaimer: "Formularz demo — nie przesyłaj danych poufnych",
+      faqHeading: "Częste pytania",
+      faqItems: [
+        {
+          q: "Dla kogo są wasze usługi?",
+          a: "Świadczymy usługi dla Marynarki Wojennej, jednostek specjalistycznych oraz floty cywilnej – w zakresie nawigacji, łączności i hydrografii. Oferujemy projektowanie, dostawy, integrację i serwis systemów INS/GNSS, radarów, ECDIS/WECDIS oraz systemów hydrolokacyjnych.",
+        },
+        {
+          q: "Czy realizujecie projekty zagraniczne?",
+          a: "Tak. Współpracujemy z partnerami międzynarodowymi i realizujemy projekty także poza Polską, w tym integrację systemów i wsparcie techniczne dla flot wojskowych i cywilnych.",
+        },
+        {
+          q: "Jak wygląda typowy przebieg współpracy?",
+          a: "Zaczynamy od rozmowy o potrzebach i wymaganiach. Następnie przygotowujemy koncepcję i warianty rozwiązań, potem realizujemy projekt, integrację i uruchomienie na jednostce. Po wdrożeniu oferujemy serwis i szkolenia.",
+        },
+        {
+          q: "Jaki jest typowy czas realizacji projektu?",
+          a: "Zależy od zakresu: od kilku tygodni przy prostszych dostawach po wiele miesięcy przy pełnej integracji mostka. Po rozmowie wstępnej przekazujemy orientacyjny harmonogram i kamienie milowe.",
+        },
+      ],
       form: {
         name: "Imię i nazwisko",
+        namePlaceholder: "Jan Kowalski",
         email: "E-mail",
+        emailPlaceholder: "jan@firma.pl",
+        organization: "Organizacja",
+        organizationPlaceholder: "Nazwa firmy / instytucji",
+        inquiry: "Opis zapytania",
+        messagePlaceholder:
+          "Typ jednostki, wymagane systemy, harmonogram, budżet orientacyjny...",
         message: "Wiadomość",
-        submit: "Wyślij",
+        submit: "Wyślij zapytanie",
         consent:
           "Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu udzielenia odpowiedzi na zapytanie. Zapoznałem(-am) się z informacjami w",
         consentPolicyLink: "Polityce prywatności",
@@ -351,13 +381,13 @@ export const messages = {
             eyebrowSmall: "IBS",
             eyebrowWide: "INTEGRATED BRIDGE",
             systemTags: [
-              "INS",
-              "GNSS",
-              "ECDIS",
+              "CMS",
+              "GMDSS",
               "RADAR",
               "AIS",
-              "CMS",
+              "ECDIS",
               "GYRO",
+              "SMS",
             ],
             protocolLine: "NMEA 2000",
           },
@@ -372,7 +402,7 @@ export const messages = {
             cells: [
               { primary: "SLA / AMC" },
               { primary: "24/7" },
-              { primary: "99.5%", secondary: "UPTIME" },
+              { primary: "99.9%", secondary: "UPTIME" },
               { primary: "SPARE PARTS" },
             ],
           },
@@ -851,6 +881,7 @@ export const messages = {
         ctaBandButton: "Skontaktuj się",
       },
       certificates: {
+        sectionKicker: "Certyfikaty",
         title: "Certyfikaty",
         sections: [
           {
@@ -880,6 +911,7 @@ export const messages = {
         ],
       },
       projects: {
+        sectionKicker: "Realizacje",
         title: "Nasze realizacje",
         intro:
           "Wybrane projekty na rzecz Marynarki Wojennej RP oraz jednostek pokrewnych.",
@@ -970,6 +1002,8 @@ export const messages = {
       partners: {
         title: "Partnerzy",
         eyebrow: "Współpraca strategiczna",
+        partnerNavPrev: "Poprzedni partner",
+        partnerNavNext: "Następny partner",
         intro:
           "Nasi partnerzy to uznani na świecie czołowi producenci elektroniki okrętowej. Dzięki bliskiej współpracy możemy zapewnić naszym klientom wsparcie techniczne oraz dostęp do zasobów naszych partnerów. Wymiana doświadczeń z naszymi partnerami pozwala nam nieustannie podnosić nasze kompetencje i konsekwentnie budować branżowy know-how.",
         logoPlaceholder: "Logo partnera",
@@ -1361,8 +1395,10 @@ export const messages = {
     },
     contactPage: {
       title: "Contact",
+      sectionKicker: "Contact",
+      headline: "Let’s talk about your project",
       intro:
-        "Write or call — we respond on bridge navigation, communications, and hydrography.",
+        "Describe the scope — vessel type, systems, schedule. We will respond with a concept and preliminary estimate within 1–2 business days.",
       addressHeading: "Address",
       addressLine1: "Janiny Smoleńskiej ps. „Jachna” 17",
       addressLine2: "71-005 Szczecin, Poland",
@@ -1370,11 +1406,39 @@ export const messages = {
       mapIframeTitle: "Google Map — Thesta office location",
       openInMaps: "Open in Google Maps",
       formHeading: "Send a message",
+      contactAsideTitle: "Contact details",
+      formDisclaimer: "Demo form — do not submit confidential data",
+      faqHeading: "FAQ",
+      faqItems: [
+        {
+          q: "Who are your services for?",
+          a: "We serve the navy, specialist units, and civil fleets in navigation, communications, and hydrography — including design, supply, integration, and service of INS/GNSS, radar, ECDIS/WECDIS, and hydroacoustic systems.",
+        },
+        {
+          q: "Do you deliver projects abroad?",
+          a: "Yes. We work with international partners and execute projects outside Poland, including system integration and technical support for naval and civil fleets.",
+        },
+        {
+          q: "What does a typical engagement look like?",
+          a: "We start with needs and requirements, propose concepts and options, then execute design, integration, and commissioning on board. After delivery we provide service and training.",
+        },
+        {
+          q: "What is a typical project timeline?",
+          a: "It depends on scope: from a few weeks for simpler supplies to many months for full bridge integration. After an initial call we share an indicative schedule and milestones.",
+        },
+      ],
       form: {
         name: "Full name",
+        namePlaceholder: "John Smith",
         email: "E-mail",
+        emailPlaceholder: "john@company.com",
+        organization: "Organisation",
+        organizationPlaceholder: "Company / institution name",
+        inquiry: "Enquiry details",
+        messagePlaceholder:
+          "Vessel type, required systems, schedule, indicative budget...",
         message: "Message",
-        submit: "Send",
+        submit: "Send enquiry",
         consent:
           "I consent to the processing of the personal data I provide in this form for the purpose of responding to my enquiry. I have read the information in the",
         consentPolicyLink: "Privacy policy",
@@ -1441,13 +1505,13 @@ export const messages = {
             eyebrowSmall: "IBS",
             eyebrowWide: "INTEGRATED BRIDGE",
             systemTags: [
-              "INS",
-              "GNSS",
-              "ECDIS",
+              "CMS",
+              "GMDSS",
               "RADAR",
               "AIS",
-              "CMS",
+              "ECDIS",
               "GYRO",
+              "SMS",
             ],
             protocolLine: "NMEA 2000",
           },
@@ -1462,7 +1526,7 @@ export const messages = {
             cells: [
               { primary: "SLA / AMC" },
               { primary: "24/7" },
-              { primary: "99.5%", secondary: "UPTIME" },
+              { primary: "99.9%", secondary: "UPTIME" },
               { primary: "SPARE PARTS" },
             ],
           },
@@ -1941,6 +2005,7 @@ export const messages = {
         ctaBandButton: "Contact us",
       },
       certificates: {
+        sectionKicker: "Certificates",
         title: "Certificates",
         sections: [
           {
@@ -1970,6 +2035,7 @@ export const messages = {
         ],
       },
       projects: {
+        sectionKicker: "Projects",
         title: "Our projects",
         intro:
           "Selected work for the Polish Navy and related organisations.",
@@ -2060,6 +2126,8 @@ export const messages = {
       partners: {
         title: "Partners",
         eyebrow: "Strategic collaboration",
+        partnerNavPrev: "Previous partner",
+        partnerNavNext: "Next partner",
         intro:
           "Our partners are world-class marine electronics manufacturers. Close cooperation lets us offer technical support and access to partner resources. Sharing experience continuously improves our skills and industry know-how.",
         logoPlaceholder: "Partner logo",

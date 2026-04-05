@@ -1,93 +1,142 @@
 "use client";
 
 import Image from "next/image";
+import { useCallback, useState } from "react";
 import { AboutLayout } from "@/components/about/about-layout";
+import { AboutSubpagesTabs } from "@/components/about/about-subpages-tabs";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { useLocale } from "@/components/locale-provider";
+import {
+  FigmaChevronLeft,
+  FigmaChevronRight,
+} from "@/components/icons/figma-icons";
 import {
   getPartnerLogo,
   type PartnerLogoId,
 } from "@/lib/about-media";
 
+const PANEL = "#0C1219";
+const BORDER = "rgba(22,32,48,0.3)";
+const LOGO_BORDER = "rgba(22,32,48,0.45)";
+
+function pad2(n: number) {
+  return String(n).padStart(2, "0");
+}
+
 export function AboutPartnersPage() {
   const { m } = useLocale();
   const p = m.aboutPages.partners;
+  const n = p.items.length;
+  const [index, setIndex] = useState(0);
+
+  const go = useCallback(
+    (delta: number) => {
+      setIndex((i) => (i + delta + n) % n);
+    },
+    [n],
+  );
+
+  const item = p.items[index]!;
+  const logo = getPartnerLogo(item.logoId as PartnerLogoId);
+  const counter = `${pad2(index + 1)} / ${pad2(n)}`;
 
   return (
-    <AboutLayout wide>
-      <p className="mt-6 font-mono text-xs uppercase tracking-[0.22em] text-bridge/75">
-        {p.eyebrow}
-      </p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-        {p.title}
-      </h1>
-      <p className="mt-5 max-w-3xl text-pretty text-lg leading-relaxed text-sea-200/95">
-        {p.intro}
-      </p>
+    <AboutLayout>
+      <AboutSubpagesTabs active="partners" />
 
-      <ul className="mt-14 space-y-12 sm:space-y-14">
-        {p.items.map((item, i) => {
-          const logo = getPartnerLogo(item.logoId as PartnerLogoId);
-          const reverse = i % 2 === 1;
+      <RevealOnScroll>
+        <header className="mt-10 space-y-4">
+          <h1 className="text-[clamp(1.35rem,3vw,1.75rem)] font-medium leading-snug tracking-[-0.02em] text-[#dce3ed]">
+            {p.eyebrow}
+          </h1>
+          <p className="max-w-3xl text-pretty text-[15px] leading-[1.8] text-[#556478]">
+            {p.intro}
+          </p>
+        </header>
+      </RevealOnScroll>
 
-          return (
-            <li key={i}>
-              <article
-                className={`group relative flex flex-col overflow-hidden rounded-2xl border border-bridge-dim/20 bg-gradient-to-br from-sea-850/45 via-sea-900/35 to-sea-950/50 p-6 transition duration-300 ease-out motion-reduce:transition-none sm:flex-row sm:items-stretch sm:gap-10 sm:p-8 ${
-                  reverse ? "sm:flex-row-reverse" : ""
-                } hover:border-bridge-dim/35 hover:shadow-[0_24px_60px_-28px_rgba(62,184,232,0.18)] motion-reduce:hover:shadow-none`}
+      <div
+        className="mt-10 flex flex-col overflow-hidden border lg:mt-12 lg:min-h-[min(28rem,70vh)] lg:flex-row"
+        style={{ backgroundColor: PANEL, borderColor: BORDER }}
+      >
+        {/* Lewa kolumna — lista (Figma: pasek teal przy aktywnym) */}
+        <nav
+          className="flex shrink-0 flex-col border-b lg:w-[min(100%,320px)] lg:border-b-0 lg:border-r"
+          style={{ borderColor: BORDER }}
+          aria-label={p.title}
+        >
+          {p.items.map((row, i) => {
+            const active = i === index;
+            return (
+              <button
+                key={row.name}
+                type="button"
+                onClick={() => setIndex(i)}
+                className={`flex w-full items-center justify-between gap-3 border-l-[3px] px-4 py-3.5 text-left transition-colors sm:px-5 sm:py-4 ${
+                  active
+                    ? "border-[#00D4B1] bg-[rgba(0,212,177,0.06)] text-[#dce3ed]"
+                    : "border-transparent text-[#556478] hover:bg-white/[0.02] hover:text-[#8a9aaa]"
+                }`}
               >
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:opacity-0"
-                  aria-hidden
-                >
-                  <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-bridge/5 blur-3xl" />
-                  <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-sonar/5 blur-3xl" />
-                </div>
+                <span className="min-w-0 text-[14px] font-medium leading-snug">{row.name}</span>
+                <span className="offer-font-mono shrink-0 text-[10px] tracking-[0.06em] text-[#00D4B1]">
+                  {pad2(i + 1)} / {pad2(n)}
+                </span>
+              </button>
+            );
+          })}
+        </nav>
 
-                <div
-                  className={`relative mb-8 flex shrink-0 justify-center sm:mb-0 sm:w-[min(100%,280px)] sm:justify-center ${
-                    reverse ? "sm:pl-2" : "sm:pr-2"
-                  }`}
-                >
-                  {logo ? (
-                    <div className="relative h-28 w-full max-w-[260px] rounded-2xl border border-bridge-dim/25 bg-gradient-to-b from-sea-900/90 to-sea-950/95 px-6 py-5 shadow-inner ring-1 ring-inset ring-white/[0.06] transition duration-300 group-hover:border-bridge/25 group-hover:ring-bridge/15 motion-reduce:transition-none sm:h-36">
-                      <Image
-                        src={logo}
-                        alt={item.name}
-                        fill
-                        className="object-contain p-2"
-                        sizes="(max-width: 640px) 260px, 280px"
-                      />
-                    </div>
-                  ) : (
-                    <div className="flex h-28 w-full max-w-[260px] items-center justify-center rounded-2xl border border-dashed border-bridge-dim/35 bg-sea-950/50 px-4 text-center text-xs text-sea-500 sm:h-36">
-                      {p.logoPlaceholder}
-                    </div>
-                  )}
-                </div>
+        {/* Prawa kolumna — treść + logo + strzałki */}
+        <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-8">
+          {logo ? (
+            <div
+              className="relative mb-6 h-24 w-full max-w-[200px] shrink-0 border bg-[#060A10] sm:h-28 sm:max-w-[220px]"
+              style={{ borderColor: LOGO_BORDER }}
+            >
+              <Image
+                src={logo}
+                alt=""
+                fill
+                className="object-contain p-3"
+                sizes="220px"
+              />
+            </div>
+          ) : null}
 
-                <div className="relative min-w-0 flex-1">
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h2 className="text-xl font-semibold text-sonar-glow sm:text-2xl">
-                      {item.name}
-                    </h2>
-                    <span className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-bridge/45 sm:inline">
-                      ·
-                    </span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bridge/55 sm:translate-y-px">
-                      {String(i + 1).padStart(2, "0")} /{" "}
-                      {String(p.items.length).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <p className="mt-4 max-w-prose text-pretty text-[15px] leading-relaxed text-sea-300 sm:text-base">
-                    {item.body}
-                  </p>
-                </div>
-              </article>
-            </li>
-          );
-        })}
-      </ul>
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <h2 className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-medium text-[#dce3ed]">
+              {item.name}
+            </h2>
+            <span className="offer-font-mono text-[11px] tracking-[0.08em] text-[#00D4B1]">
+              {counter}
+            </span>
+          </div>
+
+          <p className="mt-5 flex-1 text-pretty text-[15px] leading-[1.85] text-[#556478]">
+            {item.body}
+          </p>
+
+          <div className="mt-8 flex gap-px self-start border border-[rgba(22,32,48,0.45)] bg-[rgba(22,32,48,0.35)]">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              className="flex h-10 w-10 items-center justify-center bg-[#060A10] text-[#556478] transition-colors hover:text-[#dce3ed]"
+              aria-label={p.partnerNavPrev}
+            >
+              <FigmaChevronLeft />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              className="flex h-10 w-10 items-center justify-center bg-[#060A10] text-[#556478] transition-colors hover:text-[#dce3ed]"
+              aria-label={p.partnerNavNext}
+            >
+              <FigmaChevronRight />
+            </button>
+          </div>
+        </div>
+      </div>
     </AboutLayout>
   );
 }

@@ -31,7 +31,7 @@ export function HomeTestimonials({ testimonials }: { testimonials: Testimonials 
         {testimonials.items.map((item, i) => (
           <li key={i} className="min-h-0">
             <RevealOnScroll delayMs={i * 100} className="h-full">
-              <div className="h-full rounded-2xl border border-bridge-dim/15 bg-sea-900/60 p-6">
+              <div className="h-full border border-bridge-dim/15 bg-sea-900/60 p-6">
                 <blockquote className="text-sm leading-relaxed text-sea-200">
                   “{item.quote}”
                 </blockquote>

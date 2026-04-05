@@ -73,11 +73,11 @@ export function StatsSection({
     >
       <h2
         id="stats-heading"
-        className="text-center text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+        className="text-center text-2xl font-bold tracking-tight text-white sm:text-[1.75rem]"
       >
         {title}
       </h2>
-      <div className="mt-12 grid gap-8 sm:grid-cols-3">
+      <div className="mx-auto mt-10 grid max-w-[1100px] gap-6 sm:mt-12 sm:grid-cols-3 sm:gap-8">
         <StatCard value={years} label={yearsLabel} />
         <StatCard value={projects} label={projectsLabel} />
         <StatCard value={focus} label={focusLabel} />
@@ -88,11 +88,16 @@ export function StatsSection({
 
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-bridge-dim/20 bg-sea-850/50 p-8 text-center shadow-inner">
-      <p className="font-mono text-4xl font-semibold text-sonar-glow tabular-nums sm:text-5xl">
+    <div
+      className="flex min-h-[148px] flex-col items-center justify-center border border-[rgba(22,32,48,0.45)] px-6 py-9 text-center"
+      style={{ backgroundColor: "rgba(22, 32, 48, 0.4)" }}
+    >
+      <p className="font-mono text-[clamp(2.25rem,4.5vw,2.75rem)] font-bold leading-none tracking-tight text-sonar-glow tabular-nums">
         {value}
       </p>
-      <p className="mt-3 text-sm text-sea-300">{label}</p>
+      <p className="mt-4 max-w-[14rem] text-[14px] font-normal leading-snug text-[#94A3B8]">
+        {label}
+      </p>
     </div>
   );
 }

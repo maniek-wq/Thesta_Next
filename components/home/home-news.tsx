@@ -6,6 +6,7 @@ import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SectionShell } from "@/components/section-shell";
 import { NewsItemModal } from "@/components/home/news-item-modal";
 import { NewsCardMedia } from "@/components/news/news-card-media";
+import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
 import { getNewsItemImage } from "@/lib/news-item-images";
 import type { Messages } from "@/lib/messages";
 
@@ -17,30 +18,10 @@ function estimateReadTime(body: string) {
   return Math.max(1, Math.round(words / 200));
 }
 
-/** Simple → right arrow */
-function ArrowRight() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M5 12h14" />
-      <path d="M12 5l7 7-7 7" />
-    </svg>
-  );
-}
-
 /** Tag pill overlaid on card image */
 function TagPill({ label }: { label: string }) {
   return (
-    <span className="rounded-sm border border-sonar/25 bg-sea-950/75 px-2 py-0.5 font-mono text-[9px] tracking-[0.06em] text-sonar-glow/85 backdrop-blur-sm">
+    <span className="border border-sonar/25 bg-sea-950/75 px-2 py-0.5 font-mono text-[9px] tracking-[0.06em] text-sonar-glow/85 backdrop-blur-sm">
       {label}
     </span>
   );
@@ -62,7 +43,7 @@ function FeaturedNewsCard({
   const readMinutes = estimateReadTime(item.modalBody);
 
   return (
-    <article className="group overflow-hidden rounded-sm border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
+    <article className="group overflow-hidden border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
       <button
         type="button"
         onClick={() => onSeeMore(itemIndex)}
@@ -96,8 +77,8 @@ function FeaturedNewsCard({
             <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/55 transition-colors group-hover:text-sonar">
               {readMoreLabel}
             </span>
-            <span className="flex h-7 w-7 items-center justify-center rounded-sm border border-sonar/15 text-sonar/60 transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
-              <ArrowRight />
+            <span className="flex h-7 w-7 items-center justify-center border border-[#162030] text-[#556478] transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
+              <FigmaArrowDiagonal size={13} />
             </span>
           </div>
         </div>
@@ -119,7 +100,7 @@ function CompactNewsCard({
   const alt = item.imageAlt ?? item.title;
 
   return (
-    <article className="group overflow-hidden rounded-sm border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
+    <article className="group overflow-hidden border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
       <button
         type="button"
         onClick={() => onSeeMore(itemIndex)}
@@ -166,7 +147,7 @@ function MobileNewsCard({
   const alt = item.imageAlt ?? item.title;
 
   return (
-    <article className="group overflow-hidden rounded-sm border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
+    <article className="group overflow-hidden border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
       <button
         type="button"
         onClick={() => onSeeMore(itemIndex)}
@@ -193,8 +174,8 @@ function MobileNewsCard({
             <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/55">
               {readMoreLabel}
             </span>
-            <span className="text-sonar/60">
-              <ArrowRight />
+            <span className="flex h-7 w-7 items-center justify-center border border-[#162030] text-[#556478] transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
+              <FigmaArrowDiagonal size={13} />
             </span>
           </div>
         </div>
@@ -242,10 +223,12 @@ export function HomeNews({ news }: { news: News }) {
           </div>
           <Link
             href="/news"
-            className="inline-flex items-center gap-2 text-sm font-medium text-sonar/65 transition-colors hover:text-sonar-glow"
+            className="group/allnews inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.04em] text-sonar/65 transition-colors hover:text-sonar-glow"
           >
             {news.all}
-            <ArrowRight />
+            <span className="transition-transform duration-200 group-hover/allnews:translate-x-0.5 group-hover/allnews:-translate-y-0.5">
+              <FigmaArrowDiagonal size={13} />
+            </span>
           </Link>
         </div>
       </RevealOnScroll>
@@ -274,13 +257,13 @@ export function HomeNews({ news }: { news: News }) {
           <RevealOnScroll>
             <Link
               href="/news"
-              className="group flex items-center justify-between rounded-sm border border-bridge-dim/15 bg-sea-900/45 px-5 py-3.5 transition-colors hover:border-sonar/25"
+              className="group flex items-center justify-between border border-bridge-dim/15 bg-sea-900/45 px-5 py-3.5 transition-colors hover:border-sonar/25"
             >
               <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/60 transition-colors group-hover:text-sonar-glow">
                 {news.all}
               </span>
-              <span className="text-sonar/55 transition-[transform,color] group-hover:translate-x-0.5 group-hover:text-sonar">
-                <ArrowRight />
+              <span className="text-sonar/55 transition-[transform,color] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sonar">
+                <FigmaArrowDiagonal size={13} />
               </span>
             </Link>
           </RevealOnScroll>
@@ -302,13 +285,13 @@ export function HomeNews({ news }: { news: News }) {
         <RevealOnScroll>
           <Link
             href="/news"
-            className="group flex items-center justify-between rounded-sm border border-bridge-dim/15 bg-sea-900/45 px-5 py-3.5 transition-colors hover:border-sonar/25"
+            className="group flex items-center justify-between border border-bridge-dim/15 bg-sea-900/45 px-5 py-3.5 transition-colors hover:border-sonar/25"
           >
             <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/60 transition-colors group-hover:text-sonar-glow">
               {news.all}
             </span>
-            <span className="text-sonar/55 transition-[transform,color] group-hover:translate-x-0.5 group-hover:text-sonar">
-              <ArrowRight />
+            <span className="text-sonar/55 transition-[transform,color] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sonar">
+              <FigmaArrowDiagonal size={13} />
             </span>
           </Link>
         </RevealOnScroll>

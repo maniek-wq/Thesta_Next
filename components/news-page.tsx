@@ -6,6 +6,7 @@ import Link from "next/link";
 import { NewsItemModal } from "@/components/home/news-item-modal";
 import { NewsCardMedia } from "@/components/news/news-card-media";
 import { getNewsItemImage } from "@/lib/news-item-images";
+import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
 import { useLocale } from "@/components/locale-provider";
 import type { Messages } from "@/lib/messages";
 
@@ -14,25 +15,6 @@ type NewsItem = Messages["home"]["news"]["items"][number];
 function estimateReadTime(body: string) {
   const words = body.trim().split(/\s+/).length;
   return Math.max(1, Math.round(words / 200));
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M7 17L17 7" />
-      <path d="M8 7h9v9" />
-    </svg>
-  );
 }
 
 function TagBadge({ label }: { label: string }) {
@@ -163,7 +145,7 @@ function FeaturedNewsCard({
               {readMoreLabel}
             </span>
             <span className="flex items-center justify-center border border-sonar/40 p-1.5 text-sonar transition-colors group-hover:border-sonar">
-              <ArrowIcon />
+              <FigmaArrowDiagonal size={13} />
             </span>
           </div>
         </div>
@@ -260,7 +242,7 @@ function GridNewsCard({
             </span>
             <div className="flex items-center gap-2 text-[#556478]">
               <span className="flex items-center justify-center border border-[#556478]/40 p-1 transition-colors group-hover:border-sonar/40 group-hover:text-sonar">
-                <ArrowIcon />
+                <FigmaArrowDiagonal size={13} />
               </span>
               <span className="font-mono text-[10px]">
                 {estimateReadTime(item.modalBody)} min

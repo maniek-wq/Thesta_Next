@@ -64,7 +64,7 @@ export function NewsItemModal({
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
-          className="news-modal-scroll animate-news-modal-panel pointer-events-auto w-full max-w-lg max-h-[min(85dvh,40rem)] overflow-y-auto rounded-2xl border border-bridge-dim/25 bg-sea-900/98 p-6 shadow-2xl"
+          className="news-modal-scroll animate-news-modal-panel pointer-events-auto w-full max-w-lg max-h-[min(85dvh,40rem)] overflow-y-auto border border-bridge-dim/25 bg-sea-900/98 p-6 shadow-2xl"
         >
           <div className="flex items-start justify-between gap-4">
             <h2 id={titleId} className="text-lg font-semibold text-white">
@@ -74,13 +74,13 @@ export function NewsItemModal({
               ref={closeRef}
               type="button"
               onClick={onClose}
-              className="shrink-0 rounded-lg border border-bridge-dim/30 px-3 py-1.5 text-sm text-sea-200 transition-colors hover:border-bridge/50 hover:text-white"
+              className="shrink-0 border border-bridge-dim/30 px-3 py-1.5 text-sm text-sea-200 transition-colors hover:border-bridge/50 hover:text-white"
             >
               {closeLabel}
             </button>
           </div>
           {image ? (
-            <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-xl border border-bridge-dim/20 bg-sea-850/80">
+            <div className="relative mt-4 aspect-video w-full overflow-hidden border border-bridge-dim/20 bg-sea-850/80">
               <Image
                 src={image}
                 alt={imageAlt ?? title}
@@ -91,7 +91,7 @@ export function NewsItemModal({
             </div>
           ) : (
             <div
-              className="mt-4 aspect-video w-full rounded-xl border border-bridge-dim/20 bg-sea-850/80"
+              className="mt-4 aspect-video w-full border border-bridge-dim/20 bg-sea-850/80"
               role="img"
               aria-label={imageCaption}
             >

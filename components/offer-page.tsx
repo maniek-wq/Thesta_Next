@@ -4,6 +4,17 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
+import {
+  FigmaArrowDiagonal as ArrowDiagIcon,
+  FigmaArrowRight as ArrowRightIcon,
+  FigmaCtaArrow as CtaArrowIcon,
+  FigmaDot as DotIcon,
+} from "@/components/icons/figma-icons";
+import {
+  ServiceCoverBridgeVisual,
+  ServiceCoverMonitorsVisual,
+  ServiceCoverStatsVisual,
+} from "@/components/offer/service-cover-visuals";
 import type { Messages } from "@/lib/messages";
 
 type OfferTab = "products" | "services";
@@ -20,147 +31,27 @@ const offerPanel = "#09111D";
 
 type ServiceOfferCoverModel = Messages["offerPage"]["serviceOfferCards"][number]["cover"];
 
-function ArrowDiagIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className={className}
-    >
-      <path d="M7 17L17 7" />
-      <path d="M8 7h9v9" />
-    </svg>
-  );
-}
-
-function ArrowRightIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className={className}
-    >
-      <path d="M5 12h14" />
-      <path d="M12 5l7 7-7 7" />
-    </svg>
-  );
-}
-
-function DotIcon() {
-  return (
-    <svg
-      width="6"
-      height="6"
-      viewBox="0 0 6 6"
-      fill="none"
-      aria-hidden
-      className="shrink-0"
-    >
-      <circle cx="3" cy="3" r="2.5" stroke="currentColor" strokeWidth="1" />
-    </svg>
-  );
-}
-
-function CtaArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M7 17L17 7" />
-      <path d="M8 7h9v9" />
-    </svg>
-  );
-}
-
 function ServiceOfferCoverArt({ cover }: { cover: ServiceOfferCoverModel }) {
   if (cover.kind === "bridge") {
     return (
-      <div className="relative flex min-h-[200px] flex-1 flex-col justify-between p-5">
-        <div>
-          <p className="offer-font-mono text-[11px] font-medium tracking-[0.14em] text-[#00D4B1]/90">
-            {cover.eyebrowSmall}
-          </p>
-          <p className="offer-font-mono mt-1 text-[9px] font-medium tracking-[0.2em] text-[rgba(220,227,237,0.55)]">
-            {cover.eyebrowWide}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {cover.systemTags.map((tag) => (
-              <span
-                key={tag}
-                className="offer-font-mono border border-[rgba(0,212,177,0.2)] px-2 py-1 text-[8px] font-medium tracking-[0.06em] text-[#00D4B1]/85"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-        <p className="offer-font-mono text-[9px] tracking-[0.12em] text-[rgba(0,212,177,0.35)]">
-          {cover.protocolLine}
-        </p>
-      </div>
+      <ServiceCoverBridgeVisual
+        eyebrowSmall={cover.eyebrowSmall}
+        eyebrowWide={cover.eyebrowWide}
+        systemTags={cover.systemTags}
+        protocolLine={cover.protocolLine}
+      />
     );
   }
 
   if (cover.kind === "stats") {
-    return (
-      <div className="grid min-h-[200px] flex-1 grid-cols-2 gap-px bg-white/[0.06] p-px">
-        {cover.cells.map((cell, i) => (
-          <div
-            key={i}
-            className="flex flex-col justify-center bg-[#070d14] px-4 py-5"
-          >
-            <span className="offer-font-mono text-[10px] font-medium tracking-[0.08em] text-[#dce3ed]/90">
-              {cell.primary}
-            </span>
-            {"secondary" in cell && cell.secondary ? (
-              <span className="offer-font-mono mt-1 text-[8px] tracking-[0.15em] text-[#556478]">
-                {cell.secondary}
-              </span>
-            ) : null}
-          </div>
-        ))}
-      </div>
-    );
+    return <ServiceCoverStatsVisual cells={cover.cells} />;
   }
 
   return (
-    <div className="relative flex min-h-[200px] flex-1 flex-col items-start justify-center gap-6 p-6">
-      <div className="flex items-baseline gap-3">
-        <span className="offer-font-mono text-[28px] font-medium tracking-[-0.02em] text-[rgba(0,212,177,0.35)]">
-          {cover.primary}
-        </span>
-        <span className="offer-font-mono text-[10px] tracking-[0.25em] text-[rgba(220,227,237,0.45)]">
-          {cover.secondary}
-        </span>
-      </div>
-      <div className="flex gap-2">
-        <span className="h-8 w-8 rounded-sm border border-[rgba(0,212,177,0.15)] bg-[rgba(0,212,177,0.06)]" />
-        <span className="h-8 w-12 rounded-sm border border-[rgba(0,212,177,0.12)] bg-[rgba(0,212,177,0.04)]" />
-        <span className="h-8 w-6 rounded-sm border border-[rgba(0,212,177,0.1)] bg-[rgba(0,212,177,0.03)]" />
-      </div>
-    </div>
+    <ServiceCoverMonitorsVisual
+      primary={cover.primary}
+      secondary={cover.secondary}
+    />
   );
 }
 
@@ -247,7 +138,7 @@ function TabSwitcher({
 
   return (
     <div
-      className="inline-flex rounded border border-white/[0.07] p-1"
+      className="inline-flex border border-white/[0.07] p-1"
       style={{ backgroundColor: "rgba(10, 16, 24, 0.8)" }}
       role="tablist"
       aria-label={p.title}
@@ -263,8 +154,8 @@ function TabSwitcher({
             onClick={() => onSwitch(key)}
             className={`offer-font-mono relative min-w-[7.5rem] px-5 py-2.5 text-[11px] font-medium tracking-[0.1em] transition-[color,background-color,border-color,box-shadow] duration-300 ease-out ${
               active
-                ? "rounded border border-[rgba(0,212,177,0.25)] text-[#00D4B1]"
-                : "rounded border border-transparent text-[#556478] hover:text-[#8a9aaa]"
+                ? "border border-[rgba(0,212,177,0.25)] text-[#00D4B1]"
+                : "border border-transparent text-[#556478] hover:text-[#8a9aaa]"
             }`}
             style={
               active
@@ -287,7 +178,7 @@ function ProductsSectionHeader() {
   return (
     <div className="mb-3 flex flex-wrap items-center gap-3 pl-1">
       <span
-        className="h-2 w-2 shrink-0 rounded-full"
+        className="h-2 w-2 shrink-0"
         style={{ backgroundColor: "rgba(0, 212, 177, 0.6)" }}
         aria-hidden
       />
@@ -449,7 +340,7 @@ function DetailPanel({
                       className="flex items-start gap-2.5 text-[13px] leading-[1.6] text-[rgba(220,227,237,0.88)]"
                     >
                       <span className="mt-[5px] text-[#00D4B1]">
-                        <DotIcon />
+                        <DotIcon className="shrink-0" />
                       </span>
                       {bullet}
                     </li>
@@ -541,7 +432,7 @@ function ServicesTab() {
     <div className="border-t border-[rgba(255,255,255,0.05)] pt-4">
       <div className="mb-3 flex flex-wrap items-center gap-3 pl-1">
         <span
-          className="h-2 w-2 shrink-0 rounded-full"
+          className="h-2 w-2 shrink-0"
           style={{ backgroundColor: "rgba(0, 212, 177, 0.6)" }}
           aria-hidden
         />

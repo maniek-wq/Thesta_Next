@@ -93,12 +93,12 @@ body {
 
   .news-modal-scroll::-webkit-scrollbar-track {
     background: rgba(13, 30, 46, 0.85);
-    border-radius: 9999px;
+    border-radius: 0;
   }
 
   .news-modal-scroll::-webkit-scrollbar-thumb {
     background: rgba(94, 184, 232, 0.45);
-    border-radius: 9999px;
+    border-radius: 0;
     border: 2px solid transparent;
     background-clip: padding-box;
   }

@@ -30,7 +30,7 @@ export function CookieBanner() {
 
   return (
     <div
-      className="fixed z-[100] max-h-[min(50vh,28rem)] w-[min(28rem,calc(100vw-2rem))] overflow-y-auto overflow-x-clip rounded-2xl border border-bridge-dim/35 bg-sea-900/97 p-4 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-md sm:p-5"
+      className="fixed z-[100] max-h-[min(50vh,28rem)] w-[min(28rem,calc(100vw-2rem))] overflow-y-auto overflow-x-clip border border-bridge-dim/35 bg-sea-900/97 p-4 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-md sm:p-5"
       style={{
         left: "max(1rem, env(safe-area-inset-left, 0px))",
         bottom: "max(1rem, env(safe-area-inset-bottom, 0px))",
@@ -54,14 +54,14 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={reject}
-            className="rounded-lg border border-sea-600 px-4 py-2 text-sm text-sea-100 hover:bg-sea-800"
+            className="border border-sea-600 px-4 py-2 text-sm text-sea-100 hover:bg-sea-800"
           >
             {t("cookies.reject")}
           </button>
           <button
             type="button"
             onClick={accept}
-            className="rounded-lg bg-sonar-dim px-4 py-2 text-sm font-medium text-sea-950 hover:bg-sonar"
+            className="bg-sonar-dim px-4 py-2 text-sm font-medium text-sea-950 hover:bg-sonar"
           >
             {t("cookies.accept")}
           </button>

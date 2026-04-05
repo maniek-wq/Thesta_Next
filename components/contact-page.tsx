@@ -1,107 +1,149 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "@/components/locale-provider";
+import { useState } from "react";
 import {
-  googleMapsEmbedSrc,
-  googleMapsExternalUrl,
-} from "@/lib/contact-map";
+  FigmaCtaArrow,
+  FigmaMail,
+  FigmaMapPin,
+  FigmaPhone,
+} from "@/components/icons/figma-icons";
+import { useLocale } from "@/components/locale-provider";
+
+const iconClass = "shrink-0 text-[rgba(0,212,177,0.4)]";
 
 export function ContactPageView() {
-  const { m, locale } = useLocale();
+  const { m } = useLocale();
   const p = m.contactPage;
   const h = m.home.contact;
-  const mapSrc = googleMapsEmbedSrc(locale);
-  const mapOpenHref = googleMapsExternalUrl();
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-      <Link href="/" className="text-sm text-bridge hover:underline">
-        ← {m.newsPage.back}
-      </Link>
-      <h1 className="mt-6 text-3xl font-semibold text-white">{p.title}</h1>
-      <p className="mt-4 max-w-2xl text-sea-300">{p.intro}</p>
-
-      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:items-stretch lg:gap-12 xl:grid-cols-[minmax(0,1fr)_26rem] xl:gap-14">
-        {/* Lewa kolumna: formularz (wysokość wiersza = ta kolumna) */}
-        <section
-          className="order-2 min-h-0 min-w-0 lg:order-1"
-          aria-labelledby="contact-form-heading"
+    <div className="pb-20">
+      <div className="mx-auto max-w-[1216px] px-4 sm:px-8">
+        <Link
+          href="/"
+          className="offer-font-mono inline-block pt-10 text-[10px] uppercase tracking-[0.1em] text-[#556478] transition-colors hover:text-[rgba(0,212,177,0.65)]"
         >
-          <h2
-            id="contact-form-heading"
-            className="text-xl font-semibold tracking-tight text-white"
-          >
-            {p.formHeading}
-          </h2>
+          ← {m.newsPage.back}
+        </Link>
 
-          <form
-            className="mt-6 rounded-2xl border border-bridge-dim/25 bg-sea-850/35 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm sm:p-8"
-            onSubmit={(e) => e.preventDefault()}
+        <header className="mt-10 space-y-5">
+          <p className="offer-font-mono text-[10px] font-normal uppercase tracking-[0.15em] text-[rgba(0,212,177,0.5)]">
+            {p.sectionKicker}
+          </p>
+          <h1 className="max-w-[18ch] text-[clamp(2rem,4.5vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[#dce3ed]">
+            {p.headline}
+          </h1>
+          <p className="max-w-2xl text-[15px] leading-[1.8] text-[#556478]">{p.intro}</p>
+        </header>
+
+        <div className="mt-14 flex flex-col gap-12 lg:mt-16 lg:flex-row lg:items-start lg:justify-between lg:gap-10 xl:gap-14">
+          {/* Form — makiet ~704px */}
+          <section
+            className="w-full shrink-0 border border-[rgba(22,32,48,0.3)] lg:max-w-[704px] lg:flex-1"
+            style={{ backgroundColor: "#0C1219" }}
+            aria-label={p.formHeading}
           >
-            <div className="grid gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-6">
-              <div>
+            <form
+              className="flex flex-col gap-6 px-6 py-9 sm:px-10 sm:py-10"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="contact-name"
+                    className="offer-font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[rgba(85,100,120,0.6)]"
+                  >
+                    {p.form.name}
+                  </label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    placeholder={p.form.namePlaceholder}
+                    className="border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="contact-email"
+                    className="offer-font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[rgba(85,100,120,0.6)]"
+                  >
+                    {p.form.email}
+                  </label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    inputMode="email"
+                    placeholder={p.form.emailPlaceholder}
+                    className="border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
                 <label
-                  htmlFor="name"
-                  className="mb-2 block text-xs font-semibold uppercase tracking-wide text-sea-400"
+                  htmlFor="contact-org"
+                  className="offer-font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[rgba(85,100,120,0.6)]"
                 >
-                  {p.form.name}
+                  {p.form.organization}
                 </label>
                 <input
-                  id="name"
-                  name="name"
+                  id="contact-org"
+                  name="organization"
                   type="text"
-                  autoComplete="name"
-                  className="w-full rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus-visible:border-bridge/55 focus-visible:bg-sea-950/95"
+                  autoComplete="organization"
+                  placeholder={p.form.organizationPlaceholder}
+                  className="border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                 />
               </div>
-              <div>
+
+              <div className="flex flex-col gap-2">
                 <label
-                  htmlFor="email"
-                  className="mb-2 block text-xs font-semibold uppercase tracking-wide text-sea-400"
+                  htmlFor="contact-message"
+                  className="offer-font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[rgba(85,100,120,0.6)]"
                 >
-                  {p.form.email}
+                  {p.form.inquiry}
                 </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  inputMode="email"
-                  className="w-full rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus-visible:border-bridge/55 focus-visible:bg-sea-950/95"
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows={6}
+                  placeholder={p.form.messagePlaceholder}
+                  className="min-h-[140px] resize-y border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] leading-normal text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                 />
               </div>
-            </div>
 
-            <div className="mt-6">
-              <label
-                htmlFor="message"
-                className="mb-2 block text-xs font-semibold uppercase tracking-wide text-sea-400"
-              >
-                {p.form.message}
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={6}
-                className="min-h-[10rem] w-full resize-y rounded-xl border border-bridge-dim/35 bg-sea-950/70 px-4 py-3.5 text-sm leading-relaxed text-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.18)] transition-[border-color,box-shadow,background-color] focus-visible:border-bridge/55 focus-visible:bg-sea-950/95"
-              />
-            </div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 bg-[#00D4B1] px-6 py-3 text-[13px] font-medium text-[#060A10] transition-[filter,transform] hover:brightness-105 active:scale-[0.99]"
+                >
+                  {p.form.submit}
+                  <FigmaCtaArrow size={14} />
+                </button>
+                <p className="offer-font-mono max-w-[16rem] text-[9px] leading-normal text-[rgba(85,100,120,0.3)]">
+                  {p.formDisclaimer}
+                </p>
+              </div>
 
-            <div className="mt-8 space-y-6 border-t border-bridge-dim/15 pt-8">
-              <label className="flex cursor-pointer gap-3 rounded-xl border border-transparent p-1 has-[:focus-visible]:border-bridge/30">
+              <label className="flex cursor-pointer gap-3 border-t border-[rgba(22,32,48,0.25)] pt-6">
                 <input
                   id="contact-privacy-consent"
                   name="privacyConsent"
                   type="checkbox"
                   required
-                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-bridge-dim/50 bg-sea-950 text-sonar-dim"
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0 border border-[rgba(22,32,48,0.5)] bg-[#060A10] accent-[#00D4B1]"
                 />
-                <span className="text-sm leading-relaxed text-sea-300">
+                <span className="text-[13px] leading-relaxed text-[#556478]">
                   {p.form.consent}{" "}
                   <Link
                     href="/privacy"
-                    className="text-bridge underline-offset-2 hover:underline"
+                    className="text-[#00D4B1]/80 underline-offset-2 hover:underline"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {p.form.consentPolicyLink}
@@ -109,97 +151,90 @@ export function ContactPageView() {
                   .
                 </span>
               </label>
-              <div className="flex flex-col gap-4 sm:flex-row sm:justify-end">
-                <button
-                  type="submit"
-                  className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-sonar-dim px-8 py-3.5 text-sm font-semibold text-sea-950 shadow-[0_4px_20px_rgba(42,157,111,0.35)] transition-[background-color,transform,box-shadow] hover:bg-sonar hover:shadow-[0_6px_24px_rgba(42,157,111,0.45)] active:scale-[0.99] sm:w-auto sm:min-w-[11rem]"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden
+            </form>
+          </section>
+
+          {/* Prawa kolumna ~448px */}
+          <aside className="flex w-full shrink-0 flex-col gap-10 lg:w-[min(100%,448px)]">
+            <div>
+              <h2 className="text-[16px] font-medium text-[#dce3ed]">
+                {p.contactAsideTitle}
+              </h2>
+              <div className="mt-6 flex flex-col gap-5">
+                <div className="flex gap-4">
+                  <FigmaMapPin className={iconClass} />
+                  <div className="space-y-1 text-[14px] leading-normal">
+                    <p className="font-medium text-[#dce3ed]">{h.company.split(" · ")[0]}</p>
+                    <p className="text-[#556478]">{p.addressLine1}</p>
+                    <p className="text-[#556478]">{p.addressLine2}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <FigmaPhone className={iconClass} />
+                  <a
+                    href="tel:+48725105207"
+                    className="text-[14px] text-[#dce3ed] transition-colors hover:text-[#00D4B1]"
                   >
-                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                  </svg>
-                  {p.form.submit}
-                </button>
+                    +48 725 105 207
+                  </a>
+                </div>
+                <div className="flex items-center gap-4">
+                  <FigmaMail className={iconClass} />
+                  <a
+                    href="mailto:biuro@thesta.pl"
+                    className="text-[14px] text-[#dce3ed] transition-colors hover:text-[#00D4B1]"
+                  >
+                    biuro@thesta.pl
+                  </a>
+                </div>
               </div>
             </div>
-          </form>
-        </section>
 
-        {/* Prawa kolumna: firma + mapa */}
-        <aside
-          className="order-1 flex h-full min-h-0 min-w-0 flex-col gap-6 lg:order-2"
-          aria-label={p.addressHeading}
-        >
-          <div className="shrink-0 rounded-2xl border border-bridge-dim/20 bg-sea-850/40 p-6 shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
-            <p className="text-sm font-medium text-sea-300">{h.company}</p>
-            <p className="mt-4 text-sm text-sea-200">
-              {h.phoneLabel}{" "}
-              <a href="tel:+48725105207" className="text-bridge hover:text-bridge-glow">
-                +48 725 105 207
-              </a>
-            </p>
-            <p className="mt-2 text-sm text-sea-200">
-              <a
-                href="mailto:biuro@thesta.pl"
-                className="text-bridge hover:text-bridge-glow"
-              >
-                biuro@thesta.pl
-              </a>
-            </p>
-            <div className="mt-6 border-t border-bridge-dim/15 pt-6">
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-sea-500">
-                {p.addressHeading}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-sea-100">
-                {p.addressLine1}
-              </p>
-              <p className="text-sm leading-relaxed text-sea-100">
-                {p.addressLine2}
-              </p>
+            <div>
+              <h2 className="text-[16px] font-medium text-[#dce3ed]">{p.faqHeading}</h2>
+              <div className="mt-6 border-t border-[rgba(22,32,48,0.35)]">
+                {p.faqItems.map((item, i) => {
+                  const open = openFaq === i;
+                  return (
+                    <div
+                      key={item.q}
+                      className="border-b border-[rgba(22,32,48,0.35)]"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaq(open ? null : i)}
+                        className="flex w-full items-center justify-between gap-4 py-4 text-left transition-colors hover:bg-white/[0.02]"
+                        aria-expanded={open}
+                      >
+                        <span className="text-[14px] font-medium text-[#dce3ed]">
+                          {item.q}
+                        </span>
+                        <span
+                          className={`offer-font-mono text-[14px] text-[rgba(85,100,120,0.3)] transition-transform duration-300 ${
+                            open ? "rotate-45 text-[#00D4B1]" : ""
+                          }`}
+                        >
+                          +
+                        </span>
+                      </button>
+                      <div
+                        className={`grid transition-all duration-300 ease-out ${
+                          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <p className="pb-4 text-[13px] leading-[1.75] text-[#556478]">
+                            {item.a}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-
-          <section
-            className="flex min-h-[220px] flex-1 flex-col lg:min-h-0"
-            aria-labelledby="contact-map-heading"
-          >
-            <h3
-              id="contact-map-heading"
-              className="shrink-0 text-base font-semibold text-white"
-            >
-              {p.mapHeading}
-            </h3>
-            <div className="mt-3 min-h-0 flex-1 overflow-hidden rounded-2xl border border-bridge-dim/25 bg-sea-900/50 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
-              <iframe
-                title={p.mapIframeTitle}
-                src={mapSrc}
-                className="h-full min-h-[200px] w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-            <p className="mt-3 shrink-0 text-center lg:text-left">
-              <a
-                href={mapOpenHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-bridge underline-offset-2 hover:underline"
-              >
-                {p.openInMaps}
-              </a>
-            </p>
-          </section>
-        </aside>
+          </aside>
+        </div>
       </div>
     </div>
   );

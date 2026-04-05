@@ -382,7 +382,7 @@ export function HomeIntroPanels({
         <button
           type="button"
           onClick={skipIntro}
-          className="pointer-events-auto absolute right-4 top-20 z-[15] rounded-lg border border-bridge-dim/30 bg-sea-950/70 px-3 py-1.5 text-xs text-sea-300 backdrop-blur-sm transition-colors hover:border-bridge/50 hover:text-white sm:right-6 sm:top-24"
+          className="pointer-events-auto absolute right-4 top-20 z-[15] border border-bridge-dim/30 bg-sea-950/70 px-3 py-1.5 text-xs text-sea-300 backdrop-blur-sm transition-colors hover:border-bridge/50 hover:text-white sm:right-6 sm:top-24"
         >
           {intro.skip}
         </button>
