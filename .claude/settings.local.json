@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Bash(curl:*)",
+      "Bash(python -m json.tool)",
+      "Bash(claude mcp:*)",
+      "Bash(npx -y figma-developer-mcp --help)",
+      "Bash(npx -y @tmegit/figma-developer-mcp --help)",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); text=data[0]['text'] if isinstance\\(data,list\\) else data; parsed=json.loads\\(text\\) if isinstance\\(text,str\\) else text; pages=parsed.get\\('pages',[]\\) if isinstance\\(parsed,dict\\) else []; print\\([p.get\\('name'\\) for p in pages][:20]\\)\")",
+      "Bash(python -c ':*)",
+      "Bash(python:*)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

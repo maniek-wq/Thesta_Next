@@ -15,9 +15,12 @@ export function AboutLayout({
 
   return (
     <div
-      className={`mx-auto px-4 py-16 sm:px-6 ${wide ? "max-w-6xl" : "max-w-4xl"}`}
+      className={`mx-auto px-4 py-16 sm:px-6 ${wide ? "max-w-6xl" : "max-w-[1216px]"}`}
     >
-      <Link href="/" className="text-sm text-bridge hover:underline">
+      <Link
+        href="/"
+        className="offer-font-mono text-[10px] uppercase tracking-[0.1em] text-[#556478] transition-colors hover:text-[rgba(0,212,177,0.65)]"
+      >
         ← {m.aboutPages.common.back}
       </Link>
       {children}

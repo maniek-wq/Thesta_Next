@@ -1,0 +1,16 @@
+Either FIGMA_API_KEY or FIGMA_OAUTH_TOKEN is required (via CLI argument or .env file)
+-json@1.2.5',
+npm warn EBADENGINE   required: { node: '>=20.12.2' },
+npm warn EBADENGINE   current: { node: 'v20.11.1', npm: '10.8.1' }
+npm warn EBADENGINE }
+file:///C:/Users/Kuba/AppData/Local/npm-cache/_npx/f7767dbc0a0649d9/node_modules/@jimp/plugin-print/dist/esm/load-bitmap-font.js:7
+import xmlPackage from "simple-xml-to-json";
+       ^^^^^^^^^^
+SyntaxError: The requested module 'simple-xml-to-json' does not provide an export named 'default'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:132:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:214:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:329:24)
+    at async loadESM (node:internal/process/esm_loader:28:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12)
+
+Node.js v20.11.1

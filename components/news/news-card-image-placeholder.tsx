@@ -1,23 +1,27 @@
 export function NewsCardImagePlaceholder() {
   return (
     <div
-      className="relative aspect-video w-full bg-gradient-to-br from-sea-800/70 via-sea-900/80 to-sea-950"
+      className="relative aspect-video w-full overflow-hidden bg-gradient-to-b from-[#0a1420] to-[#060d16]"
       aria-hidden
     >
-      <svg
-        className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 text-bridge-dim/35"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1}
-        aria-hidden
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008H12V8.25Z"
-        />
-      </svg>
+      {/* Subtle sonar tint */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sonar/[0.03] to-transparent" />
+      {/* Radial glow */}
+      <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,212,177,0.13)_0%,transparent_70%)]" />
+      {/* Sonar / radar icon */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sonar/60">
+        <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.25" />
+          <circle cx="32" cy="32" r="21" stroke="currentColor" strokeWidth="1" opacity="0.45" />
+          <circle cx="32" cy="32" r="12" stroke="currentColor" strokeWidth="1" opacity="0.65" />
+          <circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.9" />
+          <line x1="32" y1="32" x2="32" y2="2" stroke="currentColor" strokeWidth="1" opacity="0.3" />
+          <line x1="32" y1="32" x2="58" y2="32" stroke="currentColor" strokeWidth="1" opacity="0.3" />
+          <line x1="32" y1="32" x2="11" y2="11" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+        </svg>
+      </div>
+      {/* Bottom gradient */}
+      <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#060a10]/80 to-transparent" />
     </div>
   );
 }

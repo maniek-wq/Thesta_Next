@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SectionShell } from "@/components/section-shell";
 import type { Messages } from "@/lib/messages";
@@ -7,21 +8,73 @@ import type { Messages } from "@/lib/messages";
 type Services = Messages["home"]["services"];
 type ServicesSection = Messages["home"]["servicesSection"];
 
+function ArrowIcon() {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M7 17L17 7" />
+      <path d="M8 7h9v9" />
+    </svg>
+  );
+}
+
 function ServiceCard({
+  num,
   title,
   body,
   tags,
 }: {
+  num: string;
   title: string;
   body: string;
   tags: string;
 }) {
+  const tagList = tags.split(" · ");
+
   return (
-    <article className="flex h-full min-h-0 flex-col rounded-2xl border border-bridge-dim/15 bg-sea-850/50 p-6 shadow-sm transition-colors hover:border-bridge-dim/40 hover:bg-sea-850/70">
-      <h2 className="text-lg font-semibold text-white">{title}</h2>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-sea-300">{body}</p>
-      <p className="mt-4 font-mono text-xs text-sonar-dim">{tags}</p>
-    </article>
+    <div className="flex flex-col gap-5 bg-[#0c1219] p-6">
+      {/* Header row: number + icon */}
+      <div className="flex items-center justify-between">
+        <span className="font-mono text-[11px] font-normal text-sonar">
+          {num}
+        </span>
+        <span className="text-[#556478]">
+          <ArrowIcon />
+        </span>
+      </div>
+
+      {/* Title */}
+      <div className="flex-1">
+        <h2 className="text-[18px] font-medium leading-[1.5] text-[#dce3ed]">
+          {title}
+        </h2>
+        {/* Description */}
+        <p className="mt-3 text-[13px] leading-[1.75] text-[#556478]">
+          {body}
+        </p>
+      </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-x-3 gap-y-1.5 border border-[#162030] px-0 py-0">
+        {tagList.map((tag) => (
+          <span
+            key={tag}
+            className="border border-[#162030] px-2 py-1 font-mono text-[9px] tracking-[0.06em] text-[#556478]"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -33,42 +86,72 @@ export function HomeServices({
   section: ServicesSection;
 }) {
   return (
-    <SectionShell id="services" variant="ridge" aria-labelledby="services-heading">
+    <SectionShell
+      id="services"
+      variant="ridge"
+      aria-labelledby="services-heading"
+    >
+      {/* Section header */}
       <RevealOnScroll>
-        <div className="border-b border-bridge-dim/10 pb-6">
-          <p className="font-mono text-xs uppercase tracking-widest text-sonar-dim">
-            {section.kicker}
-          </p>
-          <h2
-            id="services-heading"
-            className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-sonar/60">
+              {section.kicker}
+            </p>
+            <h2
+              id="services-heading"
+              className="mt-3 text-[2rem] font-medium leading-[1.15] tracking-[-0.02em] text-[#dce3ed] sm:text-[2.25rem]"
+            >
+              {section.title}
+            </h2>
+          </div>
+          <Link
+            href="/offer"
+            className="group mb-1 hidden shrink-0 items-center gap-1.5 font-mono text-[11px] tracking-[0.04em] text-sonar transition-colors hover:text-sonar-glow sm:flex"
           >
-            {section.title}
-          </h2>
+            {section.link}
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <ArrowIcon />
+            </span>
+          </Link>
         </div>
       </RevealOnScroll>
-      <div className="mt-10 grid gap-6 md:grid-cols-3 md:items-stretch">
-        <RevealOnScroll className="h-full min-h-0">
-          <ServiceCard
-            title={services.nav.title}
-            body={services.nav.body}
-            tags={services.nav.tags}
-          />
-        </RevealOnScroll>
-        <RevealOnScroll className="h-full min-h-0" delayMs={90}>
-          <ServiceCard
-            title={services.comms.title}
-            body={services.comms.body}
-            tags={services.comms.tags}
-          />
-        </RevealOnScroll>
-        <RevealOnScroll className="h-full min-h-0" delayMs={180}>
-          <ServiceCard
-            title={services.hydro.title}
-            body={services.hydro.body}
-            tags={services.hydro.tags}
-          />
-        </RevealOnScroll>
+
+      {/* Cards grid */}
+      <RevealOnScroll>
+        <div className="mt-10 bg-[#162030]">
+          <div className="grid grid-cols-1 gap-px md:grid-cols-3">
+            <ServiceCard
+              num="01"
+              title={services.nav.title}
+              body={services.nav.body}
+              tags={services.nav.tags}
+            />
+            <ServiceCard
+              num="02"
+              title={services.comms.title}
+              body={services.comms.body}
+              tags={services.comms.tags}
+            />
+            <ServiceCard
+              num="03"
+              title={services.hydro.title}
+              body={services.hydro.body}
+              tags={services.hydro.tags}
+            />
+          </div>
+        </div>
+      </RevealOnScroll>
+
+      {/* Mobile "full offer" link */}
+      <div className="mt-6 sm:hidden">
+        <Link
+          href="/offer"
+          className="group flex items-center gap-1.5 font-mono text-[11px] tracking-[0.04em] text-sonar transition-colors hover:text-sonar-glow"
+        >
+          {section.link}
+          <ArrowIcon />
+        </Link>
       </div>
     </SectionShell>
   );

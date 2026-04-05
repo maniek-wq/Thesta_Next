@@ -39,10 +39,13 @@ export const messages = {
     home: {
       hero: {
         areas: "Nawigacja · Łączność · Hydrografia",
+        eyebrow:
+          "INS, GNSS, radary i ECDIS — precyzyjna pozycja i świadomość sytuacji na morzu, od podejścia do portu po operacje taktyczne.",
         title:
           "Zaawansowane systemy nawigacji i łączności dla jednostek morskich",
         lead:
           "Thesta wspiera Marynarkę Wojenną oraz flotę cywilną w projektowaniu, dostawach, integracji i serwisie systemów INS, GNSS, radarów oraz ECDIS/WECDIS.",
+        meta: "Projekt · dostawa · integracja · serwis",
         ctaContact: "Skontaktuj się z nami",
         ctaOffer: "Zobacz ofertę",
         scrollHint: "Przewiń w dół",
@@ -87,6 +90,7 @@ export const messages = {
       servicesSection: {
         title: "Zakres usług",
         kicker: "Projekt · dostawa · integracja · serwis",
+        link: "Pełna oferta",
       },
       services: {
         nav: {
@@ -112,9 +116,10 @@ export const messages = {
         focus: "Skupienie na sektorze morskim",
       },
       news: {
+        heading: "Co nowego",
         title: "Aktualności",
         all: "Wszystkie aktualności",
-        readMore: "Czytaj dalej",
+        readMore: "Czytaj więcej +",
         seeMore: "Zobacz więcej…",
         carouselDotsAria: "Wskaźnik stron aktualności",
         carouselPrevAria: "Poprzednia strona aktualności",
@@ -124,6 +129,7 @@ export const messages = {
         items: [
           {
             date: "Marzec 2026",
+            tag: "Partnerstwo",
             title: "Thesta 🤝 Kraken Robotics — zamówienie na potrzeby MW RP",
             excerpt:
               "Kraken Robotics: kontrakty ~24 mln USD. Jedno ze zleceń złożyła Thesta; sprzęt trafi do Marynarki Wojennej RP.",
@@ -135,6 +141,7 @@ export const messages = {
           },
           {
             date: "Marzec 2026",
+            tag: "Kariera",
             title: "Thesta zatrudnia — #TeamThesta is hiring!",
             excerpt:
               "Poszerzamy zespół. Sprawdź aktualne oferty pracy Thesta na LinkedIn.",
@@ -145,6 +152,7 @@ export const messages = {
           },
           {
             date: "Marzec 2026",
+            tag: "Dostawy",
             title:
               "Umowa z KPWG — wyposażenie dla BBSP MW RP i sonaru holowanego KATFISH",
             excerpt:
@@ -157,6 +165,7 @@ export const messages = {
           },
           {
             date: "Luty 2026",
+            tag: "Targi",
             title: "Współpraca z Exail i NORBIT na Oceanology International",
             excerpt:
               "Spotkania z partnerami biznesowymi podczas targów w Londynie.",
@@ -197,18 +206,20 @@ export const messages = {
         formCta: "Formularz kontaktowy",
       },
       process: {
-        title: "Jak wygląda współpraca",
+        kicker: "Proces współpracy",
+        heading: "Od rozmowy do wsparcia operacyjnego",
+        hint: "Kliknij w etap, aby zobaczyć szczegóły.",
         steps: [
           {
             title: "Rozmowa i zbieranie wymagań",
             body: "Krótka rozmowa o jednostce, typie misji i istniejącej infrastrukturze pokładowej.",
           },
           {
-            title: "Dobór rozwiązań i koncepcja systemu",
+            title: "Dobór rozwiązań i koncepcja",
             body: "Przygotowujemy warianty konfiguracji systemów nawigacji, łączności i hydrografii.",
           },
           {
-            title: "Projekt, integracja i uruchomienie",
+            title: "Projekt, integracja, uruchomienie",
             body: "Opracowujemy dokumentację, prowadzimy integrację z innymi systemami okrętowymi i testy na morzu.",
           },
           {
@@ -281,22 +292,31 @@ export const messages = {
     },
     offerPage: {
       title: "Oferta",
+      headline: "Produkty i usługi",
+      sectionKicker: "Oferta",
       intro:
-        "Kompleksowe wsparcie w zakresie systemów nawigacyjnych, łączności i hydrografii dla jednostek wojskowych i cywilnych — produkty oraz usługi projektowe i szkoleniowe.",
+        "Dostarczamy sprzęt czołowych producentów oraz kompleksowe usługi inżynierskie — od projektu przez integrację po wieloletni serwis.",
+      metaLine: "PRODUKTY · INTEGRACJA · SERWIS · SZKOLENIA",
       productsTitle: "Produkty",
       servicesTitle: "Usługi",
+      productsDescriptor: "— sprzęt i systemy od wiodących producentów",
+      servicesDescriptor: "— integracja, serwis i szkolenia",
+      backLink: "Wróć",
+      ctaKicker: "Oferta · CTA",
+      ctaTitle: "Potrzebujesz konkretnej konfiguracji?",
+      ctaBody:
+        "Opisz typ jednostki i zakres — przygotujemy koncepcję techniczną i wstępną wycenę.",
+      ctaPrimary: "Zapytaj o ofertę",
+      ctaSecondary: "Usługi",
       productCategories: [
         {
           title: "Nawigacja",
-          itemSlugs: [
-            "systemy-nawigacyjne",
-            "oswietlenie-nawigacyjne",
-            "ins",
-            "odbiorniki-gnss",
-          ],
+          listTitle: "Systemy INS / GNSS",
+          itemSlugs: ["ins", "odbiorniki-gnss"],
         },
         {
           title: "Łączność",
+          listTitle: "Terminale VSAT i radiostacje",
           itemSlugs: [
             "vsat",
             "lacznosc-wewnetrzna-okretowa",
@@ -305,18 +325,70 @@ export const messages = {
         },
         {
           title: "Hydrografia",
-          itemSlugs: [
-            "nawodne-pojazdy-bezalogowe-usv",
-            "echosondy-wielowiazowe",
-            "pojazdy-podwodne-rov-auv",
-          ],
+          listTitle: "Sonary i echosondy MBES",
+          itemSlugs: ["echosondy-wielowiazowe", "pojazdy-podwodne-rov-auv"],
         },
         {
-          title: "Ochrona środowiska",
-          itemSlugs: ["t-bwss"],
+          title: "Nawigacja",
+          listTitle: "ECDIS / WECDIS / Radary",
+          itemSlugs: ["systemy-nawigacyjne", "oswietlenie-nawigacyjne"],
+        },
+        {
+          title: "Hydrografia",
+          listTitle: "Platformy bezzałogowe USV / AUV",
+          itemSlugs: ["nawodne-pojazdy-bezalogowe-usv", "t-bwss"],
         },
       ],
       serviceSlugs: ["projektowanie", "uruchomienia", "szkolenia"],
+      serviceOfferCards: [
+        {
+          slug: "projektowanie",
+          cardTitle: "Integracja systemów",
+          cardSubtitle: "System engineering, projektowanie i wdrożenie",
+          code: "S01",
+          cover: {
+            kind: "bridge",
+            eyebrowSmall: "IBS",
+            eyebrowWide: "INTEGRATED BRIDGE",
+            systemTags: [
+              "INS",
+              "GNSS",
+              "ECDIS",
+              "RADAR",
+              "AIS",
+              "CMS",
+              "GYRO",
+            ],
+            protocolLine: "NMEA 2000",
+          },
+        },
+        {
+          slug: "uruchomienia",
+          cardTitle: "Serwis i utrzymanie",
+          cardSubtitle: "Serwis techniczny 24/7, AMC, części zamienne",
+          code: "S02",
+          cover: {
+            kind: "stats",
+            cells: [
+              { primary: "SLA / AMC" },
+              { primary: "24/7" },
+              { primary: "99.5%", secondary: "UPTIME" },
+              { primary: "SPARE PARTS" },
+            ],
+          },
+        },
+        {
+          slug: "szkolenia",
+          cardTitle: "Szkolenia załóg",
+          cardSubtitle: "Szkolenia operatorskie i inżynierskie",
+          code: "S03",
+          cover: {
+            kind: "certs",
+            primary: "STCW",
+            secondary: "CERTIFIED",
+          },
+        },
+      ],
     },
     productPages: {
       backToOffer: "Wróć do oferty",
@@ -671,9 +743,14 @@ export const messages = {
     },
     newsPage: {
       kicker: "THESTA · AKTUALNOŚCI",
+      heading: "Co nowego w Thesta",
       title: "Aktualności",
       intro: "Relacje z projektów, targów i współpracy z partnerami.",
       back: "Wróć do strony głównej",
+      allTags: "Wszystkie",
+      itemsCountLabel: "wpisy",
+      tagsCountLabel: "tagi",
+      emptyState: "Brak wpisów",
       loadOlder: "Wczytaj starsze — widok siatki",
       collapseToCarousel: "Powrót do przewijania",
       gridHeading: "Archiwum wpisów",
@@ -686,15 +763,92 @@ export const messages = {
       },
       hub: {
         title: "O nas",
+        introTabLabel: "Wprowadzenie",
         intro:
           "Poznaj nasze uprawnienia, wybrane realizacje oraz partnerów technologicznych.",
+        heroKicker: "O firmie",
+        heroTitle:
+          "Integrator elektroniki morskiej z ponad 15-letnim doświadczeniem",
+        heroBody:
+          "Thesta sp. z o.o. sp.k. to polski integrator systemów elektroniki morskiej. Projektujemy, dostarczamy, integrujemy i serwisujemy systemy nawigacji, łączności i hydrografii dla Marynarki Wojennej RP, przemysłu obronnego oraz żeglugi komercyjnej. Siedziba firmy mieści się w Szczecinie.",
+        pillarsKicker: "Dlaczego Thesta",
+        pillarsTitle: "Fundamenty naszego działania",
+        pillars: [
+          {
+            num: "01",
+            title: "Precyzja techniczna",
+            body:
+              "Każdy projekt zaczyna się od rzetelnej analizy wymagań. Nie sprzedajemy pudełek — projektujemy zintegrowane systemy dopasowane do konkretnej jednostki i misji.",
+          },
+          {
+            num: "02",
+            title: "Doświadczenie okrętowe",
+            body:
+              "Ponad 15 lat pracy z Marynarką Wojenną RP i flotą handlową. Znamy realia pokładowe, procedury odbioru i specyfikę środowiska morskiego.",
+          },
+          {
+            num: "03",
+            title: "Partnerstwa technologiczne",
+            body:
+              "Współpracujemy z wiodącymi producentami: Exail, NORBIT, Kraken Robotics, Raytheon Anschütz i innymi. Dobieramy technologię, nie markę.",
+          },
+          {
+            num: "04",
+            title: "Pełen cykl życia systemu",
+            body:
+              "Od koncepcji, przez integrację i testy morskie, po serwis i szkolenia. Jeden partner na każdym etapie — bez przekazywania odpowiedzialności.",
+          },
+        ],
+        kpi: [
+          {
+            value: "15",
+            suffix: "+",
+            label: "Lat doświadczenia",
+            sub: "w sektorze morskim",
+          },
+          {
+            value: "120",
+            suffix: "+",
+            label: "Zrealizowanych projektów",
+            sub: "dla MW RP i floty cywilnej",
+          },
+          {
+            value: "100",
+            suffix: "%",
+            label: "Fokus na sektor morski",
+            sub: "marine electronics only",
+          },
+        ],
+        audienceKicker: "Odbiorcy",
+        audienceTitle: "Dla kogo pracujemy",
+        audienceCards: [
+          {
+            title: "Marynarka Wojenna RP",
+            body:
+              "Systemy nawigacji i łączności dla okrętów wojennych, integracja z systemami zarządzania walką, modernizacje.",
+          },
+          {
+            title: "Przemysł obronny",
+            body:
+              "Wsparcie projektowe i integracyjne dla programów okrętowych, dostawy podsystemów, dokumentacja zgodna ze standardami NATO.",
+          },
+          {
+            title: "Żegluga komercyjna",
+            body:
+              "ECDIS, GMDSS, VDR, systemy radarowe — dostawy, instalacja i serwis dla armatorów floty handlowej i rybackiej.",
+          },
+        ],
+        subpagesKicker: "Szczegóły",
+        subpagesTitle: "Certyfikaty, realizacje, partnerzy",
         certificatesDesc:
           "Koncesje MSWiA, certyfikacja WSK, wewnętrzny system kontroli i polityka jakości.",
         projectsDesc:
           "Instalacje, modernizacje i dostawy systemów nawigacji, łączności i hydrografii.",
         partnersDesc:
           "Wiodący producenci elektroniki okrętowej i technologii GNSS.",
-        cta: "Otwórz",
+        cta: "Przejdź",
+        ctaBandTitle: "Chcesz porozmawiać o projekcie?",
+        ctaBandButton: "Skontaktuj się",
       },
       certificates: {
         title: "Certyfikaty",
@@ -977,9 +1131,12 @@ export const messages = {
     home: {
       hero: {
         areas: "Navigation · Communications · Hydrography",
+        eyebrow:
+          "INS, GNSS, radar, and ECDIS — precise position and situational awareness at sea, from pilotage to tactical operations.",
         title: "Advanced navigation and communications for marine units",
         lead:
           "Thesta supports naval and civil fleets in design, supply, integration, and service of INS, GNSS, radar, and ECDIS/WECDIS systems.",
+        meta: "Design · supply · integration · service",
         ctaContact: "Contact us",
         ctaOffer: "View our offer",
         scrollHint: "Scroll down",
@@ -1024,6 +1181,7 @@ export const messages = {
       servicesSection: {
         title: "What we deliver",
         kicker: "Engineering · supply · integration · support",
+        link: "Full offer",
       },
       services: {
         nav: {
@@ -1049,9 +1207,10 @@ export const messages = {
         focus: "Focus on the maritime sector",
       },
       news: {
+        heading: "What's new",
         title: "News",
         all: "All news",
-        readMore: "Read more",
+        readMore: "Read more +",
         seeMore: "See more…",
         carouselDotsAria: "News carousel page indicator",
         carouselPrevAria: "Previous news page",
@@ -1061,6 +1220,7 @@ export const messages = {
         items: [
           {
             date: "March 2026",
+            tag: "Partnership",
             title: "Thesta 🤝 Kraken Robotics — order for the Polish Navy",
             excerpt:
               "Kraken Robotics announced ~USD 24m in supply contracts; one order comes from Thesta, with equipment destined for the Polish Navy.",
@@ -1072,6 +1232,7 @@ export const messages = {
           },
           {
             date: "March 2026",
+            tag: "Careers",
             title: "Thesta is hiring — #TeamThesta",
             excerpt:
               "We are growing the team. See current openings on LinkedIn.",
@@ -1082,6 +1243,7 @@ export const messages = {
           },
           {
             date: "March 2026",
+            tag: "Delivery",
             title:
               "Agreement with Naval Port Command Gdynia — UUV supplies and KATFISH towed sonar",
             excerpt:
@@ -1094,6 +1256,7 @@ export const messages = {
           },
           {
             date: "February 2026",
+            tag: "Trade show",
             title: "Cooperation with Exail and NORBIT at Oceanology International",
             excerpt: "Partner meetings during the London trade show.",
             modalBody:
@@ -1133,7 +1296,9 @@ export const messages = {
         formCta: "Contact form",
       },
       process: {
-        title: "How we work together",
+        kicker: "Cooperation process",
+        heading: "From conversation to operational support",
+        hint: "Click a step to see details.",
         steps: [
           {
             title: "Discovery and requirements",
@@ -1144,7 +1309,7 @@ export const messages = {
             body: "We prepare configuration options for navigation, communications, and hydrography.",
           },
           {
-            title: "Engineering, integration, and commissioning",
+            title: "Engineering, integration, commissioning",
             body: "Documentation, integration with other ship systems, and sea trials.",
           },
           {
@@ -1217,22 +1382,31 @@ export const messages = {
     },
     offerPage: {
       title: "Offer",
+      headline: "Products and services",
+      sectionKicker: "Offer",
       intro:
-        "End-to-end support for navigation, communications, and hydrography on naval and civil vessels — products plus engineering and training services.",
+        "We supply leading manufacturers’ equipment and full engineering services — from design and integration to long-term support.",
+      metaLine: "PRODUCTS · INTEGRATION · SERVICE · TRAINING",
       productsTitle: "Products",
       servicesTitle: "Services",
+      productsDescriptor: "— equipment and systems from leading manufacturers",
+      servicesDescriptor: "— integration, service, and training",
+      backLink: "Back",
+      ctaKicker: "Offer · CTA",
+      ctaTitle: "Need a specific configuration?",
+      ctaBody:
+        "Describe the vessel type and scope — we will prepare a technical concept and a preliminary estimate.",
+      ctaPrimary: "Request a quote",
+      ctaSecondary: "Services",
       productCategories: [
         {
           title: "Navigation",
-          itemSlugs: [
-            "systemy-nawigacyjne",
-            "oswietlenie-nawigacyjne",
-            "ins",
-            "odbiorniki-gnss",
-          ],
+          listTitle: "INS / GNSS systems",
+          itemSlugs: ["ins", "odbiorniki-gnss"],
         },
         {
           title: "Communications",
+          listTitle: "VSAT terminals and radio stations",
           itemSlugs: [
             "vsat",
             "lacznosc-wewnetrzna-okretowa",
@@ -1241,18 +1415,70 @@ export const messages = {
         },
         {
           title: "Hydrography",
-          itemSlugs: [
-            "nawodne-pojazdy-bezalogowe-usv",
-            "echosondy-wielowiazowe",
-            "pojazdy-podwodne-rov-auv",
-          ],
+          listTitle: "Sonars and MBES echo sounders",
+          itemSlugs: ["echosondy-wielowiazowe", "pojazdy-podwodne-rov-auv"],
         },
         {
-          title: "Environmental protection",
-          itemSlugs: ["t-bwss"],
+          title: "Navigation",
+          listTitle: "ECDIS / WECDIS / Radars",
+          itemSlugs: ["systemy-nawigacyjne", "oswietlenie-nawigacyjne"],
+        },
+        {
+          title: "Hydrography",
+          listTitle: "Unmanned USV / AUV platforms",
+          itemSlugs: ["nawodne-pojazdy-bezalogowe-usv", "t-bwss"],
         },
       ],
       serviceSlugs: ["projektowanie", "uruchomienia", "szkolenia"],
+      serviceOfferCards: [
+        {
+          slug: "projektowanie",
+          cardTitle: "Systems integration",
+          cardSubtitle: "System engineering, design, and deployment",
+          code: "S01",
+          cover: {
+            kind: "bridge",
+            eyebrowSmall: "IBS",
+            eyebrowWide: "INTEGRATED BRIDGE",
+            systemTags: [
+              "INS",
+              "GNSS",
+              "ECDIS",
+              "RADAR",
+              "AIS",
+              "CMS",
+              "GYRO",
+            ],
+            protocolLine: "NMEA 2000",
+          },
+        },
+        {
+          slug: "uruchomienia",
+          cardTitle: "Service and support",
+          cardSubtitle: "24/7 technical service, AMC, spare parts",
+          code: "S02",
+          cover: {
+            kind: "stats",
+            cells: [
+              { primary: "SLA / AMC" },
+              { primary: "24/7" },
+              { primary: "99.5%", secondary: "UPTIME" },
+              { primary: "SPARE PARTS" },
+            ],
+          },
+        },
+        {
+          slug: "szkolenia",
+          cardTitle: "Crew training",
+          cardSubtitle: "Operator and engineering training",
+          code: "S03",
+          cover: {
+            kind: "certs",
+            primary: "STCW",
+            secondary: "CERTIFIED",
+          },
+        },
+      ],
     },
     productPages: {
       backToOffer: "Back to offer",
@@ -1607,9 +1833,14 @@ export const messages = {
     },
     newsPage: {
       kicker: "THESTA · NEWS",
+      heading: "What's new at Thesta",
       title: "News",
       intro: "Updates from projects, trade shows, and partners.",
       back: "Back to home",
+      allTags: "All",
+      itemsCountLabel: "items",
+      tagsCountLabel: "tags",
+      emptyState: "No entries",
       loadOlder: "Load older — grid view",
       collapseToCarousel: "Back to carousel",
       gridHeading: "All entries",
@@ -1622,15 +1853,92 @@ export const messages = {
       },
       hub: {
         title: "About us",
+        introTabLabel: "Overview",
         intro:
           "Learn about our authorisations, selected projects, and technology partners.",
+        heroKicker: "About the company",
+        heroTitle:
+          "Marine electronics integrator with 15+ years of experience",
+        heroBody:
+          "Thesta sp. z o.o. sp.k. is a Polish integrator of marine electronics systems. We design, supply, integrate, and service navigation, communications, and hydrography systems for the Polish Navy, the defence industry, and commercial shipping. Our headquarters are in Szczecin.",
+        pillarsKicker: "Why Thesta",
+        pillarsTitle: "How we work",
+        pillars: [
+          {
+            num: "01",
+            title: "Technical precision",
+            body:
+              "Every project starts with a thorough requirements analysis. We do not ship boxes — we engineer integrated systems matched to the vessel and mission.",
+          },
+          {
+            num: "02",
+            title: "Shipboard experience",
+            body:
+              "15+ years with the Polish Navy and commercial fleets. We know bridge realities, acceptance procedures, and the marine environment.",
+          },
+          {
+            num: "03",
+            title: "Technology partnerships",
+            body:
+              "We work with leading manufacturers including Exail, NORBIT, Kraken Robotics, Raytheon Anschütz, and others. We choose technology, not badges.",
+          },
+          {
+            num: "04",
+            title: "Full system lifecycle",
+            body:
+              "From concept through integration and sea trials to service and training — one partner at every stage, without handing off responsibility.",
+          },
+        ],
+        kpi: [
+          {
+            value: "15",
+            suffix: "+",
+            label: "Years of experience",
+            sub: "in the marine sector",
+          },
+          {
+            value: "120",
+            suffix: "+",
+            label: "Projects delivered",
+            sub: "for the Polish Navy and civil fleets",
+          },
+          {
+            value: "100",
+            suffix: "%",
+            label: "Focus on marine",
+            sub: "marine electronics only",
+          },
+        ],
+        audienceKicker: "Clients",
+        audienceTitle: "Who we work for",
+        audienceCards: [
+          {
+            title: "Polish Navy",
+            body:
+              "Navigation and communications for naval vessels, combat management integration, modernisations.",
+          },
+          {
+            title: "Defence industry",
+            body:
+              "Engineering and integration support for naval programmes, subsystem deliveries, NATO-aligned documentation.",
+          },
+          {
+            title: "Commercial shipping",
+            body:
+              "ECDIS, GMDSS, VDR, radar systems — supply, installation, and service for merchant and fishing operators.",
+          },
+        ],
+        subpagesKicker: "Details",
+        subpagesTitle: "Certificates, projects, partners",
         certificatesDesc:
           "MSWiA licences, WSK certification, internal control system, and quality policy.",
         projectsDesc:
           "Installations, upgrades, and deliveries of navigation, communications, and hydrography systems.",
         partnersDesc:
           "Leading marine electronics and GNSS technology suppliers.",
-        cta: "Open",
+        cta: "View",
+        ctaBandTitle: "Want to talk about a project?",
+        ctaBandButton: "Contact us",
       },
       certificates: {
         title: "Certificates",

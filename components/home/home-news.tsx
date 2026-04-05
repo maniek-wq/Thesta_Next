@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SectionShell } from "@/components/section-shell";
@@ -18,11 +12,17 @@ import type { Messages } from "@/lib/messages";
 type News = Messages["home"]["news"];
 type NewsItem = News["items"][number];
 
-function CarouselChevron({ dir }: { dir: "left" | "right" }) {
+function estimateReadTime(body: string) {
+  const words = body.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+/** Simple → right arrow */
+function ArrowRight() {
   return (
     <svg
-      width="20"
-      height="20"
+      width="14"
+      height="14"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -31,138 +31,189 @@ function CarouselChevron({ dir }: { dir: "left" | "right" }) {
       strokeLinejoin="round"
       aria-hidden
     >
-      {dir === "left" ? (
-        <path d="M15 18l-6-6 6-6" />
-      ) : (
-        <path d="M9 18l6-6-6-6" />
-      )}
+      <path d="M5 12h14" />
+      <path d="M12 5l7 7-7 7" />
     </svg>
   );
 }
 
-function chunk<T>(arr: readonly T[], size: number): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < arr.length; i += size) {
-    out.push(arr.slice(i, i + size));
-  }
-  return out;
+/** Tag pill overlaid on card image */
+function TagPill({ label }: { label: string }) {
+  return (
+    <span className="rounded-sm border border-sonar/25 bg-sea-950/75 px-2 py-0.5 font-mono text-[9px] tracking-[0.06em] text-sonar-glow/85 backdrop-blur-sm">
+      {label}
+    </span>
+  );
 }
 
-function NewsCard({
+function FeaturedNewsCard({
   item,
   itemIndex,
-  seeMoreLabel,
-  carouselSlide,
+  onSeeMore,
+  readMoreLabel,
+}: {
+  item: NewsItem;
+  itemIndex: number;
+  onSeeMore: (index: number) => void;
+  readMoreLabel: string;
+}) {
+  const img = getNewsItemImage(item.imageKey);
+  const alt = item.imageAlt ?? item.title;
+  const readMinutes = estimateReadTime(item.modalBody);
+
+  return (
+    <article className="group overflow-hidden rounded-sm border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
+      <button
+        type="button"
+        onClick={() => onSeeMore(itemIndex)}
+        className="block w-full text-left"
+      >
+        {/* Image with tag overlay */}
+        <div className="relative overflow-hidden border-b border-bridge-dim/10">
+          <div className="transition-transform duration-500 ease-out group-hover:scale-[1.015]">
+            <NewsCardMedia image={img} alt={alt} />
+          </div>
+          {/* bottom gradient for tag legibility */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-sea-950/70 to-transparent" />
+          <div className="absolute bottom-3 left-3">
+            <TagPill label={item.tag} />
+          </div>
+        </div>
+
+        {/* Text body */}
+        <div className="p-6 sm:p-7">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[10px] text-sea-500">{item.date}</span>
+            <span className="font-mono text-[10px] text-sea-600/70">{readMinutes} min</span>
+          </div>
+          <h3 className="mt-4 text-[1.45rem] font-semibold leading-snug text-white sm:text-[1.7rem]">
+            {item.title}
+          </h3>
+          <p className="mt-3 text-sm leading-7 text-sea-400">
+            {item.excerpt}
+          </p>
+          <div className="mt-7 flex items-center justify-between border-t border-bridge-dim/10 pt-5">
+            <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/55 transition-colors group-hover:text-sonar">
+              {readMoreLabel}
+            </span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-sm border border-sonar/15 text-sonar/60 transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
+              <ArrowRight />
+            </span>
+          </div>
+        </div>
+      </button>
+    </article>
+  );
+}
+
+function CompactNewsCard({
+  item,
+  itemIndex,
   onSeeMore,
 }: {
   item: NewsItem;
   itemIndex: number;
-  seeMoreLabel: string;
-  /** Karuzela (np. mobile): stała wysokość slajdu + skrót tekstu. */
-  carouselSlide?: boolean;
   onSeeMore: (index: number) => void;
 }) {
   const img = getNewsItemImage(item.imageKey);
   const alt = item.imageAlt ?? item.title;
 
   return (
-    <article className="flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-bridge-dim/15 bg-sea-850/40 transition-colors hover:border-bridge-dim/30">
-      <NewsCardMedia image={img} alt={alt} />
-      <div className="flex min-h-0 flex-1 flex-col p-5 sm:p-6">
-        <time className="font-mono text-xs text-sonar-dim">{item.date}</time>
-        <h3
-          className={`mt-3 text-lg font-semibold leading-snug text-white ${
-            carouselSlide ? "line-clamp-3" : ""
-          }`}
-        >
-          {item.title}
-        </h3>
-        <p
-          className={`mt-2 flex-1 text-sm leading-relaxed text-sea-300 ${
-            carouselSlide ? "line-clamp-5 sm:line-clamp-6" : ""
-          }`}
-        >
-          {item.excerpt}
-        </p>
-        <button
-          type="button"
-          className="mt-4 w-fit text-left text-sm font-medium text-bridge hover:underline"
-          onClick={() => onSeeMore(itemIndex)}
-        >
-          {seeMoreLabel}
-        </button>
-      </div>
+    <article className="group overflow-hidden rounded-sm border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
+      <button
+        type="button"
+        onClick={() => onSeeMore(itemIndex)}
+        className="grid w-full grid-cols-[5.5rem_minmax(0,1fr)] text-left sm:grid-cols-[6.5rem_minmax(0,1fr)]"
+      >
+        {/* Thumbnail with tag overlay */}
+        <div className="relative min-w-0 overflow-hidden border-r border-bridge-dim/10">
+          <div className="h-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+            <NewsCardMedia image={img} alt={alt} />
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-sea-950/60 to-transparent" />
+          <div className="absolute bottom-1.5 left-1.5">
+            <TagPill label={item.tag} />
+          </div>
+        </div>
+
+        {/* Text */}
+        <div className="flex min-h-[8rem] flex-col justify-center p-3.5 sm:p-4">
+          <span className="font-mono text-[9px] text-sea-600/80">{item.date}</span>
+          <h3 className="mt-1.5 text-sm font-medium leading-5 text-white transition-colors group-hover:text-sonar-glow sm:text-[0.93rem]">
+            {item.title}
+          </h3>
+          <p className="mt-1.5 line-clamp-2 text-[0.75rem] leading-5 text-sea-500">
+            {item.excerpt}
+          </p>
+        </div>
+      </button>
+    </article>
+  );
+}
+
+function MobileNewsCard({
+  item,
+  itemIndex,
+  onSeeMore,
+  readMoreLabel,
+}: {
+  item: NewsItem;
+  itemIndex: number;
+  onSeeMore: (index: number) => void;
+  readMoreLabel: string;
+}) {
+  const img = getNewsItemImage(item.imageKey);
+  const alt = item.imageAlt ?? item.title;
+
+  return (
+    <article className="group overflow-hidden rounded-sm border border-bridge-dim/15 bg-sea-900/45 transition-colors hover:border-sonar/25">
+      <button
+        type="button"
+        onClick={() => onSeeMore(itemIndex)}
+        className="block w-full text-left"
+      >
+        <div className="relative overflow-hidden border-b border-bridge-dim/10">
+          <div className="transition-transform duration-500 ease-out group-hover:scale-[1.02]">
+            <NewsCardMedia image={img} alt={alt} />
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-sea-950/70 to-transparent" />
+          <div className="absolute bottom-3 left-3">
+            <TagPill label={item.tag} />
+          </div>
+        </div>
+        <div className="p-5">
+          <time className="font-mono text-[10px] text-sea-500">{item.date}</time>
+          <h3 className="mt-2.5 text-lg font-semibold leading-snug text-white transition-colors group-hover:text-sonar-glow">
+            {item.title}
+          </h3>
+          <p className="mt-2.5 text-sm leading-7 text-sea-400">
+            {item.excerpt}
+          </p>
+          <div className="mt-5 flex items-center justify-between border-t border-bridge-dim/10 pt-4">
+            <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/55">
+              {readMoreLabel}
+            </span>
+            <span className="text-sonar/60">
+              <ArrowRight />
+            </span>
+          </div>
+        </div>
+      </button>
     </article>
   );
 }
 
 export function HomeNews({ news }: { news: News }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [slidesPerView, setSlidesPerView] = useState(1);
-  const [activePage, setActivePage] = useState(0);
-  const scrollRef = useRef<HTMLUListElement>(null);
-  const pageRefs = useRef<(HTMLLIElement | null)[]>([]);
-
-  const open = openIndex != null;
-  const item = open ? news.items[openIndex] : null;
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const sync = () => setSlidesPerView(mq.matches ? 3 : 1);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
-
-  const pages = useMemo(
-    () => chunk(news.items as readonly NewsItem[], slidesPerView),
-    [news.items, slidesPerView],
-  );
-
-  useEffect(() => {
-    setActivePage(0);
-    const el = scrollRef.current;
-    if (el) el.scrollLeft = 0;
-  }, [slidesPerView]);
-
-  const updateActiveFromScroll = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el || pages.length === 0) return;
-    const w = el.clientWidth;
-    if (w <= 0) return;
-    const idx = Math.round(el.scrollLeft / w);
-    setActivePage(Math.min(Math.max(0, idx), pages.length - 1));
-  }, [pages.length]);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    updateActiveFromScroll();
-    el.addEventListener("scroll", updateActiveFromScroll, { passive: true });
-    const ro = new ResizeObserver(updateActiveFromScroll);
-    ro.observe(el);
-    return () => {
-      el.removeEventListener("scroll", updateActiveFromScroll);
-      ro.disconnect();
-    };
-  }, [updateActiveFromScroll, pages.length]);
-
-  const scrollToPage = useCallback(
-    (pageIndex: number) => {
-      if (pages.length === 0) return;
-      const clamped = Math.min(Math.max(0, pageIndex), pages.length - 1);
-      const target = pageRefs.current[clamped];
-      target?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "nearest",
-      });
-    },
-    [pages.length],
-  );
+  const item = openIndex != null ? news.items[openIndex] : null;
+  const [featured, ...rest] = news.items;
 
   return (
-    <SectionShell id="aktualnosci" variant="default" aria-labelledby="news-heading">
+    <SectionShell
+      id="aktualnosci"
+      variant="default"
+      aria-labelledby="news-heading"
+    >
       {item ? (
         <NewsItemModal
           open
@@ -175,134 +226,92 @@ export function HomeNews({ news }: { news: News }) {
           imageAlt={item.imageAlt}
         />
       ) : null}
+
       <RevealOnScroll>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-sonar/60">
+              {news.title}
+            </p>
             <h2
               id="news-heading"
-              className="text-2xl font-semibold text-white sm:text-3xl"
+              className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-[2.65rem]"
             >
-              {news.title}
+              {news.heading}
             </h2>
           </div>
           <Link
             href="/news"
-            className="text-sm font-medium text-bridge hover:text-bridge-glow"
+            className="inline-flex items-center gap-2 text-sm font-medium text-sonar/65 transition-colors hover:text-sonar-glow"
           >
-            {news.all} →
+            {news.all}
+            <ArrowRight />
           </Link>
         </div>
       </RevealOnScroll>
 
-      <div
-        className="mt-10"
-        role="region"
-        aria-roledescription="karuzela"
-        aria-label={news.title}
-      >
-        <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] lg:items-stretch lg:gap-x-3">
-          <div className="hidden lg:flex lg:items-center lg:justify-end">
-            {pages.length > 1 && activePage > 0 ? (
-              <button
-                type="button"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-bridge-dim/40 bg-sea-900/80 text-bridge shadow-md transition-colors hover:border-bridge/50 hover:bg-sea-850/90 hover:text-bridge-glow"
-                aria-label={news.carouselPrevAria}
-                onClick={() => scrollToPage(activePage - 1)}
-              >
-                <CarouselChevron dir="left" />
-              </button>
-            ) : (
-              <span className="inline-block h-10 w-10 shrink-0" aria-hidden />
-            )}
-          </div>
+      {/* Desktop layout */}
+      <div className="mt-8 hidden gap-3.5 lg:grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] xl:gap-4">
+        <RevealOnScroll>
+          <FeaturedNewsCard
+            item={featured}
+            itemIndex={0}
+            onSeeMore={setOpenIndex}
+            readMoreLabel={news.readMore}
+          />
+        </RevealOnScroll>
 
-          <div className="min-w-0">
-            <ul
-              ref={scrollRef}
-              className="flex w-full max-w-full snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {pages.map((pageItems, pageIdx) => (
-                <li
-                  key={pageIdx}
-                  ref={(node) => {
-                    pageRefs.current[pageIdx] = node;
-                  }}
-                  className="w-full min-w-0 shrink-0 grow-0 snap-center snap-always basis-full max-lg:flex max-lg:min-h-[min(72dvh,34rem)] max-lg:flex-col lg:flex lg:min-h-[min(32rem,72vh)] lg:flex-col"
-                >
-                  <div
-                    className={
-                      slidesPerView === 1
-                        ? "w-full max-lg:flex max-lg:min-h-0 max-lg:flex-1 max-lg:flex-col"
-                        : "grid grid-cols-1 gap-6 lg:h-full lg:min-h-0 lg:flex-1 lg:grid-cols-3 lg:content-stretch"
-                    }
-                  >
-                    {pageItems.map((it, j) => {
-                      const globalIndex = pageIdx * slidesPerView + j;
-                      return (
-                        <div
-                          key={globalIndex}
-                          className={
-                            slidesPerView === 1
-                              ? "flex min-w-0 max-lg:min-h-0 max-lg:flex-1 max-lg:flex-col max-lg:items-stretch"
-                              : "flex h-full min-h-0 min-w-0 flex-col"
-                          }
-                        >
-                          <NewsCard
-                            item={it}
-                            itemIndex={globalIndex}
-                            seeMoreLabel={news.seeMore}
-                            carouselSlide={slidesPerView === 1}
-                            onSeeMore={setOpenIndex}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="hidden lg:flex lg:items-center lg:justify-start">
-            {pages.length > 1 && activePage < pages.length - 1 ? (
-              <button
-                type="button"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-bridge-dim/40 bg-sea-900/80 text-bridge shadow-md transition-colors hover:border-bridge/50 hover:bg-sea-850/90 hover:text-bridge-glow"
-                aria-label={news.carouselNextAria}
-                onClick={() => scrollToPage(activePage + 1)}
-              >
-                <CarouselChevron dir="right" />
-              </button>
-            ) : (
-              <span className="inline-block h-10 w-10 shrink-0" aria-hidden />
-            )}
-          </div>
-        </div>
-
-        {pages.length > 1 ? (
-          <div
-            className="mt-6 flex justify-center gap-2"
-            role="tablist"
-            aria-label={news.carouselDotsAria}
-          >
-            {pages.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                aria-selected={i === activePage}
-                aria-label={`${i + 1} / ${pages.length}`}
-                tabIndex={i === activePage ? 0 : -1}
-                onClick={() => scrollToPage(i)}
-                className={`h-2.5 w-2.5 rounded-full transition-colors motion-reduce:transition-none ${
-                  i === activePage
-                    ? "bg-bridge"
-                    : "bg-bridge-dim/35 hover:bg-bridge-dim/55"
-                }`}
+        <div className="flex flex-col gap-3.5">
+          {rest.map((newsItem, idx) => (
+            <RevealOnScroll key={newsItem.title}>
+              <CompactNewsCard
+                item={newsItem}
+                itemIndex={idx + 1}
+                onSeeMore={setOpenIndex}
               />
-            ))}
-          </div>
-        ) : null}
+            </RevealOnScroll>
+          ))}
+          <RevealOnScroll>
+            <Link
+              href="/news"
+              className="group flex items-center justify-between rounded-sm border border-bridge-dim/15 bg-sea-900/45 px-5 py-3.5 transition-colors hover:border-sonar/25"
+            >
+              <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/60 transition-colors group-hover:text-sonar-glow">
+                {news.all}
+              </span>
+              <span className="text-sonar/55 transition-[transform,color] group-hover:translate-x-0.5 group-hover:text-sonar">
+                <ArrowRight />
+              </span>
+            </Link>
+          </RevealOnScroll>
+        </div>
+      </div>
+
+      {/* Mobile layout */}
+      <div className="mt-8 grid gap-3.5 lg:hidden">
+        {news.items.map((newsItem, idx) => (
+          <RevealOnScroll key={newsItem.title}>
+            <MobileNewsCard
+              item={newsItem}
+              itemIndex={idx}
+              onSeeMore={setOpenIndex}
+              readMoreLabel={news.readMore}
+            />
+          </RevealOnScroll>
+        ))}
+        <RevealOnScroll>
+          <Link
+            href="/news"
+            className="group flex items-center justify-between rounded-sm border border-bridge-dim/15 bg-sea-900/45 px-5 py-3.5 transition-colors hover:border-sonar/25"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/60 transition-colors group-hover:text-sonar-glow">
+              {news.all}
+            </span>
+            <span className="text-sonar/55 transition-[transform,color] group-hover:translate-x-0.5 group-hover:text-sonar">
+              <ArrowRight />
+            </span>
+          </Link>
+        </RevealOnScroll>
       </div>
     </SectionShell>
   );
