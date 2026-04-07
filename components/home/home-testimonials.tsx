@@ -37,7 +37,7 @@ function TestimonialCard({
       />
 
       <blockquote className="relative text-sm leading-relaxed text-sea-200 transition-colors duration-300 group-hover:text-sea-100">
-        "{quote}"
+        &ldquo;{quote}&rdquo;
       </blockquote>
 
       <footer className="mt-5 flex items-center gap-3">
