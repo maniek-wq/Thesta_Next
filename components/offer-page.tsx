@@ -10,6 +10,8 @@ import {
   FigmaCtaArrow as CtaArrowIcon,
   FigmaDot as DotIcon,
 } from "@/components/icons/figma-icons";
+import { Compass, Radio, Waves, Monitor, Bot } from "lucide-react";
+import type { ElementType } from "react";
 import {
   ServiceCoverBridgeVisual,
   ServiceCoverMonitorsVisual,
@@ -192,18 +194,22 @@ function ProductsSectionHeader() {
   );
 }
 
+const CATEGORY_ICONS: ElementType[] = [Compass, Radio, Waves, Monitor, Bot];
+
 function ListRow({
   code,
   category,
   listTitle,
   active,
   onClick,
+  Icon,
 }: {
   code: string;
   category: string;
   listTitle: string;
   active: boolean;
   onClick: () => void;
+  Icon: ElementType;
 }) {
   return (
     <button
@@ -241,12 +247,14 @@ function ListRow({
               : undefined
           }
         >
-          <ArrowDiagIcon
-            className={
+          <Icon
+            size={14}
+            strokeWidth={1.4}
+            className={`transition-colors duration-300 ${
               active
                 ? "text-[#00D4B1]"
                 : "text-[#4a5a6a] group-hover:text-[#5a6a7a]"
-            }
+            }`}
           />
         </span>
 
@@ -402,6 +410,7 @@ function ProductsTab() {
                 listTitle={category.listTitle}
                 active={activeCategory === idx}
                 onClick={() => setActiveCategory(idx)}
+                Icon={CATEGORY_ICONS[idx] ?? Compass}
               />
             ))}
           </div>
