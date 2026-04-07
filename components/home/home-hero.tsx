@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
 import { SectionShell } from "@/components/section-shell";
+import { AnchorScrollHint } from "@/components/home/anchor-scroll-hint";
 import type { Messages } from "@/lib/messages";
 
 type Hero = Messages["home"]["hero"];
@@ -77,7 +78,11 @@ export function HomeHero({ hero }: { hero: Hero }) {
               </Link>
             </div>
           </div>
-          <HeroScrollHint label={hero.scrollHint} />
+          <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 sm:bottom-8 lg:bottom-10">
+            <a href="#services" aria-label={hero.scrollHint}>
+              <AnchorScrollHint />
+            </a>
+          </div>
         </div>
       </div>
       <HeroRadar />
@@ -88,8 +93,11 @@ export function HomeHero({ hero }: { hero: Hero }) {
 function HeroRadar() {
   return (
     <div
-      className="pointer-events-none absolute right-[-5%] top-1/2 hidden -translate-y-1/2 select-none md:block"
-      style={{ width: 760, height: 760, opacity: 0.38 }}
+      className="pointer-events-none absolute select-none top-1/2
+        right-0 translate-x-1/2 -translate-y-1/2
+        md:translate-x-0 md:right-[-5%]
+        w-[500px] h-[500px] sm:w-[580px] sm:h-[580px] md:w-[760px] md:h-[760px]"
+      style={{ opacity: 0.38 }}
       aria-hidden
     >
       <div
@@ -214,38 +222,3 @@ function HeroRadar() {
   );
 }
 
-function HeroScrollHint({ label }: { label: string }) {
-  return (
-    <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 justify-center sm:bottom-10 lg:bottom-12">
-      <a
-        href="#services"
-        className="group flex flex-col items-center gap-3 text-bridge/80 transition-colors hover:text-bridge"
-        aria-label={label}
-      >
-        <span className="animate-hero-scroll-hint-label font-mono text-[10px] uppercase tracking-[0.25em] sm:text-xs">
-          {label}
-        </span>
-        <span
-          className="animate-hero-scroll-hint-label flex h-10 w-10 items-center justify-center border border-bridge-dim/50 bg-sea-900/90 shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
-          aria-hidden
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-bridge"
-          >
-            <path d="M12 22V8" />
-            <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
-            <circle cx="12" cy="5" r="3" />
-          </svg>
-        </span>
-      </a>
-    </div>
-  );
-}

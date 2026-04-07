@@ -159,28 +159,6 @@ body {
   }
 }
 
-/* „Przewiń w dół” + ikona (kotwica): ten sam lekki ruch i subtelna opacity */
-@keyframes hero-scroll-hint-label {
-  0%,
-  100% {
-    opacity: 0.82;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-4px);
-  }
-}
-
-.animate-hero-scroll-hint-label {
-  animation: hero-scroll-hint-label 1.65s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-hero-scroll-hint-label {
-    animation: none;
-  }
-}
 
 /* Modal aktualności — wejście: fade tła + wysunięcie panelu z dołu */
 @keyframes news-modal-backdrop-in {
