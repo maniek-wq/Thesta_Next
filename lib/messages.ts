@@ -42,7 +42,7 @@ export const messages = {
         eyebrow:
           "INS, GNSS, radary i ECDIS — precyzyjna pozycja i świadomość sytuacji na morzu, od podejścia do portu po operacje taktyczne.",
         title:
-          "Zaawansowane systemy nawigacji i łączności dla jednostek morskich",
+          "Zaawansowane systemy nawigacji, łączności i hydrografii dla jednostek morskich",
         lead:
           "Thesta wspiera Marynarkę Wojenną oraz flotę cywilną w projektowaniu, dostawach, integracji i serwisie systemów INS, GNSS, radarów oraz ECDIS/WECDIS.",
         meta: "Projekt · dostawa · integracja · serwis",
@@ -212,19 +212,23 @@ export const messages = {
         steps: [
           {
             title: "Rozmowa i zbieranie wymagań",
-            body: "Krótka rozmowa o jednostce, typie misji i istniejącej infrastrukturze pokładowej.",
+            body: "Zaczynamy od rozmowy o jednostce, profilu misji i istniejącej infrastrukturze pokładowej. Omawiamy priorytety, ograniczenia harmonogramowe i wymagania klasyfikacyjne — tak by propozycja była dopasowana do realnych warunków operacyjnych, a nie do katalogu produktów.",
+            tags: ["Jednostka", "Misja", "Infrastruktura"],
           },
           {
             title: "Dobór rozwiązań i koncepcja",
-            body: "Przygotowujemy warianty konfiguracji systemów nawigacji, łączności i hydrografii.",
+            body: "Przygotowujemy warianty konfiguracji systemów nawigacji, łączności i hydrografii dopasowane do profilu misji. Analizujemy dostępne technologie, wymagania norm i możliwości integracji — klient otrzymuje porównanie opcji z uzasadnieniem technicznym.",
+            tags: ["Konfiguracja", "Warianty", "Analiza"],
           },
           {
             title: "Projekt, integracja, uruchomienie",
-            body: "Opracowujemy dokumentację, prowadzimy integrację z innymi systemami okrętowymi i testy na morzu.",
+            body: "Opracowujemy kompletną dokumentację techniczną i przeprowadzamy integrację z systemami okrętowymi. Każdy etap kończy się próbami — w tym testami na morzu — a protokoły odbioru potwierdzają zgodność z wymaganiami klienta i wymaganiami klasy.",
+            tags: ["Dokumentacja", "Integracja", "Testy morskie"],
           },
           {
             title: "Wsparcie serwisowe i szkolenia",
-            body: "Zapewniamy serwis, modernizacje oraz szkolenia załóg z obsługi nowych systemów.",
+            body: "Zapewniamy serwis gwarancyjny i pogwarancyjny, umowy AMC/SLA oraz szkolenia operatorskie i techniczne dla załóg. Jesteśmy dostępni przez cały cykl życia systemu — od pierwszego uruchomienia do planowej modernizacji.",
+            tags: ["Serwis", "SLA", "Szkolenie załóg"],
           },
         ],
       },
@@ -1167,7 +1171,7 @@ export const messages = {
         areas: "Navigation · Communications · Hydrography",
         eyebrow:
           "INS, GNSS, radar, and ECDIS — precise position and situational awareness at sea, from pilotage to tactical operations.",
-        title: "Advanced navigation and communications for marine units",
+        title: "Advanced navigation, communications and hydrography for marine units",
         lead:
           "Thesta supports naval and civil fleets in design, supply, integration, and service of INS, GNSS, radar, and ECDIS/WECDIS systems.",
         meta: "Design · supply · integration · service",
@@ -1336,19 +1340,23 @@ export const messages = {
         steps: [
           {
             title: "Discovery and requirements",
-            body: "A short conversation about the vessel, mission type, and existing bridge infrastructure.",
+            body: "We start with a conversation about the vessel, mission profile, and existing bridge infrastructure. We align on priorities, schedule constraints, and classification requirements — so our proposal matches real operational conditions, not a product catalogue.",
+            tags: ["Vessel", "Mission", "Infrastructure"],
           },
           {
             title: "Solution selection and concept",
-            body: "We prepare configuration options for navigation, communications, and hydrography.",
+            body: "We prepare configuration options for navigation, communications, and hydrography matched to the mission profile. We assess available technology, applicable standards, and integration feasibility — the client receives a comparison of options with technical justification.",
+            tags: ["Configuration", "Options", "Analysis"],
           },
           {
             title: "Engineering, integration, commissioning",
-            body: "Documentation, integration with other ship systems, and sea trials.",
+            body: "We produce full technical documentation and carry out integration with ship systems. Every phase concludes with trials — including sea trials — and acceptance records confirm compliance with client requirements and classification rules.",
+            tags: ["Documentation", "Integration", "Sea trials"],
           },
           {
             title: "Service support and training",
-            body: "Maintenance, upgrades, and crew training on new equipment.",
+            body: "We provide warranty and post-warranty support, AMC/SLA contracts, and operator and technical training for crews. We stay involved throughout the full system lifecycle — from first commissioning through planned upgrades.",
+            tags: ["Service", "SLA", "Crew training"],
           },
         ],
       },

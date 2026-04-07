@@ -12,7 +12,7 @@ export function HomeStats({ stats }: { stats: Stats }) {
     <SectionShell
       id="statystyki"
       variant="default"
-      className="border-y border-[rgba(22,32,48,0.28)] bg-[#060A10]"
+      className="border-y border-[rgba(22,62,98,0.35)] bg-sea-950"
       aria-labelledby="stats-heading"
     >
       <RevealOnScroll>

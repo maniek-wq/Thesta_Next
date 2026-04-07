@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --bg-deep: #050a0f;
-  --bg-panel: #0d1e2e;
-  --border-subtle: rgba(94, 184, 232, 0.12);
+  --bg-deep: #0d2035;
+  --bg-panel: #163352;
+  --border-subtle: rgba(94, 184, 232, 0.15);
   --text-muted: #8ba8bc;
   /* Wysokość górnego paska (ustawiana przez Navbar — ResizeObserver) */
   --nav-height: 4rem;
@@ -39,8 +39,8 @@ body {
   max-width: 100%;
   overflow-x: clip;
   background-image:
-    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(62, 184, 232, 0.08), transparent),
-    linear-gradient(180deg, #050a0f 0%, #0a1624 40%, #050a0f 100%);
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(62, 184, 232, 0.10), transparent),
+    linear-gradient(180deg, #0d2035 0%, #122944 40%, #0d2035 100%);
   min-height: 100vh;
 }
 
@@ -64,7 +64,7 @@ body {
   ):focus-visible {
     outline: none;
     box-shadow:
-      0 0 0 2px #050a0f,
+      0 0 0 2px #0d2035,
       0 0 0 4px rgba(94, 184, 232, 0.78);
   }
 }
@@ -84,7 +84,7 @@ body {
   .news-modal-scroll {
     scrollbar-gutter: stable;
     scrollbar-width: thin;
-    scrollbar-color: rgba(94, 184, 232, 0.45) rgba(13, 30, 46, 0.85);
+    scrollbar-color: rgba(94, 184, 232, 0.45) rgba(22, 51, 82, 0.85);
   }
 
   .news-modal-scroll::-webkit-scrollbar {
@@ -92,7 +92,7 @@ body {
   }
 
   .news-modal-scroll::-webkit-scrollbar-track {
-    background: rgba(13, 30, 46, 0.85);
+    background: rgba(22, 51, 82, 0.85);
     border-radius: 0;
   }
 

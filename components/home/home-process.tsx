@@ -44,7 +44,7 @@ function StepCircle({
       />
       {/* Inner dark circle with sonar border */}
       <span
-        className={`absolute inset-[5px] rounded-full border bg-[#060a10] transition-colors duration-300 ${
+        className={`absolute inset-[5px] rounded-full border bg-sea-950 transition-colors duration-300 ${
           active ? "border-sonar" : "border-sonar/55 group-hover/c:border-sonar"
         }`}
       />
@@ -67,10 +67,12 @@ function SlideBody({
   open,
   align,
   children,
+  tags,
 }: {
   open: boolean;
   align: "left" | "right";
   children: React.ReactNode;
+  tags?: readonly string[];
 }) {
   return (
     <div
@@ -85,12 +87,28 @@ function SlideBody({
           }`}
         >
           <p
-            className={`text-[13px] leading-[1.75] text-[#556478] ${
+            className={`text-[13px] leading-[1.75] text-[#8aafc8] ${
               align === "right" ? "text-right" : "text-left"
             }`}
           >
             {children}
           </p>
+          {tags && tags.length > 0 && (
+            <div
+              className={`mt-3 flex flex-wrap gap-1.5 ${
+                align === "right" ? "justify-end" : "justify-start"
+              }`}
+            >
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-sonar/45 bg-sonar/[0.07] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-sonar/85"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -133,14 +151,14 @@ function StepCard({
       {/* +/− toggle */}
       <p
         className={`mt-0.5 font-mono text-[14px] font-medium transition-colors duration-200 ${
-          isOpen ? "text-sonar/70" : "text-[#556478] group-hover:text-sonar/60"
+          isOpen ? "text-sonar/70" : "text-[#8aafc8] group-hover:text-sonar/60"
         }`}
       >
         {isOpen ? "−" : "+"}
       </p>
 
       {/* Slide-reveal body */}
-      <SlideBody open={isOpen} align={align}>
+      <SlideBody open={isOpen} align={align} tags={step.tags}>
         {step.body}
       </SlideBody>
     </button>
@@ -162,7 +180,7 @@ function MobileStep({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-[#162030] last:border-b-0">
+    <div className="border-b border-[rgba(37,82,120,0.5)] last:border-b-0">
       <button
         type="button"
         onClick={onToggle}
@@ -182,7 +200,7 @@ function MobileStep({
             }`}
           />
           <span
-            className={`absolute inset-[4px] rounded-full border bg-[#060a10] transition-colors ${
+            className={`absolute inset-[4px] rounded-full border bg-sea-950 transition-colors ${
               isOpen ? "border-sonar" : "border-sonar/55"
             }`}
           />
@@ -208,7 +226,7 @@ function MobileStep({
           </span>
           <span
             className={`shrink-0 font-mono text-[14px] font-medium transition-colors duration-200 ${
-              isOpen ? "text-sonar/70" : "text-[#556478]"
+              isOpen ? "text-sonar/70" : "text-[#8aafc8]"
             }`}
           >
             {isOpen ? "−" : "+"}
@@ -228,9 +246,21 @@ function MobileStep({
               isOpen ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
             }`}
           >
-            <p className="text-[13px] leading-[1.75] text-[#556478]">
+            <p className="text-[13px] leading-[1.75] text-[#8aafc8]">
               {step.body}
             </p>
+            {step.tags && step.tags.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {step.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-sonar/45 bg-sonar/[0.07] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-sonar/85"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -265,13 +295,13 @@ export function HomeProcess({ process }: { process: Process }) {
         >
           {process.heading}
         </h2>
-        <p className="mt-4 text-[13px] text-[#556478]">{process.hint}</p>
+        <p className="mt-4 text-[13px] text-[#8aafc8]">{process.hint}</p>
       </div>
 
       {/* ── Desktop zigzag timeline ── */}
       <div className="relative mt-16 hidden md:block">
         {/* Vertical connecting line */}
-        <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#162030] to-transparent" />
+        <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[rgba(37,82,120,0.5)] to-transparent" />
 
         <div className="grid grid-cols-[1fr_44px_1fr]">
           {process.steps.map((step, i) => {

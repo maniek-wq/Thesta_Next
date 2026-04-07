@@ -66,7 +66,7 @@ export function ScrollDock() {
         role="toolbar"
         aria-label={t("dock.barAria")}
         aria-hidden={!visible}
-        className={`mx-auto box-border grid min-h-10 min-w-0 w-full max-w-xl grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_auto] items-center gap-0.5 border border-bridge/25 bg-[#0a1624]/95 px-1 py-1 shadow-[0_4px_24px_rgba(0,0,0,0.55)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:gap-1 sm:px-2 sm:py-1.5 ${
+        className={`mx-auto box-border grid min-h-10 min-w-0 w-full max-w-xl grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_auto] items-center gap-0.5 border border-bridge/25 bg-[#122944]/95 px-1 py-1 shadow-[0_4px_24px_rgba(0,0,0,0.55)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:gap-1 sm:px-2 sm:py-1.5 ${
           visible
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-[calc(100%+1rem)] opacity-0"

@@ -1,7 +1,7 @@
 export function NewsCardImagePlaceholder() {
   return (
     <div
-      className="relative aspect-video w-full overflow-hidden bg-gradient-to-b from-[#0a1420] to-[#060d16]"
+      className="relative aspect-video w-full overflow-hidden bg-gradient-to-b from-[#122944] to-[#0d2035]"
       aria-hidden
     >
       {/* Subtle sonar tint */}
@@ -21,7 +21,7 @@ export function NewsCardImagePlaceholder() {
         </svg>
       </div>
       {/* Bottom gradient */}
-      <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#060a10]/80 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#0d2035]/80 to-transparent" />
     </div>
   );
 }

@@ -38,7 +38,7 @@ export function ServiceCoverBridgeVisual({
   const hub = { cx: 180, cy: 118, w: 92, h: 44 };
 
   return (
-    <div className="relative min-h-[200px] flex-1 overflow-hidden bg-[#070d14]">
+    <div className="relative min-h-[200px] flex-1 overflow-hidden bg-sea-950">
       <svg
         className="absolute inset-0 h-full w-full"
         viewBox="0 0 360 232"
@@ -176,7 +176,7 @@ type StatsCover = { cells: readonly StatCell[] };
 export function ServiceCoverStatsVisual({ cells }: StatsCover) {
   const c = cells.slice(0, 4);
   return (
-    <div className="relative grid min-h-[200px] flex-1 grid-cols-[1.15fr_1fr] gap-0 bg-[#070d14]">
+    <div className="relative grid min-h-[200px] flex-1 grid-cols-[1.15fr_1fr] gap-0 bg-sea-950">
       <div className="relative flex items-center justify-center border-r border-white/[0.06] p-3">
         <svg
           viewBox="0 0 200 200"
@@ -265,7 +265,7 @@ export function ServiceCoverStatsVisual({ cells }: StatsCover) {
               {cell.primary}
             </span>
             {cell.secondary ? (
-              <span className="offer-font-mono mt-1 text-[8px] tracking-[0.15em] text-[#556478]">
+              <span className="offer-font-mono mt-1 text-[8px] tracking-[0.15em] text-[#8aafc8]">
                 {cell.secondary}
               </span>
             ) : null}
@@ -281,7 +281,7 @@ type CertsCover = { primary: string; secondary: string };
 /** S03 — monitory / dashboard (jak w Figmie). */
 export function ServiceCoverMonitorsVisual({ primary, secondary }: CertsCover) {
   return (
-    <div className="relative flex min-h-[200px] flex-1 flex-col justify-between bg-[#070d14] p-4">
+    <div className="relative flex min-h-[200px] flex-1 flex-col justify-between bg-sea-950 p-4">
       <svg
         viewBox="0 0 320 140"
         className="w-full shrink-0"

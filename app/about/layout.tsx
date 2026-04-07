@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 export default function AboutLayout({ children }: { children: ReactNode }) {
   return (
     <div
-      className={`${inter.variable} ${jetbrainsMono.variable} offer-page-scope min-h-[calc(100dvh-var(--nav-height,4rem))] bg-[#060A10]`}
+      className={`${inter.variable} ${jetbrainsMono.variable} offer-page-scope min-h-[calc(100dvh-var(--nav-height,4rem))] bg-sea-950`}
     >
       {children}
     </div>

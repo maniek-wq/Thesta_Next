@@ -29,8 +29,8 @@ export function AboutSubpagesTabs({ active }: { active: AboutSubpageTab }) {
       </p>
       <nav aria-label={cluster}>
         <div
-          className="flex flex-wrap divide-x divide-[rgba(22,32,48,0.35)] border border-[rgba(22,32,48,0.35)]"
-          style={{ backgroundColor: "rgba(22,32,48,0.25)" }}
+          className="flex flex-wrap divide-x divide-[rgba(37,82,120,0.4)] border border-[rgba(37,82,120,0.4)]"
+          style={{ backgroundColor: "rgba(18,41,68,0.35)" }}
         >
           {TABS.map((tab) => {
             const isActive = active === tab.id;
@@ -42,7 +42,7 @@ export function AboutSubpagesTabs({ active }: { active: AboutSubpageTab }) {
                 className={`offer-font-mono min-h-[44px] flex-1 px-3 py-2.5 text-center text-[10px] font-medium uppercase tracking-[0.12em] transition-colors sm:min-w-[9.5rem] sm:flex-none sm:px-5 ${
                   isActive
                     ? "bg-[#00D4B1] text-[#060A10]"
-                    : "bg-[#0C1219] text-[#556478] hover:bg-[rgba(22,32,48,0.6)] hover:text-[#8a9aaa]"
+                    : "bg-[#122944] text-[#7faacc] hover:bg-[rgba(37,82,120,0.6)] hover:text-[#a0c4dd]"
                 } `}
               >
                 {t(tab.labelKey)}

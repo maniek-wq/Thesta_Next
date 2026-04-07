@@ -26,8 +26,8 @@ type Block = {
 };
 
 const offerTeal = "#00D4B1";
-const offerCanvas = "#060A10";
-const offerPanel = "#09111D";
+const offerCanvas = "#0d2035";
+const offerPanel = "#122944";
 
 type ServiceOfferCoverModel = Messages["offerPage"]["serviceOfferCards"][number]["cover"];
 
@@ -81,7 +81,7 @@ function ServiceOfferCoverCard({
         <ServiceOfferCoverArt cover={cover} />
       </div>
       <span
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#060a10]/[0.72] to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0d2035]/[0.72] to-transparent"
         aria-hidden
       />
       <span className="offer-font-mono absolute bottom-5 left-5 z-[2] text-[10px] text-[rgba(0,212,177,0.3)] transition-colors duration-300 group-hover:text-[rgba(0,212,177,0.5)]">
@@ -155,7 +155,7 @@ function TabSwitcher({
             className={`offer-font-mono relative min-w-[7.5rem] px-5 py-2.5 text-[11px] font-medium tracking-[0.1em] transition-[color,background-color,border-color,box-shadow] duration-300 ease-out ${
               active
                 ? "border border-[rgba(0,212,177,0.25)] text-[#00D4B1]"
-                : "border border-transparent text-[#556478] hover:text-[#8a9aaa]"
+                : "border border-transparent text-[#8aafc8] hover:text-[#8a9aaa]"
             }`}
             style={
               active
@@ -314,7 +314,7 @@ function DetailPanel({
       <div className="my-5 h-px w-full max-w-md bg-[linear-gradient(90deg,#00D4B1_0%,transparent_72%)]" />
 
       {description && (
-        <p className="text-[13px] leading-[1.8] text-[#556478]">{description}</p>
+        <p className="text-[13px] leading-[1.8] text-[#8aafc8]">{description}</p>
       )}
 
       {features && features.length > 0 && (
@@ -328,7 +328,7 @@ function DetailPanel({
                 {block.caption}
               </p>
               {block.body && (
-                <p className="mt-2 text-[13px] leading-[1.75] text-[#556478]">
+                <p className="mt-2 text-[13px] leading-[1.75] text-[#8aafc8]">
                   {block.body}
                 </p>
               )}
@@ -451,7 +451,7 @@ function ServicesTab() {
           {rows.map((row) => (
             <div
               key={row.slug}
-              className="flex flex-col overflow-hidden border border-white/[0.06] bg-[#09111D] lg:flex-row lg:items-stretch"
+              className="flex flex-col overflow-hidden border border-white/[0.06] bg-sea-900 lg:flex-row lg:items-stretch"
             >
               <ServiceOfferTextCard
                 slug={row.slug}
@@ -478,7 +478,7 @@ function OfferCtaBar({ onServicesClick }: { onServicesClick: () => void }) {
   return (
     <RevealOnScroll>
       <div
-        className="offer-cta-radial relative mt-16 border-t border-[rgba(22,32,48,0.3)] px-0 py-12"
+        className="offer-cta-radial relative mt-16 border-t border-[rgba(37,82,120,0.3)] px-0 py-12"
         style={{ backgroundColor: offerCanvas }}
       >
         <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-center">
@@ -492,7 +492,7 @@ function OfferCtaBar({ onServicesClick }: { onServicesClick: () => void }) {
             <h2 className="text-[32px] font-medium leading-[1.2] tracking-[-0.02em] text-[#dce3ed]">
               {p.ctaTitle}
             </h2>
-            <p className="text-[14px] leading-[1.75] text-[#556478]">
+            <p className="text-[14px] leading-[1.75] text-[#8aafc8]">
               {p.ctaBody}
             </p>
           </div>
@@ -508,10 +508,10 @@ function OfferCtaBar({ onServicesClick }: { onServicesClick: () => void }) {
             <button
               type="button"
               onClick={onServicesClick}
-              className="inline-flex items-center gap-2 border border-[rgba(22,32,48,0.5)] px-5 py-3 text-[13px] font-medium text-[#556478] transition-[color,border-color,background-color] duration-300 hover:border-[rgba(85,100,120,0.6)] hover:text-[#8a9aaa]"
+              className="inline-flex items-center gap-2 border border-[rgba(37,82,120,0.5)] px-5 py-3 text-[13px] font-medium text-[#8aafc8] transition-[color,border-color,background-color] duration-300 hover:border-[rgba(85,100,120,0.6)] hover:text-[#8a9aaa]"
             >
               {p.ctaSecondary}
-              <ArrowRightIcon className="text-[#556478]" />
+              <ArrowRightIcon className="text-[#8aafc8]" />
             </button>
           </div>
         </div>
@@ -533,7 +533,7 @@ export function OfferPageView() {
       <div className="mx-auto max-w-[1216px] px-4 sm:px-8">
         <Link
           href="/"
-          className="offer-font-mono inline-block pt-10 text-[10px] uppercase tracking-[0.1em] text-[#556478] transition-colors duration-300 hover:text-[rgba(0,212,177,0.65)]"
+          className="offer-font-mono inline-block pt-10 text-[10px] uppercase tracking-[0.1em] text-[#8aafc8] transition-colors duration-300 hover:text-[rgba(0,212,177,0.65)]"
         >
           ← {p.backLink}
         </Link>
@@ -549,7 +549,7 @@ export function OfferPageView() {
             <h1 className="max-w-[22ch] text-[clamp(2rem,5vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[#dce3ed]">
               {p.headline}
             </h1>
-            <p className="max-w-2xl text-[15px] leading-[1.8] text-[#556478]">
+            <p className="max-w-2xl text-[15px] leading-[1.8] text-[#8aafc8]">
               {p.intro}
             </p>
             <p className="offer-font-mono text-[10px] tracking-[0.15em] text-[rgba(85,100,120,0.3)]">

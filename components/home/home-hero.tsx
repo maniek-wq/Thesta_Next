@@ -26,7 +26,7 @@ export function HomeHero({ hero }: { hero: Hero }) {
       className="relative overflow-hidden"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_50%,rgba(0,212,177,0.09),transparent_24%),radial-gradient(circle_at_16%_22%,rgba(94,184,232,0.06),transparent_24%),linear-gradient(180deg,#050a0f_0%,#07111b_44%,#050a0f_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_50%,rgba(0,212,177,0.11),transparent_24%),radial-gradient(circle_at_16%_22%,rgba(94,184,232,0.08),transparent_24%),linear-gradient(180deg,#0d2035_0%,#122944_44%,#0d2035_100%)]" />
         <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(94,184,232,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(94,184,232,0.03)_1px,transparent_1px)] [background-size:100%_5rem,5rem_100%]" />
         <div className="absolute left-[11.5%] top-0 h-full w-px bg-bridge-dim/8" />
         <div className="absolute left-[16.5%] top-0 h-full w-px bg-bridge-dim/6" />

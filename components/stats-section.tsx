@@ -89,7 +89,7 @@ export function StatsSection({
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div
-      className="flex min-h-[148px] flex-col items-center justify-center border border-[rgba(22,32,48,0.45)] px-6 py-9 text-center"
+      className="flex min-h-[148px] flex-col items-center justify-center border border-[rgba(37,82,120,0.45)] px-6 py-9 text-center"
       style={{ backgroundColor: "rgba(22, 32, 48, 0.4)" }}
     >
       <p className="font-mono text-[clamp(2.25rem,4.5vw,2.75rem)] font-bold leading-none tracking-tight text-sonar-glow tabular-nums">

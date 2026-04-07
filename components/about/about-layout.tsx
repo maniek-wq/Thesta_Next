@@ -19,7 +19,7 @@ export function AboutLayout({
     >
       <Link
         href="/"
-        className="offer-font-mono text-[10px] uppercase tracking-[0.1em] text-[#556478] transition-colors hover:text-[rgba(0,212,177,0.65)]"
+        className="offer-font-mono text-[10px] uppercase tracking-[0.1em] text-[#8aafc8] transition-colors hover:text-[rgba(0,212,177,0.65)]"
       >
         ← {m.aboutPages.common.back}
       </Link>

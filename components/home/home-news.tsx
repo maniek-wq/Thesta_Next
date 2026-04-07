@@ -77,7 +77,7 @@ function FeaturedNewsCard({
             <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/55 transition-colors group-hover:text-sonar">
               {readMoreLabel}
             </span>
-            <span className="flex h-7 w-7 items-center justify-center border border-[#162030] text-[#556478] transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
+            <span className="flex h-7 w-7 items-center justify-center border border-[rgba(37,82,120,0.5)] text-[#8aafc8] transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
               <FigmaArrowDiagonal size={13} />
             </span>
           </div>
@@ -174,7 +174,7 @@ function MobileNewsCard({
             <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar/55">
               {readMoreLabel}
             </span>
-            <span className="flex h-7 w-7 items-center justify-center border border-[#162030] text-[#556478] transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
+            <span className="flex h-7 w-7 items-center justify-center border border-[rgba(37,82,120,0.5)] text-[#8aafc8] transition-colors group-hover:border-sonar/35 group-hover:text-sonar">
               <FigmaArrowDiagonal size={13} />
             </span>
           </div>

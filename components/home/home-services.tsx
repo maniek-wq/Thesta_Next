@@ -25,14 +25,14 @@ function ServiceCard({
   return (
     <Link
       href="/offer"
-      className="group flex flex-col gap-5 bg-[#0c1219] p-6 outline-none transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#0e151f] hover:shadow-[inset_0_0_0_1px_rgba(0,212,177,0.22),0_0_36px_-10px_rgba(0,212,177,0.09)] focus-visible:ring-2 focus-visible:ring-sonar/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#162030] motion-reduce:transition-none motion-reduce:hover:shadow-none"
+      className="group flex flex-col gap-5 bg-sea-900 p-6 outline-none transition-[background-color,box-shadow] duration-300 ease-out hover:bg-sea-850 hover:shadow-[inset_0_0_0_1px_rgba(0,212,177,0.22),0_0_36px_-10px_rgba(0,212,177,0.09)] focus-visible:ring-2 focus-visible:ring-sonar/45 focus-visible:ring-offset-2 focus-visible:ring-offset-sea-800 motion-reduce:transition-none motion-reduce:hover:shadow-none"
     >
       {/* Header row: number + icon */}
       <div className="flex items-center justify-between">
         <span className="font-mono text-[11px] font-normal text-sonar transition-colors duration-300 ease-out group-hover:text-sonar-glow motion-reduce:transition-none">
           {num}
         </span>
-        <span className="text-[#556478] transition-all duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sonar motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0">
+        <span className="text-[#8aafc8] transition-all duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sonar motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0">
           <FigmaArrowDiagonal size={13} />
         </span>
       </div>
@@ -42,17 +42,17 @@ function ServiceCard({
         <h2 className="text-[18px] font-medium leading-[1.5] text-[#dce3ed] transition-colors duration-300 ease-out group-hover:text-white motion-reduce:transition-none">
           {title}
         </h2>
-        <p className="mt-3 text-[13px] leading-[1.75] text-[#556478] transition-colors duration-300 ease-out group-hover:text-[#7a8a9c] motion-reduce:transition-none">
+        <p className="mt-3 text-[13px] leading-[1.75] text-[#8aafc8] transition-colors duration-300 ease-out group-hover:text-[#7a8a9c] motion-reduce:transition-none">
           {body}
         </p>
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-x-3 gap-y-1.5 border border-[#162030] px-0 py-0 transition-[border-color] duration-300 ease-out group-hover:border-[rgba(0,212,177,0.2)] motion-reduce:transition-none">
+      <div className="flex flex-wrap gap-x-3 gap-y-1.5 border border-[rgba(37,82,120,0.5)] px-0 py-0 transition-[border-color] duration-300 ease-out group-hover:border-[rgba(0,212,177,0.2)] motion-reduce:transition-none">
         {tagList.map((tag) => (
           <span
             key={tag}
-            className="border border-[#162030] px-2 py-1 font-mono text-[9px] tracking-[0.06em] text-[#556478] transition-[border-color,color] duration-300 ease-out group-hover:border-[rgba(0,212,177,0.18)] group-hover:text-[#8a9aaa] motion-reduce:transition-none"
+            className="border border-[rgba(37,82,120,0.5)] px-2 py-1 font-mono text-[9px] tracking-[0.06em] text-[#8aafc8] transition-[border-color,color] duration-300 ease-out group-hover:border-[rgba(0,212,177,0.18)] group-hover:text-[#8a9aaa] motion-reduce:transition-none"
           >
             {tag}
           </span>
@@ -103,7 +103,7 @@ export function HomeServices({
 
       {/* Cards grid */}
       <RevealOnScroll>
-        <div className="mt-10 bg-[#162030]">
+        <div className="mt-10 bg-sea-700/50">
           <div className="grid grid-cols-1 gap-px md:grid-cols-3">
             <ServiceCard
               num="01"

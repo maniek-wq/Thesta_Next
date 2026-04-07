@@ -7,9 +7,9 @@ import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { useLocale } from "@/components/locale-provider";
 import { getCertificateSectionImage } from "@/lib/about-certificates-media";
 
-const PANEL = "#0C1219";
-const BORDER = "rgba(22,32,48,0.3)";
-const BORDER_INNER = "rgba(22,32,48,0.4)";
+const PANEL = "#122944";
+const BORDER = "rgba(37,82,120,0.35)";
+const BORDER_INNER = "rgba(37,82,120,0.45)";
 
 export function AboutCertificatesPage() {
   const { m } = useLocale();
@@ -43,7 +43,7 @@ export function AboutCertificatesPage() {
                 </h2>
                 {img ? (
                   <div
-                    className="relative mt-6 overflow-hidden border bg-[#060A10]"
+                    className="relative mt-6 overflow-hidden border bg-sea-950"
                     style={{ borderColor: BORDER_INNER }}
                   >
                     <Image
@@ -54,7 +54,7 @@ export function AboutCertificatesPage() {
                     />
                   </div>
                 ) : null}
-                <p className="mt-5 whitespace-pre-line text-[15px] leading-[1.8] text-[#556478]">
+                <p className="mt-5 whitespace-pre-line text-[15px] leading-[1.8] text-[#8aafc8]">
                   {section.body}
                 </p>
                 {"download" in section && section.download ? (

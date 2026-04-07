@@ -7,8 +7,8 @@ import { FigmaArrowRight } from "@/components/icons/figma-icons";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import type { Messages } from "@/lib/messages";
 
-const BG = "#060A10";
-const CARD = "#0C1219";
+const BG = "#0d2035";
+const CARD = "#122944";
 const TEAL = "#00D4B1";
 
 type ProcessStep = Messages["home"]["process"]["steps"][number];
@@ -50,7 +50,7 @@ export function AboutHubPage() {
       <div className="mx-auto max-w-[1216px] px-4 sm:px-8">
         <Link
           href="/"
-          className="offer-font-mono inline-block pt-10 text-[10px] uppercase tracking-[0.1em] text-[#556478] transition-colors duration-300 hover:text-[rgba(0,212,177,0.65)]"
+          className="offer-font-mono inline-block pt-10 text-[10px] uppercase tracking-[0.1em] text-[#8aafc8] transition-colors duration-300 hover:text-[rgba(0,212,177,0.65)]"
         >
           ← {m.aboutPages.common.back}
         </Link>
@@ -69,19 +69,19 @@ export function AboutHubPage() {
         </RevealOnScroll>
 
         <RevealOnScroll delayMs={40}>
-          <section className="mt-14 space-y-5 border-t border-[rgba(22,32,48,0.3)] pt-14">
+          <section className="mt-14 space-y-5 border-t border-[rgba(37,82,120,0.3)] pt-14">
             <p className="offer-font-mono text-[10px] uppercase tracking-[0.15em] text-[rgba(0,212,177,0.5)]">
               {h.heroKicker}
             </p>
             <h2 className="max-w-[20ch] text-[clamp(1.75rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[#dce3ed]">
               {h.heroTitle}
             </h2>
-            <p className="max-w-3xl text-[15px] leading-[1.8] text-[#556478]">{h.heroBody}</p>
+            <p className="max-w-3xl text-[15px] leading-[1.8] text-[#8aafc8]">{h.heroBody}</p>
           </section>
         </RevealOnScroll>
 
         <RevealOnScroll delayMs={60}>
-          <section className="mt-20 border-t border-[rgba(22,32,48,0.3)] pt-16">
+          <section className="mt-20 border-t border-[rgba(37,82,120,0.3)] pt-16">
             <div className="mb-12 space-y-4">
               <p className="offer-font-mono text-[10px] uppercase tracking-[0.15em] text-[rgba(0,212,177,0.5)]">
                 {h.pillarsKicker}
@@ -94,7 +94,7 @@ export function AboutHubPage() {
               {h.pillars.map((pillar) => (
                 <div
                   key={pillar.num}
-                  className="border border-[rgba(22,32,48,0.2)] p-6 transition-shadow duration-300 hover:shadow-[0_0_48px_rgba(0,212,177,0.06)]"
+                  className="border border-[rgba(37,82,120,0.2)] p-6 transition-shadow duration-300 hover:shadow-[0_0_48px_rgba(0,212,177,0.06)]"
                   style={{ backgroundColor: CARD }}
                 >
                   <span
@@ -105,7 +105,7 @@ export function AboutHubPage() {
                   <h3 className="mt-2 text-[17px] font-medium leading-normal text-[#dce3ed]">
                     {pillar.title}
                   </h3>
-                  <p className="mt-3 text-[13px] leading-[1.8] text-[#556478]">{pillar.body}</p>
+                  <p className="mt-3 text-[13px] leading-[1.8] text-[#8aafc8]">{pillar.body}</p>
                 </div>
               ))}
             </div>
@@ -114,7 +114,7 @@ export function AboutHubPage() {
 
         <RevealOnScroll delayMs={40}>
           <section
-            className="mt-16 grid gap-10 border-y border-[rgba(22,32,48,0.3)] py-14 sm:grid-cols-3"
+            className="mt-16 grid gap-10 border-y border-[rgba(37,82,120,0.3)] py-14 sm:grid-cols-3"
           >
             {h.kpi.map((k) => (
               <div key={k.label} className="space-y-2">
@@ -132,14 +132,14 @@ export function AboutHubPage() {
                   </span>
                 </div>
                 <p className="text-[14px] leading-normal text-[#dce3ed]/90">{k.label}</p>
-                <p className="text-[12px] leading-normal text-[#556478]/80">{k.sub}</p>
+                <p className="text-[12px] leading-normal text-[#8aafc8]/80">{k.sub}</p>
               </div>
             ))}
           </section>
         </RevealOnScroll>
 
         <RevealOnScroll delayMs={60}>
-          <section className="mt-20 border-t border-[rgba(22,32,48,0.3)] pt-16">
+          <section className="mt-20 border-t border-[rgba(37,82,120,0.3)] pt-16">
             <div className="mb-10 space-y-3">
               <p className="offer-font-mono text-[10px] uppercase tracking-[0.12em] text-[rgba(0,212,177,0.5)]">
                 {proc.kicker}
@@ -147,15 +147,15 @@ export function AboutHubPage() {
               <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.02em] text-[#dce3ed]">
                 {proc.heading}
               </h2>
-              <p className="text-[13px] text-[#556478]">{proc.hint}</p>
+              <p className="text-[13px] text-[#8aafc8]">{proc.hint}</p>
             </div>
-            <div className="border border-[rgba(22,32,48,0.25)]">
+            <div className="border border-[rgba(37,82,120,0.25)]">
               {proc.steps.map((step: ProcessStep, i: number) => {
                 const open = openStep === i;
                 return (
                   <div
                     key={step.title}
-                    className="border-b border-[rgba(22,32,48,0.25)] last:border-b-0"
+                    className="border-b border-[rgba(37,82,120,0.25)] last:border-b-0"
                   >
                     <button
                       type="button"
@@ -181,7 +181,7 @@ export function AboutHubPage() {
                           className={`offer-font-mono flex h-12 w-12 items-center justify-center border text-[12px] font-medium transition-colors ${
                             open
                               ? "border-[#00D4B1] text-[#00D4B1]"
-                              : "border-white/10 text-[#556478]"
+                              : "border-white/10 text-[#8aafc8]"
                           }`}
                         >
                           {String(i + 1).padStart(2, "0")}
@@ -194,7 +194,7 @@ export function AboutHubPage() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <p className="border-t border-[rgba(22,32,48,0.2)] px-5 py-4 text-[13px] leading-[1.75] text-[#556478]">
+                        <p className="border-t border-[rgba(37,82,120,0.2)] px-5 py-4 text-[13px] leading-[1.75] text-[#8aafc8]">
                           {step.body}
                         </p>
                       </div>
@@ -207,7 +207,7 @@ export function AboutHubPage() {
         </RevealOnScroll>
 
         <RevealOnScroll delayMs={40}>
-          <section className="mt-20 border-t border-[rgba(22,32,48,0.3)] pt-16">
+          <section className="mt-20 border-t border-[rgba(37,82,120,0.3)] pt-16">
             <div className="mb-10 space-y-3">
               <p className="offer-font-mono text-[10px] uppercase tracking-[0.12em] text-[rgba(0,212,177,0.5)]">
                 {h.subpagesKicker}
@@ -221,7 +221,7 @@ export function AboutHubPage() {
                 <Link
                   key={c.href}
                   href={c.href}
-                  className="group flex flex-col overflow-hidden border border-white/[0.06] bg-[#09111D] sm:flex-row sm:items-stretch"
+                  className="group flex flex-col overflow-hidden border border-white/[0.06] bg-sea-900 sm:flex-row sm:items-stretch"
                 >
                   <div className="flex min-h-[88px] shrink-0 items-center gap-4 border-b border-white/[0.06] px-6 py-5 sm:w-[min(280px,38%)] sm:border-b-0 sm:border-r sm:border-white/[0.06]">
                     <span className="offer-font-mono text-[11px] text-[rgba(0,212,177,0.25)]">
@@ -230,7 +230,7 @@ export function AboutHubPage() {
                     <span className="text-[16px] font-medium text-[#d0dce8]">{c.title}</span>
                   </div>
                   <div className="flex flex-1 items-center justify-between gap-4 px-6 py-5">
-                    <p className="text-[13px] leading-relaxed text-[#556478]">{c.desc}</p>
+                    <p className="text-[13px] leading-relaxed text-[#8aafc8]">{c.desc}</p>
                     <span className="shrink-0 text-white/15 transition-colors group-hover:text-[#00D4B1]/60">
                       <FigmaArrowRight size={14} />
                     </span>
@@ -242,7 +242,7 @@ export function AboutHubPage() {
         </RevealOnScroll>
 
         <RevealOnScroll delayMs={60}>
-          <section className="mt-20 border-t border-[rgba(22,32,48,0.3)] pt-16">
+          <section className="mt-20 border-t border-[rgba(37,82,120,0.3)] pt-16">
             <div className="mb-12 space-y-4">
               <p className="offer-font-mono text-[10px] uppercase tracking-[0.15em] text-[rgba(0,212,177,0.5)]">
                 {h.audienceKicker}
@@ -255,11 +255,11 @@ export function AboutHubPage() {
               {h.audienceCards.map((card) => (
                 <div
                   key={card.title}
-                  className="border border-[rgba(22,32,48,0.2)] p-8"
+                  className="border border-[rgba(37,82,120,0.2)] p-8"
                   style={{ backgroundColor: CARD }}
                 >
                   <h3 className="text-[17px] font-medium text-[#dce3ed]">{card.title}</h3>
-                  <p className="mt-3 text-[13px] leading-[1.8] text-[#556478]">{card.body}</p>
+                  <p className="mt-3 text-[13px] leading-[1.8] text-[#8aafc8]">{card.body}</p>
                 </div>
               ))}
             </div>
@@ -267,13 +267,13 @@ export function AboutHubPage() {
         </RevealOnScroll>
 
         <RevealOnScroll delayMs={40}>
-          <div className="mt-20 border-t border-[rgba(22,32,48,0.3)] py-16 text-center">
+          <div className="mt-20 border-t border-[rgba(37,82,120,0.3)] py-16 text-center">
             <h2 className="text-[28px] font-medium tracking-[-0.02em] text-[#dce3ed] sm:text-[32px]">
               {h.ctaBandTitle}
             </h2>
             <Link
               href="/contact"
-              className="offer-font-mono mt-6 inline-flex items-center gap-2 border border-[rgba(22,32,48,0.5)] px-6 py-3 text-[12px] font-medium tracking-[0.08em] text-[#556478] transition-colors hover:border-[#00D4B1]/40 hover:text-[#00D4B1]"
+              className="offer-font-mono mt-6 inline-flex items-center gap-2 border border-[rgba(37,82,120,0.5)] px-6 py-3 text-[12px] font-medium tracking-[0.08em] text-[#8aafc8] transition-colors hover:border-[#00D4B1]/40 hover:text-[#00D4B1]"
             >
               {h.ctaBandButton}
               <FigmaArrowRight size={14} className="text-current" />

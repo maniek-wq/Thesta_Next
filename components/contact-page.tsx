@@ -23,7 +23,7 @@ export function ContactPageView() {
       <div className="mx-auto max-w-[1216px] px-4 sm:px-8">
         <Link
           href="/"
-          className="offer-font-mono inline-block pt-10 text-[10px] uppercase tracking-[0.1em] text-[#556478] transition-colors hover:text-[rgba(0,212,177,0.65)]"
+          className="offer-font-mono inline-block pt-10 text-[10px] uppercase tracking-[0.1em] text-[#8aafc8] transition-colors hover:text-[rgba(0,212,177,0.65)]"
         >
           ← {m.newsPage.back}
         </Link>
@@ -35,14 +35,14 @@ export function ContactPageView() {
           <h1 className="max-w-[18ch] text-[clamp(2rem,4.5vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[#dce3ed]">
             {p.headline}
           </h1>
-          <p className="max-w-2xl text-[15px] leading-[1.8] text-[#556478]">{p.intro}</p>
+          <p className="max-w-2xl text-[15px] leading-[1.8] text-[#8aafc8]">{p.intro}</p>
         </header>
 
         <div className="mt-14 flex flex-col gap-12 lg:mt-16 lg:flex-row lg:items-start lg:justify-between lg:gap-10 xl:gap-14">
           {/* Form — makiet ~704px */}
           <section
-            className="w-full shrink-0 border border-[rgba(22,32,48,0.3)] lg:max-w-[704px] lg:flex-1"
-            style={{ backgroundColor: "#0C1219" }}
+            className="w-full shrink-0 border border-[rgba(37,82,120,0.3)] lg:max-w-[704px] lg:flex-1"
+            style={{ backgroundColor: "#122944" }}
             aria-label={p.formHeading}
           >
             <form
@@ -63,7 +63,7 @@ export function ContactPageView() {
                     type="text"
                     autoComplete="name"
                     placeholder={p.form.namePlaceholder}
-                    className="border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                    className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -80,7 +80,7 @@ export function ContactPageView() {
                     autoComplete="email"
                     inputMode="email"
                     placeholder={p.form.emailPlaceholder}
-                    className="border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                    className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                   />
                 </div>
               </div>
@@ -98,7 +98,7 @@ export function ContactPageView() {
                   type="text"
                   autoComplete="organization"
                   placeholder={p.form.organizationPlaceholder}
-                  className="border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                  className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                 />
               </div>
 
@@ -114,7 +114,7 @@ export function ContactPageView() {
                   name="message"
                   rows={6}
                   placeholder={p.form.messagePlaceholder}
-                  className="min-h-[140px] resize-y border border-[rgba(22,32,48,0.4)] bg-[#060A10] px-4 py-3 text-[14px] leading-normal text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                  className="min-h-[140px] resize-y border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] leading-normal text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                 />
               </div>
 
@@ -131,15 +131,15 @@ export function ContactPageView() {
                 </p>
               </div>
 
-              <label className="flex cursor-pointer gap-3 border-t border-[rgba(22,32,48,0.25)] pt-6">
+              <label className="flex cursor-pointer gap-3 border-t border-[rgba(37,82,120,0.25)] pt-6">
                 <input
                   id="contact-privacy-consent"
                   name="privacyConsent"
                   type="checkbox"
                   required
-                  className="mt-0.5 h-3.5 w-3.5 shrink-0 border border-[rgba(22,32,48,0.5)] bg-[#060A10] accent-[#00D4B1]"
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0 border border-[rgba(37,82,120,0.5)] bg-sea-950 accent-[#00D4B1]"
                 />
-                <span className="text-[13px] leading-relaxed text-[#556478]">
+                <span className="text-[13px] leading-relaxed text-[#8aafc8]">
                   {p.form.consent}{" "}
                   <Link
                     href="/privacy"
@@ -165,8 +165,8 @@ export function ContactPageView() {
                   <FigmaMapPin className={iconClass} />
                   <div className="space-y-1 text-[14px] leading-normal">
                     <p className="font-medium text-[#dce3ed]">{h.company.split(" · ")[0]}</p>
-                    <p className="text-[#556478]">{p.addressLine1}</p>
-                    <p className="text-[#556478]">{p.addressLine2}</p>
+                    <p className="text-[#8aafc8]">{p.addressLine1}</p>
+                    <p className="text-[#8aafc8]">{p.addressLine2}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -192,13 +192,13 @@ export function ContactPageView() {
 
             <div>
               <h2 className="text-[16px] font-medium text-[#dce3ed]">{p.faqHeading}</h2>
-              <div className="mt-6 border-t border-[rgba(22,32,48,0.35)]">
+              <div className="mt-6 border-t border-[rgba(37,82,120,0.35)]">
                 {p.faqItems.map((item, i) => {
                   const open = openFaq === i;
                   return (
                     <div
                       key={item.q}
-                      className="border-b border-[rgba(22,32,48,0.35)]"
+                      className="border-b border-[rgba(37,82,120,0.35)]"
                     >
                       <button
                         type="button"
@@ -223,7 +223,7 @@ export function ContactPageView() {
                         }`}
                       >
                         <div className="overflow-hidden">
-                          <p className="pb-4 text-[13px] leading-[1.75] text-[#556478]">
+                          <p className="pb-4 text-[13px] leading-[1.75] text-[#8aafc8]">
                             {item.a}
                           </p>
                         </div>

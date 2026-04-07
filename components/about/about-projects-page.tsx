@@ -5,20 +5,20 @@ import { AboutSubpagesTabs } from "@/components/about/about-subpages-tabs";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { useLocale } from "@/components/locale-provider";
 
-const PANEL = "#0C1219";
-const BORDER = "rgba(22,32,48,0.3)";
-const BORDER_ROW = "rgba(22,32,48,0.22)";
+const PANEL = "#122944";
+const BORDER = "rgba(37,82,120,0.3)";
+const BORDER_ROW = "rgba(37,82,120,0.22)";
 
 function RowScope({ lines }: { lines: readonly string[] }) {
   if (lines.length === 1) {
-    return <span className="text-[#556478]">{lines[0]}</span>;
+    return <span className="text-[#8aafc8]">{lines[0]}</span>;
   }
   return (
     <>
-      <p className="text-[#556478]">{lines[0]}</p>
+      <p className="text-[#8aafc8]">{lines[0]}</p>
       <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-[rgba(0,212,177,0.35)]">
         {lines.slice(1).map((line, j) => (
-          <li key={j} className="text-[#556478]">
+          <li key={j} className="text-[#8aafc8]">
             {line}
           </li>
         ))}
@@ -42,7 +42,7 @@ export function AboutProjectsPage() {
           <h1 className="max-w-[22ch] text-[clamp(1.85rem,4vw,3rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[#dce3ed]">
             {p.title}
           </h1>
-          <p className="max-w-3xl text-[15px] leading-[1.8] text-[#556478]">{p.intro}</p>
+          <p className="max-w-3xl text-[15px] leading-[1.8] text-[#8aafc8]">{p.intro}</p>
         </header>
       </RevealOnScroll>
 
@@ -76,7 +76,7 @@ export function AboutProjectsPage() {
             <thead>
               <tr
                 className="border-b"
-                style={{ borderColor: BORDER_ROW, backgroundColor: "rgba(22,32,48,0.35)" }}
+                style={{ borderColor: BORDER_ROW, backgroundColor: "rgba(37,82,120,0.35)" }}
               >
                 <th className="w-[min(28%,12rem)] px-5 py-4 sm:px-6">
                   <span className="offer-font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[rgba(0,212,177,0.5)]">

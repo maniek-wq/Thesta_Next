@@ -44,7 +44,7 @@ function FilterBar({
         className={`border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors ${
           activeTag === null
             ? "border-sonar bg-sonar/[0.12] text-sonar"
-            : "border-white/20 text-[#556478] hover:border-white/35 hover:text-sonar/70"
+            : "border-white/20 text-[#8aafc8] hover:border-white/35 hover:text-sonar/70"
         }`}
       >
         {allLabel}
@@ -57,7 +57,7 @@ function FilterBar({
           className={`border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors ${
             activeTag === tag
               ? "border-sonar bg-sonar/[0.12] text-sonar"
-              : "border-white/20 text-[#556478] hover:border-white/35 hover:text-sonar/70"
+              : "border-white/20 text-[#8aafc8] hover:border-white/35 hover:text-sonar/70"
           }`}
         >
           {tag}
@@ -82,7 +82,7 @@ function FeaturedNewsCard({
   const alt = item.imageAlt ?? item.title;
 
   return (
-    <article className="group overflow-hidden border border-white/[0.15] bg-[#0a1018] transition-colors hover:border-white/30">
+    <article className="group overflow-hidden border border-white/[0.15] bg-sea-900 transition-colors hover:border-white/30">
       <button
         type="button"
         onClick={() => onOpen(itemIndex)}
@@ -107,7 +107,7 @@ function FeaturedNewsCard({
             )}
           </div>
           {/* Bottom gradient for tag legibility */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#060a10]/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0d2035]/80 to-transparent" />
           {/* Tag badge */}
           <div className="absolute bottom-3 left-3">
             <TagBadge label={item.tag} />
@@ -122,10 +122,10 @@ function FeaturedNewsCard({
               <span className="border border-sonar/40 bg-sea-950/60 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.09em] text-sonar">
                 {item.tag}
               </span>
-              <span className="font-mono text-[10px] text-[#556478]">
+              <span className="font-mono text-[10px] text-[#8aafc8]">
                 {item.date}
               </span>
-              <span className="font-mono text-[10px] text-[#556478]">
+              <span className="font-mono text-[10px] text-[#8aafc8]">
                 {estimateReadTime(item.modalBody)} min read
               </span>
             </div>
@@ -134,7 +134,7 @@ function FeaturedNewsCard({
               {item.title}
             </h2>
             {/* Excerpt */}
-            <p className="mt-4 max-w-[38rem] text-[13px] leading-[1.8] text-[#556478]">
+            <p className="mt-4 max-w-[38rem] text-[13px] leading-[1.8] text-[#8aafc8]">
               {item.excerpt}
             </p>
           </div>
@@ -156,7 +156,7 @@ function FeaturedNewsCard({
 
 function FeaturedCoverPlaceholder() {
   return (
-    <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-[#0a1420] to-[#060d16]">
+    <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-[#122944] to-[#0d2035]">
       {/* Subtle sonar tint overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-sonar/[0.03] to-transparent" />
       {/* Radial glow */}
@@ -174,7 +174,7 @@ function FeaturedCoverPlaceholder() {
         </svg>
       </div>
       {/* Bottom-left gradient overlay */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#060a10] to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0d2035] to-transparent" />
     </div>
   );
 }
@@ -194,7 +194,7 @@ function GridNewsCard({
   const alt = item.imageAlt ?? item.title;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden border border-white/[0.15] bg-[#0a1018] transition-colors hover:border-white/30">
+    <article className="group flex h-full flex-col overflow-hidden border border-white/[0.15] bg-sea-900 transition-colors hover:border-white/30">
       <button
         type="button"
         onClick={() => onOpen(itemIndex)}
@@ -206,7 +206,7 @@ function GridNewsCard({
             <NewsCardMedia image={image} alt={alt} />
           </div>
           {/* Bottom gradient */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#060a10]/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#0d2035]/80 to-transparent" />
           {/* Tag badge */}
           <div className="absolute bottom-3 left-3">
             <TagBadge label={item.tag} />
@@ -221,7 +221,7 @@ function GridNewsCard({
               <span className="border border-sonar/40 bg-sea-950/60 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.09em] text-sonar">
                 {item.tag}
               </span>
-              <span className="font-mono text-[10px] text-[#556478]">
+              <span className="font-mono text-[10px] text-[#8aafc8]">
                 {item.date}
               </span>
             </div>
@@ -230,7 +230,7 @@ function GridNewsCard({
               {item.title}
             </h3>
             {/* Excerpt */}
-            <p className="mt-2.5 line-clamp-3 text-[12px] leading-[1.7] text-[#556478]">
+            <p className="mt-2.5 line-clamp-3 text-[12px] leading-[1.7] text-[#8aafc8]">
               {item.excerpt}
             </p>
           </div>
@@ -240,8 +240,8 @@ function GridNewsCard({
             <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-sonar">
               {readMoreLabel}
             </span>
-            <div className="flex items-center gap-2 text-[#556478]">
-              <span className="flex items-center justify-center border border-[#556478]/40 p-1 transition-colors group-hover:border-sonar/40 group-hover:text-sonar">
+            <div className="flex items-center gap-2 text-[#8aafc8]">
+              <span className="flex items-center justify-center border border-[#8aafc8]/40 p-1 transition-colors group-hover:border-sonar/40 group-hover:text-sonar">
                 <FigmaArrowDiagonal size={13} />
               </span>
               <span className="font-mono text-[10px]">
@@ -294,7 +294,7 @@ export function NewsPageView() {
 
       <Link
         href="/"
-        className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#556478] transition-colors hover:text-sonar/70"
+        className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#8aafc8] transition-colors hover:text-sonar/70"
       >
         ← {p.back}
       </Link>
@@ -312,20 +312,20 @@ export function NewsPageView() {
             >
               {p.heading}
             </h1>
-            <p className="mt-5 max-w-2xl text-sm leading-8 text-[#556478] sm:text-[0.95rem]">
+            <p className="mt-5 max-w-2xl text-sm leading-8 text-[#8aafc8] sm:text-[0.95rem]">
               {p.intro}
             </p>
           </div>
           <div className="hidden items-center gap-6 lg:flex">
             <div className="text-center">
               <p className="font-mono text-xl text-sonar">{items.length}</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#556478]">
+              <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8aafc8]">
                 {p.itemsCountLabel}
               </p>
             </div>
             <div className="text-center">
               <p className="font-mono text-xl text-sonar">{tags.length}</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#556478]">
+              <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8aafc8]">
                 {p.tagsCountLabel}
               </p>
             </div>
@@ -364,8 +364,8 @@ export function NewsPageView() {
         </section>
       ) : (
         <section className="pb-24 pt-8">
-          <div className="border border-white/[0.15] bg-[#0a1018] px-6 py-16 text-center">
-            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#556478]">
+          <div className="border border-white/[0.15] bg-sea-900 px-6 py-16 text-center">
+            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#8aafc8]">
               {p.emptyState}
             </p>
           </div>
