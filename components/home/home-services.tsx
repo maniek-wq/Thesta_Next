@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
-import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { SectionShell } from "@/components/section-shell";
 import type { Messages } from "@/lib/messages";
 
@@ -14,18 +14,27 @@ function ServiceCard({
   title,
   body,
   tags,
+  delay,
+  visible,
 }: {
   num: string;
   title: string;
   body: string;
   tags: string;
+  delay: number;
+  visible: boolean;
 }) {
   const tagList = tags.split(" · ");
 
   return (
     <Link
       href="/offer"
-      className="group flex flex-col gap-5 bg-sea-900 p-6 outline-none transition-[background-color,box-shadow] duration-300 ease-out hover:bg-sea-850 hover:shadow-[inset_0_0_0_1px_rgba(0,212,177,0.22),0_0_36px_-10px_rgba(0,212,177,0.09)] focus-visible:ring-2 focus-visible:ring-sonar/45 focus-visible:ring-offset-2 focus-visible:ring-offset-sea-800 motion-reduce:transition-none motion-reduce:hover:shadow-none"
+      className="group flex flex-col gap-5 bg-sea-900 p-6 outline-none transition-[background-color,box-shadow,opacity,transform] duration-500 ease-out hover:bg-sea-850 hover:shadow-[inset_0_0_0_1px_rgba(0,212,177,0.22),0_0_36px_-10px_rgba(0,212,177,0.09)] focus-visible:ring-2 focus-visible:ring-sonar/45 focus-visible:ring-offset-2 focus-visible:ring-offset-sea-800 motion-reduce:transition-none motion-reduce:hover:shadow-none"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transitionDelay: `${delay}ms`,
+      }}
     >
       {/* Header row: number + icon */}
       <div className="flex items-center justify-between">
@@ -69,6 +78,26 @@ export function HomeServices({
   services: Services;
   section: ServicesSection;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e?.isIntersecting) setVisible(true); },
+      { threshold: 0.15 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const cards = [
+    { num: "01", ...services.nav },
+    { num: "02", ...services.comms },
+    { num: "03", ...services.hydro },
+  ];
+
   return (
     <SectionShell
       id="services"
@@ -76,7 +105,13 @@ export function HomeServices({
       aria-labelledby="services-heading"
     >
       {/* Section header */}
-      <RevealOnScroll>
+      <div
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "none" : "translateY(12px)",
+          transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+        }}
+      >
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-sonar/60">
@@ -99,36 +134,34 @@ export function HomeServices({
             </span>
           </Link>
         </div>
-      </RevealOnScroll>
+      </div>
 
       {/* Cards grid */}
-      <RevealOnScroll>
-        <div className="mt-10 bg-sea-700/50">
-          <div className="grid grid-cols-1 gap-px md:grid-cols-3">
+      <div ref={ref} className="mt-10 bg-sea-700/50">
+        <div className="grid grid-cols-1 gap-px md:grid-cols-3">
+          {cards.map((card, i) => (
             <ServiceCard
-              num="01"
-              title={services.nav.title}
-              body={services.nav.body}
-              tags={services.nav.tags}
+              key={card.num}
+              num={card.num}
+              title={card.title}
+              body={card.body}
+              tags={card.tags}
+              delay={i * 130}
+              visible={visible}
             />
-            <ServiceCard
-              num="02"
-              title={services.comms.title}
-              body={services.comms.body}
-              tags={services.comms.tags}
-            />
-            <ServiceCard
-              num="03"
-              title={services.hydro.title}
-              body={services.hydro.body}
-              tags={services.hydro.tags}
-            />
-          </div>
+          ))}
         </div>
-      </RevealOnScroll>
+      </div>
 
       {/* Mobile "full offer" link */}
-      <div className="mt-6 sm:hidden">
+      <div
+        className="mt-6 sm:hidden"
+        style={{
+          opacity: visible ? 1 : 0,
+          transition: "opacity 0.6s ease-out",
+          transitionDelay: "400ms",
+        }}
+      >
         <Link
           href="/offer"
           className="group flex items-center gap-1.5 font-mono text-[11px] tracking-[0.04em] text-sonar transition-colors hover:text-sonar-glow"

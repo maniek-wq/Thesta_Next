@@ -68,12 +68,16 @@ export function HomeHero({ hero }: { hero: Hero }) {
               </Link>
               <Link
                 href="/offer"
-                className="group/offer inline-flex items-center gap-2 border border-bridge-dim/50 bg-sea-950/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-bridge hover:bg-sea-800/50 sm:px-6"
+                className="group/offer relative inline-flex items-center gap-2 overflow-hidden border border-bridge-dim/50 bg-sea-950/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-bridge hover:bg-sea-800/50 sm:px-6"
               >
-                {hero.ctaOffer}
+                <span
+                  className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-sonar/12 to-transparent transition-transform duration-500 group-hover/offer:translate-x-full"
+                  aria-hidden
+                />
+                <span className="relative">{hero.ctaOffer}</span>
                 <FigmaArrowDiagonal
                   size={13}
-                  className="text-bridge/70 transition-transform duration-200 group-hover/offer:translate-x-0.5 group-hover/offer:-translate-y-0.5 group-hover/offer:text-bridge"
+                  className="relative text-bridge/70 transition-transform duration-200 group-hover/offer:translate-x-0.5 group-hover/offer:-translate-y-0.5 group-hover/offer:text-bridge"
                 />
               </Link>
             </div>
