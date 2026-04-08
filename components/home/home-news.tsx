@@ -273,9 +273,11 @@ export function HomeNews({ news }: { news: News }) {
         </Link>
       </div>
 
+      {/* Cards wrapper — ref here so IntersectionObserver fires on both mobile and desktop */}
+      <div ref={cardsRef}>
+
       {/* Desktop layout */}
       <div
-        ref={cardsRef}
         className="mt-8 hidden gap-3.5 lg:grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] xl:gap-4"
       >
         <FeaturedNewsCard
@@ -340,6 +342,7 @@ export function HomeNews({ news }: { news: News }) {
             <FigmaArrowDiagonal size={13} />
           </span>
         </Link>
+      </div>
       </div>
     </SectionShell>
   );
