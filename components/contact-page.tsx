@@ -63,7 +63,7 @@ export function ContactPageView() {
                     type="text"
                     autoComplete="name"
                     placeholder={p.form.namePlaceholder}
-                    className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                    className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(138,175,200,0.5)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -80,7 +80,7 @@ export function ContactPageView() {
                     autoComplete="email"
                     inputMode="email"
                     placeholder={p.form.emailPlaceholder}
-                    className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                    className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(138,175,200,0.5)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                   />
                 </div>
               </div>
@@ -98,7 +98,7 @@ export function ContactPageView() {
                   type="text"
                   autoComplete="organization"
                   placeholder={p.form.organizationPlaceholder}
-                  className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                  className="border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(138,175,200,0.5)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                 />
               </div>
 
@@ -114,7 +114,7 @@ export function ContactPageView() {
                   name="message"
                   rows={6}
                   placeholder={p.form.messagePlaceholder}
-                  className="min-h-[140px] resize-y border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] leading-normal text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(85,100,120,0.25)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
+                  className="min-h-[140px] resize-y border border-[rgba(37,82,120,0.4)] bg-sea-950 px-4 py-3 text-[14px] leading-normal text-[#dce3ed] outline-none transition-[border-color,box-shadow] placeholder:text-[rgba(138,175,200,0.5)] focus-visible:border-[rgba(0,212,177,0.35)] focus-visible:ring-1 focus-visible:ring-[rgba(0,212,177,0.2)]"
                 />
               </div>
 
