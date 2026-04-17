@@ -1,24 +1,15 @@
 "use client";
 
-import Link from "next/link";
-import { FigmaArrowDiagonal } from "@/components/icons/figma-icons";
 import { SectionShell } from "@/components/section-shell";
 import { AnchorScrollHint } from "@/components/home/anchor-scroll-hint";
 import type { Messages } from "@/lib/messages";
 
 type Hero = Messages["home"]["hero"];
 
-const RADAR_BLIPS = [
-  { top: "28%", left: "62%", delay: "0s", size: 6 },
-  { top: "55%", left: "45%", delay: "1.2s", size: 5 },
-  { top: "70%", left: "65%", delay: "2.8s", size: 7 },
-  { top: "38%", left: "30%", delay: "0.7s", size: 5 },
-  { top: "20%", left: "50%", delay: "1.8s", size: 4 },
-];
+/** Podmień na właściwy plik po otrzymaniu od klienta. */
+const HERO_VIDEO_SRC = "/videos/main.mp4";
 
 export function HomeHero({ hero }: { hero: Hero }) {
-  const chips = hero.areas.split("·").map((item) => item.trim());
-
   return (
     <SectionShell
       id="hero"
@@ -26,203 +17,63 @@ export function HomeHero({ hero }: { hero: Hero }) {
       contained={false}
       className="relative overflow-hidden"
     >
+      {/* ── Video background ── */}
+      <video
+        src={HERO_VIDEO_SRC}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
+        aria-hidden
+      />
+
+      {/* ── Overlays (działają zarówno z wideo, jak i bez) ── */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_50%,rgba(0,212,177,0.11),transparent_24%),radial-gradient(circle_at_16%_22%,rgba(94,184,232,0.08),transparent_24%),linear-gradient(180deg,#0d2035_0%,#122944_44%,#0d2035_100%)]" />
-        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(94,184,232,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(94,184,232,0.03)_1px,transparent_1px)] [background-size:100%_5rem,5rem_100%]" />
+        {/* Główna ciemna zasłona — symetryczna dla wyśrodkowanego układu */}
+        <div className="absolute inset-0 bg-[rgba(10,20,35,0.58)]" />
+        {/* Gradient góra/dół dla spójności z resztą strony */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,32,53,0.55)_0%,transparent_30%,transparent_70%,rgba(13,32,53,0.75)_100%)]" />
+        {/* Subtelny sonar glow po prawej (zachowany klimat marynistyczny) */}
+        <div className="absolute right-[-18rem] top-[10%] h-[34rem] w-[34rem] rounded-full bg-sonar/5 blur-3xl" />
+        {/* Linie siatki */}
+        <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(94,184,232,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(94,184,232,0.03)_1px,transparent_1px)] [background-size:100%_5rem,5rem_100%]" />
         <div className="absolute left-[11.5%] top-0 h-full w-px bg-bridge-dim/8" />
         <div className="absolute left-[16.5%] top-0 h-full w-px bg-bridge-dim/6" />
-        <div className="absolute right-[-18rem] top-[10%] h-[34rem] w-[34rem] rounded-full bg-sonar/6 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6">
-        <div className="relative flex min-h-[calc(100dvh-var(--nav-height,4rem))] items-center py-10 pb-24 sm:py-14 sm:pb-28 lg:py-20 lg:pb-32">
-          <div className="relative max-w-[34rem] sm:max-w-[38rem] lg:max-w-[42rem] lg:pl-1 xl:max-w-[46rem]">
-            <div className="flex flex-wrap gap-2">
-              {chips.map((chip) => (
-                <span
-                  key={chip}
-                  className="border border-bridge-dim/20 bg-sea-900/55 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-sonar-glow/80"
-                >
-                  {chip}
-                </span>
-              ))}
-            </div>
-            <p className="mt-7 max-w-[34rem] font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-sea-400 sm:mt-8 sm:text-[11px]">
-              {hero.eyebrow}
-            </p>
-            <h1 className="mt-4 max-w-[13ch] text-balance text-[clamp(2.5rem,5.5vw,4.25rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-white sm:mt-5 sm:max-w-[14.5ch] lg:max-w-[17ch]">
-              {hero.title}
-            </h1>
-            <p className="mt-7 max-w-[34rem] text-pretty text-[0.98rem] leading-[1.85] text-sea-200/86 sm:mt-8 sm:text-[1.02rem]">
-              {hero.lead}
-            </p>
-            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-sea-500 sm:mt-7 sm:text-[11px]">
-              {hero.meta}
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3.5 sm:mt-10 sm:gap-4">
-              <Link
-                href="/contact"
-                className="bg-sonar-dim px-5 py-3 text-sm font-medium text-sea-950 transition-colors hover:bg-sonar sm:px-6"
-              >
-                {hero.ctaContact}
-              </Link>
-              <Link
-                href="/offer"
-                className="group/offer relative inline-flex items-center gap-2 overflow-hidden border border-bridge-dim/50 bg-sea-950/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-bridge hover:bg-sea-800/50 sm:px-6"
-              >
-                <span
-                  className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-sonar/12 to-transparent transition-transform duration-500 group-hover/offer:translate-x-full"
-                  aria-hidden
-                />
-                <span className="relative">{hero.ctaOffer}</span>
-                <FigmaArrowDiagonal
-                  size={13}
-                  className="relative text-bridge/70 transition-transform duration-200 group-hover/offer:translate-x-0.5 group-hover/offer:-translate-y-0.5 group-hover/offer:text-bridge"
-                />
-              </Link>
-            </div>
+      {/* ── Content ── */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <div className="relative flex min-h-[calc(100dvh-var(--nav-height,4rem))] flex-col items-center justify-center py-16 pb-28 text-center sm:pb-32">
+
+          <h1 className="max-w-[22ch] text-balance text-[clamp(2.4rem,5.5vw,4.75rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-white sm:max-w-[20ch]">
+            {hero.title
+              .split(/(nawigacji|łączności|hydrografii|navigation|communications|hydrography)/i)
+              .map((part, i) =>
+                /nawigacji|łączności|hydrografii|navigation|communications|hydrography/i.test(part)
+                  ? <span key={i} className="text-sonar">{part}</span>
+                  : part
+              )}
+          </h1>
+
+          <div className="mt-8 flex items-center gap-3">
+            <span className="h-px w-8 bg-bridge-dim/40" />
+            <span className="h-1 w-1 rounded-full bg-sonar/60" />
+            <span className="h-px w-8 bg-bridge-dim/40" />
           </div>
-          <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 sm:bottom-8 lg:bottom-10">
-            <a href="#services" aria-label={hero.scrollHint}>
-              <AnchorScrollHint />
-            </a>
-          </div>
+
+          <p className="mt-6 max-w-[30rem] text-pretty text-[0.97rem] leading-[1.85] text-sea-200/72 sm:text-[1.02rem]">
+            {hero.lead}
+          </p>
+
+        </div>
+        <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 sm:bottom-8 lg:bottom-10">
+          <a href="#services" aria-label={hero.scrollHint}>
+            <AnchorScrollHint />
+          </a>
         </div>
       </div>
-      <HeroRadar />
     </SectionShell>
   );
 }
-
-function HeroRadar() {
-  return (
-    <div
-      className="pointer-events-none absolute select-none top-1/2
-        right-0 translate-x-1/2 -translate-y-1/2
-        md:translate-x-0 md:right-[-5%]
-        w-[500px] h-[500px] sm:w-[580px] sm:h-[580px] md:w-[760px] md:h-[760px]"
-      style={{ opacity: 0.38 }}
-      aria-hidden
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "80%",
-          height: "80%",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(0,212,177,0.07) 0%, transparent 70%)",
-          filter: "blur(20px)",
-        }}
-      />
-      {[1, 0.72, 0.5, 0.3].map((r, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full border"
-          style={{
-            width: `${r * 100}%`,
-            height: `${r * 100}%`,
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            borderColor: `rgba(0,212,177,${0.55 - i * 0.05})`,
-            boxShadow:
-              i === 0
-                ? "0 0 12px rgba(0,212,177,0.08) inset, 0 0 12px rgba(0,212,177,0.08)"
-                : "none",
-          }}
-        />
-      ))}
-      {[0, 45, 90, 135].map((deg) => (
-        <div
-          key={deg}
-          className="absolute top-1/2 left-1/2 w-full origin-left"
-          style={{
-            height: 1,
-            background: "rgba(0,212,177,0.45)",
-            transform: `translateY(-50%) rotate(${deg}deg)`,
-            transformOrigin: "0 50%",
-          }}
-        />
-      ))}
-      <div
-        className="hero-radar-sweep absolute inset-0 overflow-hidden rounded-full"
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            width: "50%",
-            height: 2,
-            transformOrigin: "0 50%",
-            background:
-              "linear-gradient(90deg, rgba(0,212,177,0.0), rgba(0,212,177,1))",
-            boxShadow:
-              "0 0 8px rgba(0,212,177,0.8), 0 0 16px rgba(0,212,177,0.4)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background:
-              "conic-gradient(from 0deg, rgba(0,212,177,0.0) 0deg, rgba(0,212,177,0.22) 50deg, rgba(0,212,177,0.0) 70deg)",
-          }}
-        />
-      </div>
-      {RADAR_BLIPS.map((b, i) => (
-        <div
-          key={i}
-          className="hero-radar-blip absolute rounded-full"
-          style={{
-            width: b.size,
-            height: b.size,
-            background: "#00d4b1",
-            top: b.top,
-            left: b.left,
-            animationDelay: b.delay,
-            boxShadow:
-              "0 0 10px rgba(0,212,177,1), 0 0 20px rgba(0,212,177,0.5)",
-          }}
-        />
-      ))}
-      <div
-        className="absolute"
-        style={{
-          width: 12,
-          height: 12,
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          border: "1.5px solid rgba(0,212,177,0.9)",
-          borderRadius: "50%",
-          boxShadow: "0 0 6px rgba(0,212,177,0.6)",
-        }}
-      />
-      {["5", "10", "15", "20"].map((label, i) => (
-        <div
-          key={label}
-          className="absolute font-mono"
-          style={{
-            top: "50%",
-            left: "50%",
-            transform: `translate(-50%, calc(-50% - ${[15, 27, 38, 50][i]}%))`,
-            color: "rgba(0,212,177,0.45)",
-            fontSize: 9,
-            letterSpacing: "0.08em",
-          }}
-        >
-          {label}
-        </div>
-      ))}
-    </div>
-  );
-}
-

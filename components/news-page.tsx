@@ -316,20 +316,6 @@ export function NewsPageView() {
               {p.intro}
             </p>
           </div>
-          <div className="hidden items-center gap-6 lg:flex">
-            <div className="text-center">
-              <p className="font-mono text-xl text-sonar">{items.length}</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8aafc8]">
-                {p.itemsCountLabel}
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="font-mono text-xl text-sonar">{tags.length}</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8aafc8]">
-                {p.tagsCountLabel}
-              </p>
-            </div>
-          </div>
         </div>
         <FilterBar
           tags={tags}

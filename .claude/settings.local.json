@@ -12,7 +12,13 @@
       "Bash(python:*)",
       "Bash(npx tsc:*)",
       "Bash(sed:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebFetch(domain:coverr.co)",
+      "WebSearch",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:archive.org)",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:images.unsplash.com)"
     ]
   }
 }

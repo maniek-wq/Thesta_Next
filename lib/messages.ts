@@ -278,7 +278,7 @@ export const messages = {
       sectionKicker: "Kontakt",
       headline: "Porozmawiajmy o projekcie",
       intro:
-        "Opisz zakres — typ jednostki, systemy, harmonogram. Odpowiemy z koncepcją i wstępną wyceną w ciągu 1–2 dni roboczych.",
+        "Opisz zakres — typ jednostki, systemy, harmonogram. Odpowiemy z koncepcją i wstępną wyceną.",
       addressHeading: "Adres",
       addressLine1: "Janiny Smoleńskiej ps. „Jachna” 17",
       addressLine2: "71-005 Szczecin",
@@ -963,7 +963,7 @@ export const messages = {
             ],
           },
           {
-            unit: "Niszczyciele min klasy KORMORAN II",
+            unit: "Niszczyciele min typu KORMORAN II",
             lines: [
               "Dostawa i uruchomienie następujących systemów:",
               "System Nawigacji Inercyjnej (INS)",

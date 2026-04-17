@@ -120,23 +120,26 @@ export function HomeContactBlock({ contact }: { contact: Contact }) {
           </p>
 
           {/* Contact details */}
-          <p
-            className="mt-6 text-sm text-sea-300"
+          <div
+            className="mt-6 flex flex-col gap-1 text-sm text-sea-300"
             style={{
               opacity: visible ? 1 : 0,
               transition: "opacity 0.5s ease-out",
               transitionDelay: "380ms",
             }}
           >
-            {contact.phoneLabel}{" "}
-            <a href="tel:+48725105207" className="text-bridge transition-colors hover:text-sonar hover:underline">
-              +48 725 105 207
-            </a>
-            {" · "}
-            <a href="mailto:biuro@thesta.pl" className="text-bridge transition-colors hover:text-sonar hover:underline">
-              biuro@thesta.pl
-            </a>
-          </p>
+            <p>
+              {contact.phoneLabel}{" "}
+              <a href="tel:+48725105207" className="text-bridge transition-colors hover:text-sonar hover:underline">
+                +48 725 105 207
+              </a>
+            </p>
+            <p>
+              <a href="mailto:biuro@thesta.pl" className="text-bridge transition-colors hover:text-sonar hover:underline">
+                biuro@thesta.pl
+              </a>
+            </p>
+          </div>
 
           {/* CTA button */}
           <div

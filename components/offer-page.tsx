@@ -156,12 +156,12 @@ function TabSwitcher({
             onClick={() => onSwitch(key)}
             className={`offer-font-mono relative min-w-[7.5rem] px-5 py-2.5 text-[11px] font-medium tracking-[0.1em] transition-[color,background-color,border-color,box-shadow] duration-300 ease-out ${
               active
-                ? "border border-[rgba(0,212,177,0.25)] text-[#00D4B1]"
+                ? "border border-white/30 text-white"
                 : "border border-transparent text-[#8aafc8] hover:text-[#8a9aaa]"
             }`}
             style={
               active
-                ? { backgroundColor: "rgba(0, 212, 177, 0.1)" }
+                ? { backgroundColor: "rgba(255,255,255,0.08)" }
                 : undefined
             }
           >
@@ -187,7 +187,7 @@ function ProductsSectionHeader() {
       <span className="text-[13px] font-normal leading-normal tracking-[-0.005em] text-[#dce3ed]">
         {p.productsTitle}
       </span>
-      <span className="offer-font-mono text-[10px] leading-normal text-[rgba(85,100,120,0.3)]">
+      <span className="offer-font-mono text-[10px] leading-normal text-[#8aafc8]">
         {p.productsDescriptor}
       </span>
     </div>
@@ -263,7 +263,7 @@ function ListRow({
             className="offer-font-mono text-[9px] font-medium tracking-[0.08em] transition-colors duration-300"
             style={{ color: "rgba(0, 212, 177, 0.3)" }}
           >
-            {code} · {category}
+            {category}
           </span>
           <span
             className={`text-[14px] font-medium leading-normal transition-colors duration-300 ${
@@ -492,12 +492,6 @@ function OfferCtaBar({ onServicesClick }: { onServicesClick: () => void }) {
       >
         <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-center">
           <div className="max-w-xl space-y-3">
-            <p
-              className="offer-font-mono text-[10px] tracking-[0.12em] text-[rgba(0,212,177,0.5)]"
-              style={{ letterSpacing: "0.12em" }}
-            >
-              {p.ctaKicker}
-            </p>
             <h2 className="text-[32px] font-medium leading-[1.2] tracking-[-0.02em] text-[#dce3ed]">
               {p.ctaTitle}
             </h2>
@@ -514,14 +508,6 @@ function OfferCtaBar({ onServicesClick }: { onServicesClick: () => void }) {
               {p.ctaPrimary}
               <CtaArrowIcon />
             </Link>
-            <button
-              type="button"
-              onClick={onServicesClick}
-              className="inline-flex items-center gap-2 border border-[rgba(37,82,120,0.5)] px-5 py-3 text-[13px] font-medium text-[#8aafc8] transition-[color,border-color,background-color] duration-300 hover:border-[rgba(85,100,120,0.6)] hover:text-[#8a9aaa]"
-            >
-              {p.ctaSecondary}
-              <ArrowRightIcon className="text-[#8aafc8]" />
-            </button>
           </div>
         </div>
       </div>
@@ -549,20 +535,11 @@ export function OfferPageView() {
 
         <RevealOnScroll>
           <header className="mt-10 space-y-4">
-            <p
-              className="offer-font-mono text-[10px] font-normal uppercase tracking-[0.15em] text-[rgba(0,212,177,0.5)]"
-              style={{ letterSpacing: "0.15em" }}
-            >
-              {p.sectionKicker}
-            </p>
             <h1 className="max-w-[22ch] text-[clamp(2rem,5vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[#dce3ed]">
               {p.headline}
             </h1>
             <p className="max-w-2xl text-[15px] leading-[1.8] text-[#8aafc8]">
               {p.intro}
-            </p>
-            <p className="offer-font-mono text-[10px] tracking-[0.15em] text-[rgba(85,100,120,0.3)]">
-              {p.metaLine}
             </p>
             <div className="pt-2">
               <TabSwitcher tab={tab} onSwitch={setTab} />

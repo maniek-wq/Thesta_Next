@@ -12,8 +12,8 @@ const CARDS: {
   Icon: ElementType;
   delayMs: number;
 }[] = [
-  { key: "years",    target: 15,  suffix: "",  Icon: Anchor,    delayMs: 0   },
-  { key: "projects", target: 120, suffix: "+", Icon: Layers,    delayMs: 180 },
+  { key: "years",    target: 9,    suffix: "+", Icon: Anchor,    delayMs: 0   },
+  { key: "projects", target: 1200, suffix: "+", Icon: Layers,    delayMs: 180 },
   { key: "focus",    target: 100, suffix: "%", Icon: Crosshair, delayMs: 360 },
 ];
 

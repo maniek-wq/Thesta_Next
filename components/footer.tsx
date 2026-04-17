@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer
       id="site-footer"
-      className="mt-12 max-w-full overflow-x-clip border-t border-bridge-dim/15 bg-sea-900/40"
+      className="max-w-full overflow-x-clip border-t border-bridge-dim/15 bg-sea-900/40"
     >
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
@@ -19,9 +19,11 @@ export function Footer() {
               alt=""
               className="mb-4 h-10 w-[min(13rem,85vw)] max-h-10 opacity-90 sm:h-11 sm:max-h-11 sm:w-[14.5rem]"
             />
-            <p className="text-sm text-sea-300">{m.brand.tagline}</p>
-            <p className="mt-4 max-w-sm text-sm text-sea-400">
-              {m.home.contact.company}
+            <p className="mt-4 text-sm text-sea-400">
+              {m.home.contact.company.split(" · ")[0]}
+            </p>
+            <p className="text-sm text-sea-400">
+              {m.home.contact.company.split(" · ")[1]}
             </p>
             <p className="mt-2 text-sm text-sea-300">
               {m.home.contact.phoneLabel}{" "}
@@ -31,7 +33,8 @@ export function Footer() {
               >
                 +48 725 105 207
               </a>
-              {" · "}
+            </p>
+            <p className="mt-1 text-sm text-sea-300">
               <a
                 href="mailto:biuro@thesta.pl"
                 className="text-bridge hover:text-bridge-glow"

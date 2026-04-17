@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
-import { FigmaArrowUp } from "@/components/icons/figma-icons";
+import { useEffect, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 
 const TEL_HREF = "tel:+48725105207";
@@ -48,11 +47,6 @@ export function ScrollDock() {
 
   const visible = scrollShown && !footerHidesDock;
 
-  const scrollTop = useCallback(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-  }, []);
-
   return (
     <div
       className="pointer-events-none fixed bottom-0 left-0 right-0 z-[95] box-border overflow-hidden px-3"
@@ -66,7 +60,7 @@ export function ScrollDock() {
         role="toolbar"
         aria-label={t("dock.barAria")}
         aria-hidden={!visible}
-        className={`mx-auto box-border grid min-h-10 min-w-0 w-full max-w-xl grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_auto] items-center gap-0.5 border border-bridge/25 bg-[#122944]/95 px-1 py-1 shadow-[0_4px_24px_rgba(0,0,0,0.55)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:gap-1 sm:px-2 sm:py-1.5 ${
+        className={`mx-auto box-border grid min-h-10 min-w-0 w-full max-w-xl grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] items-center gap-0.5 border border-bridge/25 bg-[#122944]/95 px-1 py-1 shadow-[0_4px_24px_rgba(0,0,0,0.55)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:gap-1 sm:px-2 sm:py-1.5 ${
           visible
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-[calc(100%+1rem)] opacity-0"
@@ -93,15 +87,6 @@ export function ScrollDock() {
         >
           {t("nav.offer")}
         </Link>
-        <button
-          type="button"
-          onClick={scrollTop}
-          className="inline-flex h-9 w-9 shrink-0 items-center justify-center justify-self-end border border-bridge/45 bg-sea-850/50 text-bridge hover:border-bridge hover:bg-sea-800/70 sm:h-10 sm:w-10"
-          aria-label={t("dock.backToTop")}
-          title={t("dock.backToTop")}
-        >
-          <FigmaArrowUp className="text-current" />
-        </button>
       </div>
     </div>
   );

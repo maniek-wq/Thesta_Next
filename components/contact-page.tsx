@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import {
   FigmaCtaArrow,
   FigmaMail,
@@ -16,7 +15,7 @@ export function ContactPageView() {
   const { m } = useLocale();
   const p = m.contactPage;
   const h = m.home.contact;
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
 
   return (
     <div className="pb-20">
@@ -38,7 +37,7 @@ export function ContactPageView() {
           <p className="max-w-2xl text-[15px] leading-[1.8] text-[#8aafc8]">{p.intro}</p>
         </header>
 
-        <div className="mt-14 flex flex-col gap-12 lg:mt-16 lg:flex-row lg:items-start lg:justify-between lg:gap-10 xl:gap-14">
+        <div className="mt-14 flex flex-col gap-12 lg:mt-16 lg:flex-row lg:items-stretch lg:justify-between lg:gap-10 xl:gap-14">
           {/* Form — makiet ~704px */}
           <section
             className="w-full shrink-0 border border-[rgba(37,82,120,0.3)] lg:max-w-[704px] lg:flex-1"
@@ -155,8 +154,8 @@ export function ContactPageView() {
           </section>
 
           {/* Prawa kolumna ~448px */}
-          <aside className="flex w-full shrink-0 flex-col gap-10 lg:w-[min(100%,448px)]">
-            <div>
+          <aside className="flex w-full shrink-0 flex-col lg:w-[min(100%,448px)]">
+            <div className="pt-0">
               <h2 className="text-[16px] font-medium text-[#dce3ed]">
                 {p.contactAsideTitle}
               </h2>
@@ -190,49 +189,20 @@ export function ContactPageView() {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-[16px] font-medium text-[#dce3ed]">{p.faqHeading}</h2>
-              <div className="mt-6 border-t border-[rgba(37,82,120,0.35)]">
-                {p.faqItems.map((item, i) => {
-                  const open = openFaq === i;
-                  return (
-                    <div
-                      key={item.q}
-                      className="border-b border-[rgba(37,82,120,0.35)]"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => setOpenFaq(open ? null : i)}
-                        className="flex w-full items-center justify-between gap-4 py-4 text-left transition-colors hover:bg-white/[0.02]"
-                        aria-expanded={open}
-                      >
-                        <span className="text-[14px] font-medium text-[#dce3ed]">
-                          {item.q}
-                        </span>
-                        <span
-                          className={`offer-font-mono text-[14px] text-[rgba(85,100,120,0.3)] transition-transform duration-300 ${
-                            open ? "rotate-45 text-[#00D4B1]" : ""
-                          }`}
-                        >
-                          +
-                        </span>
-                      </button>
-                      <div
-                        className={`grid transition-all duration-300 ease-out ${
-                          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                        }`}
-                      >
-                        <div className="overflow-hidden">
-                          <p className="pb-4 text-[13px] leading-[1.75] text-[#8aafc8]">
-                            {item.a}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+            {/* Mapa Google */}
+            <div className="mt-10 flex min-h-[260px] flex-1 overflow-hidden border border-[rgba(37,82,120,0.35)]">
+              <iframe
+                title="Lokalizacja Thesta"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376.6!2d14.5520!3d53.4285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa093b1c5b6b6b%3A0x1234567890abcdef!2sJaniny%20Smole%C5%84skiej%20ps.%20%E2%80%9EJachna%E2%80%9D%2017%2C%2071-005%20Szczecin!5e0!3m2!1spl!2spl!4v1713000000000!5m2!1spl!2spl"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
+
           </aside>
         </div>
       </div>

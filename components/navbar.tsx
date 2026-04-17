@@ -148,9 +148,6 @@ export function Navbar() {
               className="h-9 w-[min(11rem,52vw)] max-h-9 shrink-0 opacity-95 group-hover:opacity-100 sm:h-10 sm:max-h-10 sm:w-[12.5rem]"
               priority
             />
-            <span className="hidden min-w-0 truncate text-xs text-sea-300 group-hover:text-bridge/90 sm:inline">
-              {m.brand.tagline}
-            </span>
           </Link>
 
           <nav
