@@ -19,9 +19,6 @@ const PANEL = "#122944";
 const BORDER = "rgba(37,82,120,0.35)";
 const LOGO_BORDER = "rgba(37,82,120,0.5)";
 
-function pad2(n: number) {
-  return String(n).padStart(2, "0");
-}
 
 export function AboutPartnersPage() {
   const { m } = useLocale();
@@ -38,7 +35,6 @@ export function AboutPartnersPage() {
 
   const item = p.items[index]!;
   const logo = getPartnerLogo(item.logoId as PartnerLogoId);
-  const counter = `${pad2(index + 1)} / ${pad2(n)}`;
 
   return (
     <AboutLayout>
@@ -79,9 +75,6 @@ export function AboutPartnersPage() {
                 }`}
               >
                 <span className="min-w-0 text-[14px] font-medium leading-snug">{row.name}</span>
-                <span className="offer-font-mono shrink-0 text-[10px] tracking-[0.06em] text-[#00D4B1]">
-                  {pad2(i + 1)} / {pad2(n)}
-                </span>
               </button>
             );
           })}
@@ -108,9 +101,6 @@ export function AboutPartnersPage() {
             <h2 className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-medium text-[#dce3ed]">
               {item.name}
             </h2>
-            <span className="offer-font-mono text-[11px] tracking-[0.08em] text-[#00D4B1]">
-              {counter}
-            </span>
           </div>
 
           <p className="mt-5 flex-1 text-pretty text-[15px] leading-[1.85] text-[#8aafc8]">
